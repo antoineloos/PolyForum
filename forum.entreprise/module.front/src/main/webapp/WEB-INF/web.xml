@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <display-name>Polyforum</display-name>
+  <servlet>
+    <servlet-name>SlCompte</servlet-name>
+    <servlet-class>controleurs.SlCompte</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SlEntreprise</servlet-name>
+    <servlet-class>controleurs.SlEntreprise</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SlAdmin</servlet-name>
+    <servlet-class>controleurs.SlAdmin</servlet-class>
+  </servlet>
+   <servlet>
+    <servlet-name>SlCandidat</servlet-name>
+    <servlet-class>controleurs.SlCandidat</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>SlDocument</servlet-name>
+  	<servlet-class>controleurs.SlDocument</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SlCompte</servlet-name>
+    <url-pattern>*.cpt</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SlEntreprise</servlet-name>
+    <url-pattern>*.chxE</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SlAdmin</servlet-name>
+    <url-pattern>*.adm</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>SlCandidat</servlet-name>
+    <url-pattern>*.can</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SlDocument</servlet-name>
+  	<url-pattern>*.file</url-pattern>
+  </servlet-mapping>
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+  <welcome-file-list>
+    <welcome-file>home.jsp</welcome-file>
+  </welcome-file-list>
+  <error-page>
+    <!-- Missing login -->
+    <error-code>404</error-code>
+    <location>/404.jsp</location>
+  </error-page>
+</web-app>

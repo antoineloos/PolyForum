@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+                                 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             version="2.1">
+ 
+ 
+    <persistence-unit name="polyforum" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <properties>
+            <property name="hibernate.connection.driver_class" value="${jdbc.driverClassName}"/>
+            <property name="hibernate.connection.url" value="${jdbc.url}"/>
+            <property name="hibernate.connection.username" value="${jdbc.username}"/>
+            <property name="hibernate.connection.password" value="${jdbc.password}"/>
+            <property name="hibernate.dialect" value="${jdbc.dialect}"/>
+            <property name="hibernate.connection.useUnicode" value="${jdbc.use.uni.code}"/>
+            <property name="hibernate.connection.characterEncoding" value="${jdbc.encoding}"/>
+            <property name="hibernate.current_session_context_class" value="${jdbc.session.context.class}"/>
+            <property name="hibernate.show_sql" value="${jdbc.show.sql}"/>
+        </properties>
+    </persistence-unit>
+ 
+</persistence>
