@@ -78,10 +78,10 @@ public class CandidatDao {
         if(listeCandidat.isEmpty()){
             return -1;
         }
-            System.out.println(listeCandidat.get(0).getNom());
-        Candidat c = listeCandidat.get(0); 
-        if (c != null && c.getPassword().equals(pwd)){
-            return c.getIdCandidat();
+       
+        if ( listeCandidat.stream().anyMatch((ca)->ca.getPassword().equals(pwd)) ){
+      // if (c != null && listeCandidat.stream().anyMatch<Candidat>(c->c.getPassword().equals(pwd)) ){
+            return ((Candidat)listeCandidat.stream().filter((c)->c.getPassword().equals(pwd)).toArray()[0]).getIdCandidat();
         }
         // Code erreur
         return -1;

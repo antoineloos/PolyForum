@@ -13,7 +13,7 @@ import forum.app.dao.model.Entretien;
 import forum.app.dao.util.PersistenceUtil;
 
 public class EntretienDao {
-	// http://www.tugay.biz/2015/08/example-with-jpa-servlet-jetty-mysql.html
+	
 	
 	private EntityManager em;
 	
@@ -26,7 +26,7 @@ public class EntretienDao {
 	public Entretien getById(int idC, int idE) {
 		prepareEntityManagerForTransaction();
 		List listeEntretiens = em.createQuery(
-		        "SELECT e FROM Entretien e WHERE e.idCandidat = :idC AND e.idEntreprise = :idE")
+		        "SELECT e FROM Entretien e WHERE e.entretienPK.idCandidat = :idC AND e.entretienPK.idEntreprise = :idE")
 		        .setParameter("idC", idC)
 		        .setParameter("idE", idE)
 		        .getResultList();
@@ -37,7 +37,7 @@ public class EntretienDao {
 	public List<Entretien> getByIdEntreprise(int idE) {
 		prepareEntityManagerForTransaction();
 		List listeEntretiens = em.createQuery(
-		        "SELECT e FROM Entretien e WHERE e.idEntreprise = :idE")
+		        "SELECT e FROM Entretien e WHERE e.entretienPK.idEntreprise = :idE")
 		        .setParameter("idE", idE)
 		        .getResultList();
 		
@@ -56,7 +56,7 @@ public class EntretienDao {
 	public List<Entretien> getByIdCandidat(int idC) {
 		prepareEntityManagerForTransaction();
 		List listeEntretiens = em.createQuery(
-		        "SELECT e FROM Entretien e WHERE e.idCandidat = :idC")
+		        "SELECT e FROM Entretien e WHERE e.entretienPK.idCandidat = :idC")
 		        .setParameter("idC", idC)
 		        .getResultList();
 		

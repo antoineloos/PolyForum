@@ -77,9 +77,9 @@ public class EntrepriseDao {
         if(listeEntreprise.isEmpty()){
             return -1;
         }
-        Entreprise e = listeEntreprise.get(0); 
-        if (e != null && e.getPassword().equals(pwd)){
-            return e.getIdEntreprise();
+         
+        if (listeEntreprise.stream().anyMatch((en)->en.getPassword().equals(pwd))){
+           return ((Entreprise)listeEntreprise.stream().filter((e)->e.getPassword().equals(pwd)).toArray()[0]).getIdEntreprise();
         }
         // Code erreur
         return -1;

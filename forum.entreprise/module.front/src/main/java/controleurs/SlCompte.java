@@ -19,18 +19,17 @@ import forum.app.dao.impl.EntrepriseDao;
 import forum.app.dao.util.Constantes;
 import forum.app.dao.util.Utilitaire;
 
-
 @SuppressWarnings("serial")
 public class SlCompte extends HttpServlet {
-	
-	private static Logger logger = Logger.getLogger(SlCompte.class);
 
-	private String erreur = "";
+    private static Logger logger = Logger.getLogger(SlCompte.class);
 
-	private EntrepriseDao entrepriseDao;
-	private CandidatDao candidatDao;
-	
-	/**
+    private String erreur = "";
+
+    private EntrepriseDao entrepriseDao;
+    private CandidatDao candidatDao;
+
+    /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
@@ -39,9 +38,9 @@ public class SlCompte extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
         String demande;
         String vueReponse = "/index.jsp";
         erreur = "";
@@ -50,45 +49,40 @@ public class SlCompte extends HttpServlet {
             demande = getDemande(request);
             if (demande.equalsIgnoreCase("login.cpt")) {
                 vueReponse = login(request);
-            } else  if (demande.equalsIgnoreCase("connecter.cpt")) {
+            } else if (demande.equalsIgnoreCase("connecter.cpt")) {
                 vueReponse = connecter(request);
-            } else  if (demande.equalsIgnoreCase("deconnecter.cpt")) {
+            } else if (demande.equalsIgnoreCase("deconnecter.cpt")) {
                 vueReponse = deconnecter(request);
-            } 
-            else  if (demande.equalsIgnoreCase("modifier_etu.cpt")) {
+            } else if (demande.equalsIgnoreCase("modifier_etu.cpt")) {
                 vueReponse = modifier_etu(request);
-            }
-            else  if (demande.equalsIgnoreCase("modifier_ent.cpt")) {
+            } else if (demande.equalsIgnoreCase("modifier_ent.cpt")) {
                 vueReponse = modifier_ent(request);
-            }
-            else  if (demande.equalsIgnoreCase("modifierCompte_etu.cpt")) {
+            } else if (demande.equalsIgnoreCase("modifierCompte_etu.cpt")) {
                 vueReponse = modifierCompte_etu(request);
-            }
-            else  if (demande.equalsIgnoreCase("modifierCompte_ent.cpt")) {
+            } else if (demande.equalsIgnoreCase("modifierCompte_ent.cpt")) {
                 vueReponse = modifierCompte_ent(request);
-            }
-            else  if (demande.equalsIgnoreCase("accueil.cpt")) {
+            } else if (demande.equalsIgnoreCase("accueil.cpt")) {
                 vueReponse = accueil(request);
             }
-            } catch (Exception e) {
-            
+        } catch (Exception e) {
+
             erreur = e.getMessage();
-            if (!erreur.equals("")){
-            	if (getDemande(request).equals("modifierCompte_etu.cpt")){
-              	  vueReponse = "/modification_etu.jsp";
-              }
-            	if (getDemande(request).equals("modifierCompte_ent.cpt")){
-                	  vueReponse = "/modification_ent.jsp";
+            if (!erreur.equals("")) {
+                if (getDemande(request).equals("modifierCompte_etu.cpt")) {
+                    vueReponse = "/modification_etu.jsp";
                 }
-            	if (getDemande(request).equals("connecter.cpt")){
-              	  vueReponse = "/login.cpt";
-              }
+                if (getDemande(request).equals("modifierCompte_ent.cpt")) {
+                    vueReponse = "/modification_ent.jsp";
+                }
+                if (getDemande(request).equals("connecter.cpt")) {
+                    vueReponse = "/login.cpt";
+                }
             }
-            
+
         } finally {
-			logger.debug("Chargement de la page "+ vueReponse);
+            logger.debug("Chargement de la page " + vueReponse);
             request.setAttribute("erreurR", erreur);
-            request.setAttribute("pageR", vueReponse);            
+            request.setAttribute("pageR", vueReponse);
             RequestDispatcher dsp = request.getRequestDispatcher(vueReponse);
             dsp.forward(request, response);
         }
@@ -96,6 +90,7 @@ public class SlCompte extends HttpServlet {
 
     /**
      * Extrait le texte de la demande de l'URL
+     *
      * @param request
      * @return String texte de la demande
      */
@@ -105,20 +100,21 @@ public class SlCompte extends HttpServlet {
         demande = demande.substring(demande.lastIndexOf("/") + 1);
         return demande;
     }
-    
+
     private String setDemande(HttpServletRequest request) {
-		String demande = "";
-		demande = request.getRequestURI();
-		demande = demande.replace(getDemande(request), "home.jsp");		
-		demande = demande.substring(demande.lastIndexOf("/") + 1);
-		return demande;
-	}
-    
+        String demande = "";
+        demande = request.getRequestURI();
+        demande = demande.replace(getDemande(request), "home.jsp");
+        demande = demande.substring(demande.lastIndexOf("/") + 1);
+        return demande;
+    }
+
     /**
      * Afficher la page de login
+     *
      * @param request
      * @return
-     * @throws Exception 
+     * @throws Exception
      */
     private String login(HttpServletRequest request) throws Exception {
         try {
@@ -126,10 +122,11 @@ public class SlCompte extends HttpServlet {
         } catch (Exception e) {
             throw e;
         }
-    }  
-    
+    }
+
     /**
      * Vérifie que l'utilisateur a saisi le bon login et mot de passe
+     *
      * @param request
      * @return String page de redirection
      * @throws Exception
@@ -140,36 +137,34 @@ public class SlCompte extends HttpServlet {
             vueReponse = "/index.jsp";
             login = request.getParameter("login");
             password = request.getParameter("password");
-            if ("admin".equals(login) && "polyforum2015".equals(password)){
+            if ("admin".equals(login) && "polyforum2015".equals(password)) {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("idCompte", "admin");
                 session.setAttribute("type", "admin");
                 session.setAttribute("login", login);
-            	return "/admin.jsp";
+                return "/admin.jsp";
             }
             candidatDao = (CandidatDao) DaoFactory.getDaoInstance(Constantes.CANDIDAT);
             entrepriseDao = (EntrepriseDao) DaoFactory.getDaoInstance(Constantes.ENTREPRISE);
             int idCompte = candidatDao.connecter(login, password);
             HttpSession session = request.getSession(true);
             String type = "candidat";
-            if (idCompte == -1){
-            	idCompte = entrepriseDao.connecter(login, password);
-            	if (idCompte == -1){
-            		erreur = "Pseudo ou Mot de passe inconnu !";
-                	type = "";
+            if (idCompte == -1) {
+                idCompte = entrepriseDao.connecter(login, password);
+                if (idCompte == -1) {
+                    erreur = "Pseudo ou Mot de passe inconnu !";
+                    type = "";
                     vueReponse = "/login.jsp";
-            	}
-            	else{
-                type = "entreprise";
-                Entreprise e = entrepriseDao.getById(idCompte);
-                session.setAttribute("idCompte", idCompte);
-                session.setAttribute("type", type);
-                session.setAttribute("login", login);
-                session.setAttribute("nom", e.getNom());
-                session.setAttribute("nom_representant", e.getNomRepresentant());
-            	}
-            }
-            else if (idCompte != -1) {
+                } else {
+                    type = "entreprise";
+                    Entreprise e = entrepriseDao.getById(idCompte);
+                    session.setAttribute("idCompte", idCompte);
+                    session.setAttribute("type", type);
+                    session.setAttribute("login", login);
+                    session.setAttribute("nom", e.getNom());
+                    session.setAttribute("nom_representant", e.getNomRepresentant());
+                }
+            } else if (idCompte != -1) {
                 session.setAttribute("idCompte", idCompte);
                 session.setAttribute("type", type);
                 session.setAttribute("login", login);
@@ -177,11 +172,11 @@ public class SlCompte extends HttpServlet {
                 session.setAttribute("nom", c.getNom());
                 session.setAttribute("prenom", c.getPrenom());
             } else {
-            	type = "";
+                type = "";
                 vueReponse = "/login.jsp";
                 erreur = "Pseudo ou Mot de passe inconnu !";
             }
-            if ("entreprise".equals(type)){
+            if ("entreprise".equals(type)) {
                 vueReponse = "/index.jsp";
             }
             return (vueReponse);
@@ -192,7 +187,7 @@ public class SlCompte extends HttpServlet {
             throw new Exception(erreur);
         }
     }
-    
+
     private String deconnecter(HttpServletRequest request) throws Exception {
         try {
             HttpSession session = request.getSession(true);
@@ -202,102 +197,96 @@ public class SlCompte extends HttpServlet {
         } catch (Exception e) {
             throw e;
         }
-    } 
-    
+    }
+
     private String modifier_etu(HttpServletRequest request) throws Exception {
         try {
             HttpSession session = request.getSession(true);
-    	    int idCandidat = (int) session.getAttribute("idCompte");
+            int idCandidat = (int) session.getAttribute("idCompte");
             String type = (String) session.getAttribute("type");
-            if(type.equals("candidat")){
-            	Candidat c = candidatDao.getById(idCandidat);
+            if (type.equals("candidat")) {
+                Candidat c = candidatDao.getById(idCandidat);
                 session.setAttribute("nom", c.getNom());
                 session.setAttribute("prenom", c.getPrenom());
             }
-            return("/modification_etu.jsp");
+            return ("/modification_etu.jsp");
         } catch (Exception e) {
             throw e;
         }
     }
 
     private String accueil(HttpServletRequest request) throws Exception {
-            return("/index.jsp");
+        return ("/index.jsp");
     }
-    
+
     private String modifier_ent(HttpServletRequest request) throws Exception {
         try {
             HttpSession session = request.getSession(true);
-    	    int idEntreprise = (int) session.getAttribute("idCompte");
+            int idEntreprise = (int) session.getAttribute("idCompte");
             String type = (String) session.getAttribute("type");
-            if(type.equals("entreprise")){
-            	Entreprise e = entrepriseDao.getById(idEntreprise);
+            if (type.equals("entreprise")) {
+                Entreprise e = entrepriseDao.getById(idEntreprise);
                 session.setAttribute("nom", e.getNom());
                 session.setAttribute("representant", e.getNomRepresentant());
             }
-            return("/modification_ent.jsp");
-        } catch (Exception e) {
-            throw e;
-        }
-    }
-    
-    public String modifierCompte_etu(HttpServletRequest request) throws Exception {
-        try {
-        	HttpSession session = request.getSession(true);
-    	    int idCandidat = (int) session.getAttribute("idCompte");
-            String type = (String) session.getAttribute("type");
-            String mdp_old = (String) request.getParameter("mdp_old");
-            String mdp_new =  request.getParameter("mdp_new");
-            String mdp_new2 =  request.getParameter("mdp_new2");
-            Candidat candidat = candidatDao.getById(idCandidat);
-            if(mdp_old.equals(candidat.getPassword())){
-            	if (mdp_new.equals(mdp_new2)){
-                	candidat.setPassword(mdp_new);
-                	candidatDao.updateCandidat(candidat);
-                }
-            	else{
-            		throw new Exception ("La confirmation du mot de passe n'est pas bonne");
-            	}
-            }
-            else{
-            	throw new Exception ("Votre ancien mot de passe n'est pas correct");
-            }
-            session.setAttribute("notifR", "Votre mot de passe a été modifié correctement");
-            return("/index.jsp");
-        } catch (Exception e) {
-            throw e;
-        }
-    }
-    
-    public String modifierCompte_ent(HttpServletRequest request) throws Exception {
-        try {
-        	HttpSession session = request.getSession(true);
-    	    int idEntreprise = (int) session.getAttribute("idCompte");
-            String type = (String) session.getAttribute("type");
-            String mdp_old = (String) request.getParameter("mdp_old");
-            String mdp_new =  request.getParameter("mdp_new");
-            String mdp_new2 =  request.getParameter("mdp_new2");
-            Entreprise e = entrepriseDao.getById(idEntreprise);
-            if(mdp_old.equals(e.getPassword())){
-            	if (mdp_new.equals(mdp_new2)){
-                	e.setPassword(mdp_new);
-                	entrepriseDao.updateEntreprise(e);
-                }
-            	else{
-            		throw new Exception ("La confirmation du mot de passe n'est pas bonne");
-            	}
-            }
-            else{
-            	throw new Exception ("Votre ancien mot de passe n'est pas correct");
-            }
-            session.setAttribute("notifR", "Votre mot de passe a été modifié correctement");
-            return("/index.jsp");
+            return ("/modification_ent.jsp");
         } catch (Exception e) {
             throw e;
         }
     }
 
-    
-    
+    public String modifierCompte_etu(HttpServletRequest request) throws Exception {
+        try {
+            HttpSession session = request.getSession(true);
+            int idCandidat = (int) session.getAttribute("idCompte");
+            String type = (String) session.getAttribute("type");
+            String mdp_old = (String) request.getParameter("mdp_old");
+            String mdp_new = request.getParameter("mdp_new");
+            String mdp_new2 = request.getParameter("mdp_new2");
+            Candidat candidat = candidatDao.getById(idCandidat);
+            if (mdp_old.equals(candidat.getPassword())) {
+                if (mdp_new.equals(mdp_new2)) {
+                    candidat.setPassword(mdp_new);
+                    candidatDao.updateCandidat(candidat);
+                } else {
+                    throw new Exception("La confirmation du mot de passe n'est pas bonne");
+                }
+            } else {
+                throw new Exception("Votre ancien mot de passe n'est pas correct");
+            }
+            session.setAttribute("notifR", "Votre mot de passe a été modifié correctement");
+            return ("/index.jsp");
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public String modifierCompte_ent(HttpServletRequest request) throws Exception {
+        try {
+            HttpSession session = request.getSession(true);
+            int idEntreprise = (int) session.getAttribute("idCompte");
+            String type = (String) session.getAttribute("type");
+            String mdp_old = (String) request.getParameter("mdp_old");
+            String mdp_new = request.getParameter("mdp_new");
+            String mdp_new2 = request.getParameter("mdp_new2");
+            Entreprise e = entrepriseDao.getById(idEntreprise);
+            if (mdp_old.equals(e.getPassword())) {
+                if (mdp_new.equals(mdp_new2)) {
+                    e.setPassword(mdp_new);
+                    entrepriseDao.updateEntreprise(e);
+                } else {
+                    throw new Exception("La confirmation du mot de passe n'est pas bonne");
+                }
+            } else {
+                throw new Exception("Votre ancien mot de passe n'est pas correct");
+            }
+            session.setAttribute("notifR", "Votre mot de passe a été modifié correctement");
+            return ("/index.jsp");
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
 //    private String validerCompte(HttpServletRequest request) throws Exception {
 //        String vueReponse;
 //        try {
@@ -326,7 +315,6 @@ public class SlCompte extends HttpServlet {
 //            return vueReponse;
 //        }
 //    }
-    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -338,13 +326,11 @@ public class SlCompte extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-			processRequest(request, response);
-		
-	}
+            throws ServletException, IOException {
 
+        processRequest(request, response);
 
+    }
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -354,13 +340,11 @@ public class SlCompte extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
     @Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		processRequest(request, response);
-	}
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
 
     /**
      * Returns a short description of the servlet.
