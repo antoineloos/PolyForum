@@ -128,7 +128,7 @@
 					<tbody class="sort">
 						<c:forEach var="varListeChoix" items="${listeChoix}" varStatus="loop">
 							<tr id='${loop.index+1}' name='${loop.index+1}'>
-								<td id='nom${loop.index+1}' name='nom${loop.index+1}'>${varListeChoix.getChoixCandidatPK().entreprise.nom}</td>
+								<td id='nom${loop.index+1}' name='nom${loop.index+1}'>${varListeChoix.getEntreprise().nom}</td>
 								<td id='prio${loop.index+1}' name='prio${loop.index+1}' class="index">${loop.index+1}</td>
 								<td width="5%"><button type="button" name="remove" id="${sessionScope.idCompte} ${varListeChoix.getChoixCandidatPK().idEntreprise}"
 										class="btn btn-danger btn_remove">X</button></td>
