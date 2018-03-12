@@ -41,7 +41,7 @@ private EntityManager em;
 	public List<Salle> getAll() {
 		prepareEntityManagerForTransaction();
 		Query query = em.createQuery("SELECT s FROM Salle s");
-		return (ArrayList<Salle>) query.getResultList();
+		return new ArrayList<Salle>(query.getResultList());
 	}
 
 	public void removeSalle(Salle salle) {

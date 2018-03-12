@@ -30,7 +30,7 @@ public class EntrepriseDao {
 	public List<Entreprise> getAll() {
 		prepareEntityManagerForTransaction();
 		Query query = em.createQuery("SELECT e FROM Entreprise e");
-		return (ArrayList<Entreprise>) query.getResultList();
+		return new ArrayList<Entreprise>(query.getResultList());
 	}
 
 	public void removeEntreprise(Entreprise entreprise) {
