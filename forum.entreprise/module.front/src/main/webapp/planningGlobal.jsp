@@ -150,6 +150,36 @@
 	<input type="hidden" id="listeEntreprise" name="listeEntreprise" value="${sessionScope.entreprises}" />
 	<input type="hidden" id="eventWanted" name="eventWanted" value="false" />
 	<div class="mainbody-section text-center">
+            <div class="container">
+		<br />
+		<div class="panel panel-default">
+            <table id="sort" class="table table-bordered table-striped grid">
+				<thead>
+					<tr>
+						<th class="bg-primary index" style="text-align: center;">Nom de l'entreprise</th>
+						<th class="bg-primary index" style="text-align: center;">Nom du candidat</th>
+                                                <th class="bg-primary index" style="text-align: center;">Salle</th>
+                                                <th class="bg-primary index" style="text-align: center;">Debut</th>
+                                                <th class="bg-primary index" style="text-align: center;">Fin</th>
+						
+						
+					</tr>
+				</thead>
+				<tbody class="sort">
+					<c:forEach var="ent" items="${entretiens}" varStatus="loop">
+						<tr>
+							<td>${ent.entreprise.nom}</td>
+							<td>${ent.candidat.prenom} ${ent.candidat.nom}</td>
+                                                        <td>${ent.idSalle}</td>
+                                                        <td>${ent.heure}</td>
+                                                        <td>${ent.heureFin}</td>
+							
+								</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+                </div>
+            </div>
 		<div class="contentdiv">
 			<div class="timetable" id="timetable"></div>
 			<div class="adm-options" style="display: inline-block; width: 32%;">

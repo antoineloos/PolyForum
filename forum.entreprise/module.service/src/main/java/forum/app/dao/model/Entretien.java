@@ -16,6 +16,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -53,6 +54,28 @@ public class Entretien implements Serializable {
     private Boolean present;
     @Column(name = "retard")
     private Boolean retard;
+    
+    @Transient
+    private Candidat candidat;
+    
+     @Transient
+    private Entreprise entreprise;
+
+    public Candidat getCandidat() {
+        return candidat;
+    }
+
+    public void setCandidat(Candidat candidat) {
+        this.candidat = candidat;
+    }
+
+    public Entreprise getEntreprise() {
+        return entreprise;
+    }
+
+    public void setEntreprise(Entreprise entreprise) {
+        this.entreprise = entreprise;
+    }
 
     public Entretien() {
     }

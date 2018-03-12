@@ -162,7 +162,9 @@ public class SlAdmin extends HttpServlet {
 				vueReponse = telechargerTemplateExcel(request, response, "entreprise");
 			} else if (demande.equalsIgnoreCase("consulterMdp.adm")) {
 				vueReponse = consulterMdp(request);
-			}
+			} else if (demande.equalsIgnoreCase("changeEnt.adm")){
+                            vueReponse = consulterPlanningEntrepriseAdm(request);
+                        }
 		} catch (Exception e) {
 			erreur = e.getMessage();
 		} finally {
@@ -555,12 +557,17 @@ public class SlAdmin extends HttpServlet {
 
 	public String consulterPlanningEntreprise(HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
+               // int idEntreprise = Integer.parseInt(request.getParameter("isTitles"));
 		int idEntreprise = Integer.parseInt(request.getParameter("entreprises"));
+                String nomRepr = request.getParameter("ent1");
 		List<Entretien> liste = entretienDao.getByIdEntreprise(idEntreprise);
 		String text = "";
 		for (Entretien e : liste) {
 			Candidat c = candidatDao.getById(e.getEntretienPK().getIdCandidat());
 			Entreprise ent = entrepriseDao.getById(e.getEntretienPK().getIdEntreprise());
+                        
+                        e.setCandidat(c);
+                        e.setEntreprise(ent);
 			text = text + majAuDebut(c.getPrenom()) + ESPACE + majAuDebut(c.getNom()) + ESPACE
 					+ majAuDebut(ent.getNom() + " (Salle " + e.getIdSalle() + ")") + ESPACE + e.getIdSalle() + ESPACE
 					+ e.getHeure() + ESPACE + e.getHeureFin() + ESPACE;
@@ -570,7 +577,37 @@ public class SlAdmin extends HttpServlet {
 		Entreprise ent = entrepriseDao.getById(idEntreprise);
 		entreprises = majAuDebut(ent.getNom()) + " (Salle " + getIdSalle(idEntreprise) + ")";
 
-		session.setAttribute("entretiensEnt", text);
+		session.setAttribute("entretiensEnt", liste);
+		session.setAttribute("entreprisesEnt", entreprises);
+
+		request.getSession().removeAttribute("typePlanning");
+		request.getSession().removeAttribute("listeEntreprises");
+		request.getSession().removeAttribute("listeCandidats");
+		return "/planningEnt.jsp";
+	}
+        
+        public String consulterPlanningEntrepriseAdm(HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
+                int idEntreprise = Integer.parseInt(request.getParameter("isTitles"));
+		//int idEntreprise = Integer.parseInt(request.getParameter("entreprises"));
+              
+		List<Entretien> liste = entretienDao.getByIdEntreprise(idEntreprise);
+		String text = "";
+		for (Entretien e : liste) {
+			Candidat c = candidatDao.getById(e.getEntretienPK().getIdCandidat());
+			Entreprise ent = entrepriseDao.getById(e.getEntretienPK().getIdEntreprise());
+                        e.setCandidat(c);
+                        e.setEntreprise(ent);
+			text = text + majAuDebut(c.getPrenom()) + ESPACE + majAuDebut(c.getNom()) + ESPACE
+					+ majAuDebut(ent.getNom() + " (Salle " + e.getIdSalle() + ")") + ESPACE + e.getIdSalle() + ESPACE
+					+ e.getHeure() + ESPACE + e.getHeureFin() + ESPACE;
+		}
+		String entreprises = "";
+
+		Entreprise ent = entrepriseDao.getById(idEntreprise);
+		entreprises = majAuDebut(ent.getNom()) + " (Salle " + getIdSalle(idEntreprise) + ")";
+
+		session.setAttribute("entretiensEnt", liste);
 		session.setAttribute("entreprisesEnt", entreprises);
 
 		request.getSession().removeAttribute("typePlanning");
@@ -591,9 +628,12 @@ public class SlAdmin extends HttpServlet {
 		for (Entretien e : liste) {
 			Candidat c = candidatDao.getById(e.getEntretienPK().getIdCandidat());
 			Entreprise ent = entrepriseDao.getById(e.getEntretienPK().getIdEntreprise());
+                        e.setCandidat(c);
+                        e.setEntreprise(ent);
+                        /*
 			text = text + majAuDebut(c.getPrenom()) + ESPACE + majAuDebut(c.getNom()) + ESPACE
 					+ majAuDebut(ent.getNom() + " (Salle " + e.getIdSalle() + ")") + ESPACE + e.getIdSalle() + ESPACE
-					+ e.getHeure() + ESPACE + e.getHeureFin() + ESPACE;
+					+ e.getHeure() + ESPACE + e.getHeureFin() + ESPACE;  */
 		}
 		List<Entreprise> ents = entrepriseDao.getAll();
 		String entreprises = "";
@@ -607,7 +647,7 @@ public class SlAdmin extends HttpServlet {
 			}
 		}
 
-		session.setAttribute("entretiens", text);
+		session.setAttribute("entretiens", liste);
 		session.setAttribute("entreprises", entreprises);
 
 		List<Candidat> listeCandidats = candidatDao.getAll();
@@ -751,6 +791,7 @@ public class SlAdmin extends HttpServlet {
 
 		session.setAttribute("entretiens", entretiens);
 		session.setAttribute("entreprise", entreprise);
+                session.setAttribute("entreprises", listeEntreprises);
 	}
 
 	public String modifierListeEntreprise(HttpServletRequest request) {
@@ -1198,7 +1239,7 @@ public class SlAdmin extends HttpServlet {
 						ent.setPassword(generatePassword(nomEnt.toLowerCase()));
 						augmenterPrioriteChoixCandidat();
 						entrepriseDao.createEntreprise(ent);
-						envoiMail(ent.getLogin(), ent.getPassword());
+						//envoiMail(ent.getLogin(), ent.getPassword());
 					}
 				} else {
 					logger.error(Utilitaire.creerMsgPourLogs("admin", "admin", true, "Une erreur s'est produite, l'entreprise " + nomEnt + " " + nomRepr + " existe déjà !"));

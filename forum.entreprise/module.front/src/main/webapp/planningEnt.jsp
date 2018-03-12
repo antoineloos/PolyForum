@@ -75,6 +75,10 @@
 								<c:if test="${sessionScope.type == 'candidat'}">
 			                         Bonjour <strong>${sessionScope.prenom} ${sessionScope.nom}</strong>
 								</c:if>
+                                                  <c:if test="${sessionScope.type == 'admin'}">
+                                    <strong>${sessionScope.login}</strong>
+                                    <div class="pull-right">${sessionScope.type}</div>
+                                </c:if>
 
 							</div>
 							<div class="panel-body">
@@ -123,6 +127,36 @@
 			</div>
 		</div>
 	</c:if>
+          <div class="container">
+		<br />
+		<div class="panel panel-default">
+         <table id="sort" class="table table-bordered table-striped grid">
+				<thead>
+					<tr>
+						<th class="bg-primary index" style="text-align: center;">Nom de l'entreprise</th>
+						<th class="bg-primary index" style="text-align: center;">Nom du candidat</th>
+                                                <th class="bg-primary index" style="text-align: center;">Salle</th>
+                                                <th class="bg-primary index" style="text-align: center;">Debut</th>
+                                                <th class="bg-primary index" style="text-align: center;">Fin</th>
+						
+						
+					</tr>
+				</thead>
+				<tbody class="sort">
+					<c:forEach var="ent" items="${entretiensEnt}" varStatus="loop">
+						<tr>
+							<td>${ent.entreprise.nom}</td>
+							<td>${ent.candidat.prenom} ${ent.candidat.nom}</td>
+                                                        <td>${ent.idSalle}</td>
+                                                        <td>${ent.heure}</td>
+                                                        <td>${ent.heureFin}</td>
+							
+								</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+                </div>
+          </div>
 	<script>
 	var ent = document.getElementById("listeEntretien");
 	if (ent.value != ''){
