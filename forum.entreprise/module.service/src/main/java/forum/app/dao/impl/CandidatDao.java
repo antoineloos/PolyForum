@@ -32,7 +32,7 @@ public class CandidatDao {
 	public List<Candidat> getAll() {
 		prepareEntityManagerForTransaction();
 		Query query = em.createQuery("SELECT c FROM Candidat c");
-		return (ArrayList<Candidat>) query.getResultList();
+		return new ArrayList<Candidat>(query.getResultList());
 	}
 
 	public void removeCandidat(Candidat candidat) {

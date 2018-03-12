@@ -77,7 +77,7 @@ public class EntretienDao {
 	public List<Entretien> getAll() {
 		prepareEntityManagerForTransaction();
 		Query query = em.createQuery("SELECT c FROM Entretien c");
-		return (ArrayList<Entretien>) query.getResultList();
+		return new ArrayList<Entretien>(query.getResultList());
 	}
 	
 	public void removeEntretien(Entretien entretien) {
@@ -110,21 +110,21 @@ public class EntretienDao {
 	@SuppressWarnings("unchecked")
 	public List<Entretien> getEntretienParCreneauPourCandidat(Timestamp dateDebut, Timestamp dateFin, int idC){
 		prepareEntityManagerForTransaction();
-		Query query = em.createQuery("SELECT c FROM Entretien c where id_candidat = :idC and CAST(:dateDebut AS time) > heure and CAST(:dateDebut AS time) < heure_fin and CAST(:dateFin AS time) > heure and CAST(:dateFin AS time) < heure_fin");
+		Query query = em.createQuery("SELECT c FROM Entretien c where c.EntretienPK.idCandidat = :idC and CAST(:dateDebut AS time) > heure and CAST(:dateDebut AS time) < heureFin and CAST(:dateFin AS time) > heure and CAST(:dateFin AS time) < heureFin");
 		query.setParameter("idC", idC);
 		query.setParameter("dateDebut", dateDebut.toString());
 		query.setParameter("dateFin", dateFin.toString());
-		return (ArrayList<Entretien>) query.getResultList();
+		return new ArrayList<Entretien>(query.getResultList());
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Entretien> getEntretienParCreneauPourEntreprise(Timestamp dateDebut, Timestamp dateFin, int idE){
 		prepareEntityManagerForTransaction();
-		Query query = em.createQuery("SELECT c FROM Entretien c where id_entreprise = :idE and CAST(:dateDebut AS time) > heure and CAST(:dateDebut AS time) < heure_fin and CAST(:dateFin AS time) > heure and CAST(:dateFin AS time) < heure_fin");
+		Query query = em.createQuery("SELECT c FROM Entretien c where c.EntretienPK.idCandidat = :idE and CAST(:dateDebut AS time) > heure and CAST(:dateDebut AS time) < heureFin and CAST(:dateFin AS time) > heure and CAST(:dateFin AS time) < heureFin");
 		query.setParameter("idE", idE);
 		query.setParameter("dateDebut", dateDebut.toString());
 		query.setParameter("dateFin", dateFin.toString());
-		return (ArrayList<Entretien>) query.getResultList();
+		return new ArrayList<Entretien>(query.getResultList());
 	}
 	
 }

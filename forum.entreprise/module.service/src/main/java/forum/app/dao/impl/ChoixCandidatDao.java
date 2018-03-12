@@ -31,14 +31,14 @@ public class ChoixCandidatDao {
 	public List<ChoixCandidat> getAll() {
 		prepareEntityManagerForTransaction();
 		Query query = em.createQuery("SELECT c FROM ChoixCandidat c");
-		return (ArrayList<ChoixCandidat>) query.getResultList();
+		return new ArrayList<ChoixCandidat>(query.getResultList());
 	}
 	
 	public List<ChoixCandidat> getAllTriCroissantCandidat(int idCandidat) {
 		prepareEntityManagerForTransaction();
 		Query query = em.createQuery("SELECT c FROM ChoixCandidat c WHERE c.choixCandidatPK.idCandidat =:idCandidat ORDER BY priorite");
 		query.setParameter("idCandidat", idCandidat);
-		return (ArrayList<ChoixCandidat>) query.getResultList();
+		return new ArrayList<ChoixCandidat>(query.getResultList());
 	}
 
 	public List<Entreprise> getEntrepriseNonChoisi(int idCandidat) {
@@ -85,7 +85,7 @@ public class ChoixCandidatDao {
 	
 	public void deleteAllCandidat(int idCandidat) {
 		prepareEntityManagerForTransaction();
-		Query query = em.createQuery("DELETE FROM ChoixCandidat c WHERE id_candidat =:idCandidat");
+		Query query = em.createQuery("DELETE FROM ChoixCandidat c WHERE c.choixCandidatPK.idCandidat =:idCandidat");
 		query.setParameter("idCandidat", idCandidat);
 		em.getTransaction().begin();
 		query.executeUpdate();
@@ -94,7 +94,7 @@ public class ChoixCandidatDao {
 	
 	public ChoixCandidat getByIdEntrepriseIdCandidat(int idE, int idC) {
 		prepareEntityManagerForTransaction();
-		Query query = em.createQuery("SELECT c FROM ChoixCandidat c WHERE c.entreprise.idEntreprise = :idE AND c.candidat.idCandidat = :idC");
+		Query query = em.createQuery("SELECT c FROM ChoixCandidat c WHERE c.choixCandidatPK.idEntreprise = :idE AND c.candidat.idCandidat = :idC");
 		query.setParameter("idE", idE);
 		query.setParameter("idC", idC);
 		return (ChoixCandidat) query.getSingleResult();
