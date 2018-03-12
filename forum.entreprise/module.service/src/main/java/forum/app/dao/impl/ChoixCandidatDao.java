@@ -55,6 +55,7 @@ public class ChoixCandidatDao {
 			em.remove(choixCandidat);
 		}
 		em.getTransaction().commit();
+                System.out.println("remove ok");
 	}
 
 	public ChoixCandidat createChoixCandidat(int idCandidat, int idEntreprise, int priorite) {
@@ -94,7 +95,7 @@ public class ChoixCandidatDao {
 	
 	public ChoixCandidat getByIdEntrepriseIdCandidat(int idE, int idC) {
 		prepareEntityManagerForTransaction();
-		Query query = em.createQuery("SELECT c FROM ChoixCandidat c WHERE c.choixCandidatPK.idEntreprise = :idE AND c.candidat.idCandidat = :idC");
+		Query query = em.createQuery("SELECT c FROM ChoixCandidat c WHERE c.choixCandidatPK.idEntreprise = :idE AND c.choixCandidatPK.idCandidat = :idC");
 		query.setParameter("idE", idE);
 		query.setParameter("idC", idC);
 		return (ChoixCandidat) query.getSingleResult();
