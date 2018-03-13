@@ -164,7 +164,7 @@ public class SlEntreprise extends HttpServlet {
 				if (idCandidat != -1) {
 					HttpSession session = request.getSession(true);
 					int idCompte = (int) session.getAttribute("idCompte");
-					ChoixEntreprise chxEnt = new ChoixEntreprise(idCandidat, idCompte);
+					ChoixEntreprise chxEnt = new ChoixEntreprise(idCompte, idCandidat);
                                         chxEnt.setPriorite(priorite);
                                         chxEnt.setTempsVoulu(duree);
 					choixEntrepriseDao.createChoixEntreprise(chxEnt);

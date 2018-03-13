@@ -164,6 +164,8 @@ public class SlAdmin extends HttpServlet {
 				vueReponse = consulterMdp(request);
 			} else if (demande.equalsIgnoreCase("changeEnt.adm")){
                             vueReponse = consulterPlanningEntrepriseAdm(request);
+                        } else if (demande.equalsIgnoreCase("changeCan.adm")){
+                            vueReponse = consulterPlanningCandidatAdm(request);
                         }
 		} catch (Exception e) {
 			erreur = e.getMessage();
@@ -539,6 +541,8 @@ public class SlAdmin extends HttpServlet {
 		Candidat c = candidatDao.getById(idCandidat);
 		for (Entretien e : liste) {
 			Entreprise ent = entrepriseDao.getById(e.getEntretienPK().getIdEntreprise());
+                        e.setCandidat(c);
+                        e.setEntreprise(ent);
 			text = text + majAuDebut(majAuDebut(ent.getNom()) + ESPACE + "(Salle " + e.getIdSalle() + ")") + ESPACE
 					+ e.getIdSalle() + ESPACE + e.getHeure() + ESPACE + e.getHeureFin()
 					+ ESPACE;
@@ -546,12 +550,13 @@ public class SlAdmin extends HttpServlet {
 
 		String candidats = majAuDebut(c.getPrenom()) + " " + majAuDebut(c.getNom());
 
-		session.setAttribute("entretiensEnt", text);
+		session.setAttribute("entretiensEnt", liste);
 		session.setAttribute("candidats", candidats);
 
 		request.getSession().removeAttribute("typePlanning");
 		request.getSession().removeAttribute("listeEntreprises");
 		request.getSession().removeAttribute("listeCandidats");
+                session.setAttribute("candidats", candidats);
 		return "/planningCan.jsp";
 	}
 
@@ -614,6 +619,32 @@ public class SlAdmin extends HttpServlet {
 		request.getSession().removeAttribute("listeEntreprises");
 		request.getSession().removeAttribute("listeCandidats");
 		return "/planningEnt.jsp";
+	}
+        public String consulterPlanningCandidatAdm(HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
+		int idCandidat = Integer.parseInt(request.getParameter("isTitles"));
+		List<Entretien> liste = entretienDao.getByIdCandidat(idCandidat);
+		String text = "";
+		Candidat c = candidatDao.getById(idCandidat);
+		for (Entretien e : liste) {
+                        e.setCandidat(c);
+                       
+			Entreprise ent = entrepriseDao.getById(e.getEntretienPK().getIdEntreprise());
+                        e.setEntreprise(ent);
+			text = text + majAuDebut(majAuDebut(ent.getNom()) + ESPACE + "(Salle " + e.getIdSalle() + ")") + ESPACE
+					+ e.getIdSalle() + ESPACE + e.getHeure() + ESPACE + e.getHeureFin()
+					+ ESPACE;
+		}
+
+		String candidats = majAuDebut(c.getPrenom()) + " " + majAuDebut(c.getNom());
+
+		session.setAttribute("entretiensEnt", liste);
+		session.setAttribute("candidats", candidats);
+
+		request.getSession().removeAttribute("typePlanning");
+		request.getSession().removeAttribute("listeEntreprises");
+		request.getSession().removeAttribute("listeCandidats");
+		return "/planningCan.jsp";
 	}
 
 	public String consulterPlanning(HttpServletRequest request) throws Exception {
@@ -752,6 +783,7 @@ public class SlAdmin extends HttpServlet {
 			List<Entretien> liste = entretienDao.getByIdCandidat(can.getIdCandidat());
 			for (Entretien e : liste) {
 				Entreprise ent = entrepriseDao.getById(e.getEntretienPK().getIdEntreprise());
+                                e.setEntreprise(ent);
 				entretiens = entretiens + majAuDebut(ent.getNom()) + " (Salle " + e.getIdSalle() + ")" + UNDERSCORE
 						+ majAuDebut(can.getNom()) + UNDERSCORE + majAuDebut(can.getPrenom()) + UNDERSCORE
 						+ e.getHeure() + UNDERSCORE + e.getHeureFin() + UNDERSCORE;
@@ -762,7 +794,7 @@ public class SlAdmin extends HttpServlet {
 		}
 
 		session.setAttribute("entretiens", entretiens);
-		session.setAttribute("candidat", candidats);
+		session.setAttribute("candidats", listeCandidats);
 	}
 
 	public void planningForEntreprises(HttpServletRequest request) throws Exception {

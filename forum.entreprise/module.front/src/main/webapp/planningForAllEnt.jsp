@@ -153,8 +153,8 @@
 						form="add_name" value="Valider" />
 				</form>
        
-    </select>
-    <div class="mainbody-section text-center">
+  
+ <!--   <div class="mainbody-section text-center">
         <div id="timetables" class="timetables">
             
             <c:forEach items="${sessionScope.listeEntreprises}" var="entreprise">
@@ -169,7 +169,7 @@
             <button class="btn btn-action hidden-print" style="margin-top: 2%; margin-right: 0.5%; float: left;" onClick="savePage()">Enregistrer le
                 planning</button>
         </div>
-    </div>
+    </div> -->
     <script>
         var ent = document.getElementById("listeEntretien");
         if (ent.value != '') {

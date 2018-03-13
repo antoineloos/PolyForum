@@ -6,6 +6,7 @@
 package forum.app.dao.model;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -60,6 +61,29 @@ public class Entretien implements Serializable {
     
      @Transient
     private Entreprise entreprise;
+     
+        @Transient
+    private String heureD;
+          @Transient
+    private String heureF;
+
+    public String getHeureD() {
+        return heureD;
+    }
+
+    public void setHeureD(String heureD) {
+        this.heureD = heureD;
+    }
+
+    public String getHeureF() {
+        return heureF;
+    }
+
+    public void setHeureF(String heureF) {
+        this.heureF = heureF;
+    }
+     
+     
 
     public Candidat getCandidat() {
         return candidat;
@@ -88,6 +112,8 @@ public class Entretien implements Serializable {
         this.entretienPK = entretienPK;
         this.heure = heure;
         this.heureFin = heureFin;
+        this.heureD = heure.getHours()+":"+heure.getMinutes();
+        this.heureF = heureFin.getHours()+":"+heureFin.getMinutes();
     }
 
     public Entretien(int idEntreprise, int idCandidat) {
