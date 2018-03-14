@@ -45,6 +45,9 @@
 <script src="../../js/script.js"></script>
 <script src="alerty/js/alerty.min.js"></script>
 
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -60,193 +63,83 @@
 		alerting();
 	});
 </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 <body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="accueil.cpt">PolyForum</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-	<!-- Start Logo Section -->
-	<section id="logo-section" class="text-right">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-
-					<div class="logo text-left pull-right">
-						<div class="panel panel-success">
-							<div class="panel-heading">
-
-								<input type="hidden" id="notif" name="notif" value="${notifR}" />
-								<c:if test="${sessionScope.type == 'entreprise'}">
-			                           Bonjour <strong>${sessionScope.nom_representant}</strong> (${sessionScope.nom})
-
-							</c:if>
-								<c:if test="${sessionScope.type == 'candidat'}">
-			                         Bonjour <strong>${sessionScope.prenom} ${sessionScope.nom}</strong>
-								</c:if>
-
-							</div>
-							<div class="panel-body">
-
-
-								<c:if test="${sessionScope.type == 'entreprise'}">
-									<input type="button" class="btn btn-danger" value="Mon compte" onclick="location.href='modifier_ent.cpt'" />
-								</c:if>
-								<c:if test="${sessionScope.type == 'candidat'}">
-									<input type="button" class="btn btn-danger" value="Mon compte" onclick="location.href='modifier_etu.cpt'" />
-								</c:if>
-								<input type="button" class="btn btn-danger" value="Déconnexion" onclick="location.href='deconnecter.cpt'" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End Logo Section -->
-
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="accueil.cpt">Accueil <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Mes choix
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <c:if test="${sessionScope.type == 'entreprise'}">
+                <a class="dropdown-item" href="initSaisieChoixEnt.chxE">Saisir</a>
+                <a class="dropdown-item" href="consulter.chxE">Consulter</a>
+            </c:if>
+            <c:if test="${sessionScope.type == 'candidat'}">
+                <a class="dropdown-item" href="initSaisieChoixCan.can">Saisir</a>
+                <a class="dropdown-item" href="consulter.can">Consulter</a>
+            </c:if>
+        </div>
+      </li>
+      <c:if test="${sessionScope.type == 'entreprise'}">
+         <li class="nav-item"><a class="nav-link" href="consulterPlanning.chxE">Planning</a></li>
+      </c:if>
+      <c:if test="${sessionScope.type == 'candidat'}">
+         <li class="nav-item"><a class="nav-link" href="consulterPlanning.can">Planning</a></li>
+      </c:if>
+       <li class="nav-item"><a class="nav-link" href="download.file">Documents</a></li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Liens
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="http://polytech.univ-lyon1.fr/">Polytech</a>
+            <a class="dropdown-item" href="http://www.formasup-arl.fr/">Formasup</a>
+        </div>
+      </li>
+    </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <c:if test="${sessionScope.type == 'entreprise'}">
+                <li class="nav-item"><a class="nav-link" href='modifier_ent.cpt'>Bonjour <strong>${sessionScope.nom_representant}</strong> ${sessionScope.prenom}</a></li>
+              </c:if>
+              <c:if test="${sessionScope.type == 'candidat'}">
+                <li class="nav-item"><a class="nav-link" href='modifier_etu.cpt'>Bonjour <strong>${sessionScope.nom_representant}</strong> ${sessionScope.prenom}</a></li>
+            </c:if>
+            <li class="nav-item"><a class="nav-link" href='deconnecter.cpt'>Déconnexion</a></li>
+      </ul>
+  </div>
+</nav>
+  
 	<!-- Start Logo Section -->
 	<section id="logo-section" class="text-center">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="logo text-center">
-						<h1>PolyForum</h1>
+                                            <br/>
+                                            <img src="images/polyforum.png" style="
+                                                width: 200px;
+                                            ">
+                                            <br/>
 						<span>Outil de plannification</span>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- End Logo Section -->
-
-	<!-- Start Main Body Section -->
-	<div class="mainbody-section text-center">
-		<div class="container">
-			<div class="col-md-12  center-block" style="padding-top: 5px">
-				<c:if test="${erreurR != null && erreurR != ''}">
-					<div class="alert-danger" role="alert">
-						<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-						<c:out value="${erreurR}" />
-					</div>
-					<br>
-					<br>
-				</c:if>
-			</div>
-			<div class="row">
-
-				<div class="col-md-3">
-
-					<div class="menu-item blue">
-						<c:if test="${sessionScope.type == 'entreprise'}">
-							<a href="initSaisieChoixEnt.chxE" data-toggle="modal"> <i class="fa fa-user"></i>
-								<p>Saisir mes choix</p>
-							</a>
-						</c:if>
-						<c:if test="${sessionScope.type == 'candidat'}">
-							<a href="initSaisieChoixCan.can" data-toggle="modal"> <i class="fa fa-user"></i>
-								<p>Saisir mes choix</p>
-							</a>
-						</c:if>
-					</div>
-
-					<div class="menu-item green">
-						<c:if test="${sessionScope.type == 'entreprise'}">
-							<a href="consulter.chxE" data-toggle="modal"> <i class="fa fa-users"></i>
-								<p>Consulter mes choix</p>
-							</a>
-						</c:if>
-						<c:if test="${sessionScope.type == 'candidat'}">
-							<a href="consulter.can" data-toggle="modal"> <i class="fa fa-users"></i>
-								<p>Consulter mes choix</p>
-							</a>
-						</c:if>
-					</div>
-
-					<div class="menu-item light-red">
-						<a href="http://www.formasup-arl.fr/" data-toggle="modal"> <i class="fa fa-user"></i>
-							<p>FormaSup</p>
-						</a>
-					</div>
-
-				</div>
-
-				<div class="col-md-6">
-
-					<!-- Start Carousel Section -->
-					<div class="home-slider">
-						<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="padding-bottom: 30px;">
-
-							<!-- Wrapper for slides -->
-							<div class="carousel-inner">
-								<div class="item active">
-									<img src="images/connexion.jpg" class="img-responsive" alt="">
-								</div>
-
-							</div>
-
-						</div>
-					</div>
-					<!-- Start Carousel Section -->
-
-					<div class="row">
-						<div class="col-md-6">
-							<div class="menu-item color responsive">
-								<a href="download.file" data-toggle="modal"> <i class="fa fa-cloud-upload"></i>
-									<p>Ajouter des document</p>
-								</a>
-							</div>
-						</div>
-
-						<div class="col-md-6">
-							<div class="menu-item light-orange responsive-2">
-								<a href="consulter.file" data-toggle="modal"> <i class="fa fa-file-pdf-o"></i>
-									<p>Consulter des documents</p>
-								</a>
-							</div>
-						</div>
-
-					</div>
-
-				</div>
-
-				<div class="col-md-3">
-
-					<div class="menu-item light-red">
-						<a href="mailto:polyforum69@gmail.com?subject=[${sessionScope.nom}]:&message=message" data-toggle="modal"> <i class="fa fa-envelope-o"></i>
-							<p>Contact</p>
-						</a>
-					</div>
-
-					<div class="menu-item color">
-						<c:if test="${sessionScope.type == 'entreprise'}">
-							<a href="consulterPlanning.chxE" data-toggle="modal"> <i class="fa fa-comment-o"></i>
-								<p>Consulter mon planning</p>
-							</a>
-						</c:if>
-						<c:if test="${sessionScope.type == 'candidat'}">
-							<a href="consulterPlanning.can" data-toggle="modal"> <i class="fa fa-comment-o"></i>
-								<p>Consulter mon planning</p>
-							</a>
-						</c:if>
-
-					</div>
-
-					<div class="menu-item blue">
-						<a href="http://polytech.univ-lyon1.fr/" data-toggle="modal"> <i class="fa fa-mortar-board"></i>
-							<p>Polytech Lyon</p>
-						</a>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End Main Body Section -->
-
-
-
-
-
-	<!-- End Testimonial Section -->
-
 </body>
 
 </html>

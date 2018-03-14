@@ -48,59 +48,48 @@
 
 <body>
 
-	<!-- Start Main Body Section -->
-	<div class="mainbody-section text-center">
-		<div class="container">
-			<div id="loginModal" class="modal show" tabindex="-1" role="dialog"
-				aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h1 class="text-center">Portail de connexion</h1>
-						</div>
-						<div class="form-group">
-							<div class="col-md-12  center-block" style="padding-top: 5px">
-								<c:if test="${erreurR != null && erreurR != ''}">
-									<div class="alert-danger" role="alert">
-										<span class="glyphicon glyphicon-exclamation-sign"
-											aria-hidden="true"></span>
-										<c:out value="${erreurR}" />
-									</div>
-								</c:if>
-							</div>
-						</div>
-						<div class="modal-body">
-							<form class="form col-md-12 center-block" role="form"
-								action="connecter.cpt" method="post">
-								<div class="form-group">
-									<input type="text" class="form-control input-lg"
-										placeholder="Pseudo" name="login">
-								</div>
-								<br/>
-								<div class="form-group">
-									<input type="password" class="form-control input-lg"
-										placeholder="Mot de passe" name="password">
-								</div>
-								<br/>
-								<div class="form-group">
-									<button type="submit" class="btn btn-danger btn-lg btn-block">Connexion</button>
-								</div>
-							</form>
-						</div>
-						<div class="modal-footer"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End Main Body Section -->
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+
+                    <!-- form card login -->
+                    <div class="card rounded-0">
+                        <div class="card-header">
+                            <h3 class="mb-0">Connexion</h3>
+                        </div>
+                        <div class="card-body">
+                            <form action="connecter.cpt" class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                                <div class="form-group">
+                                    <label for="uname1">Login</label>
+                                    <input type="text" class="form-control form-control-lg rounded-0" name="login" id="uname1" required="">
+                                    <div class="invalid-feedback">Indiquez un login</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pwd1">Mot de passe</label>
+                                    <input type="password" class="form-control form-control-lg rounded-0" name="password" id="pwd1" required="" autocomplete="new-password">
+                                    <div class="invalid-feedback">Indiquer un Mot de passe</div>
+                                </div>
+                                <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Se connecter</button>
+                            </form>
+                        </div>
+                        <!--/card-block-->
+                    </div>
+                    <!-- /form card login -->
+
+                </div>
 
 
+            </div>
+            <!--/row-->
 
-
-
-	<!-- End Testimonial Section -->
-
+        </div>
+        <!--/col-->
+    </div>
+    <!--/row-->
+</div>
+<!--/container-->
 </body>
 
 </html>

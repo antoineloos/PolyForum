@@ -104,7 +104,7 @@ public class SlCompte extends HttpServlet {
     private String setDemande(HttpServletRequest request) {
         String demande = "";
         demande = request.getRequestURI();
-        demande = demande.replace(getDemande(request), "home.jsp");
+        demande = demande.replace(getDemande(request), "login.jsp");
         demande = demande.substring(demande.lastIndexOf("/") + 1);
         return demande;
     }
@@ -193,7 +193,7 @@ public class SlCompte extends HttpServlet {
             HttpSession session = request.getSession(true);
             session.setAttribute("idCompte", null);
             session.setAttribute("type", null);
-            return ("/home.jsp");
+            return ("/login.jsp");
         } catch (Exception e) {
             throw e;
         }
