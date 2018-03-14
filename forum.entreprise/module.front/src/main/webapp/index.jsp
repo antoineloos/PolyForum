@@ -113,19 +113,28 @@
     </ul>
             <ul class="nav navbar-nav navbar-right">
               <c:if test="${sessionScope.type == 'entreprise'}">
-                <li class="nav-item"><a class="nav-link" href='modifier_ent.cpt'>Bonjour <strong>${sessionScope.nom_representant}</strong> ${sessionScope.prenom}</a></li>
+                <li class="nav-item"><a class="nav-link" href='modifier_ent.cpt'>Bonjour <strong>${sessionScope.nom_representant}</strong></a></li>
               </c:if>
               <c:if test="${sessionScope.type == 'candidat'}">
-                <li class="nav-item"><a class="nav-link" href='modifier_etu.cpt'>Bonjour <strong>${sessionScope.nom_representant}</strong> ${sessionScope.prenom}</a></li>
+                <li class="nav-item"><a class="nav-link" href='modifier_etu.cpt'>Bonjour <strong>${sessionScope.prenom}</strong> </a></li>
             </c:if>
             <li class="nav-item"><a class="nav-link" href='deconnecter.cpt'>Déconnexion</a></li>
       </ul>
   </div>
 </nav>
-  
+
 	<!-- Start Logo Section -->
 	<section id="logo-section" class="text-center">
 		<div class="container">
+                      <c:if test="${erreurR != null && erreurR != ''}">
+						<div class="alert-danger" role="alert" >
+								<span class="glyphicon glyphicon-exclamation-sign"  aria-hidden="true"></span>
+								<pre style="display:inline"><c:out value="${erreurR}" /></pre>
+							
+						</div>
+						<br>
+						<br>
+					</c:if>${erreurR}
 			<div class="row">
 				<div class="col-md-12">
 					<div class="logo text-center">
