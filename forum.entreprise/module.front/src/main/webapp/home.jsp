@@ -70,30 +70,14 @@
 				<div class="col-md-3"></div>
 
 				<div class="col-md-6">
+                                    <!-- Start Carousel Section -->
 
-					<!-- Start Carousel Section -->
-					<div class="home-slider">
-						<div id="carousel-example-generic" class="carousel slide"
-							data-ride="carousel" style="padding-bottom: 30px;">
-
-							<!-- Wrapper for slides -->
-							<div class="carousel-inner">
-								<div class="item active">
-									<img src="images/home.jpg" class="img-responsive img-rounded" alt="">
-								</div>
-
-							</div>
-
-						</div>
-					</div>
-					<!-- Start Carousel Section -->
-
-					<div class="logo text-center">
-						<span>PolyForum est une plateforme conçue par des étudiants
-							de Polytech Lyon afin de simplifer la tâche des entreprises et des professeurs le jour du forum Polytech.<br>
-							Vous pouvez dès à présent <a href="login.cpt" data-toggle="modal">vous connecter.</a></a>
-							</span>
-					</div>
+                                    <div class="logo text-center">
+                                            <span>PolyForum est une plateforme conçue par des étudiants
+                                                    de Polytech Lyon afin de simplifer la tâche des entreprises et des professeurs le jour du forum Polytech.<br>
+                                                    Vous pouvez dès à présent <a href="login.cpt" data-toggle="modal">vous connecter.</a></a>
+                                                    </span>
+                                    </div>
 
 				</div>
 
