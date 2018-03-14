@@ -36,7 +36,7 @@ public class Fichier {
 			nomSansExtension = "";
 			for(int i = 2; i < typeIdNom.length; i++){
 				if(i != 2){
-					nomSansExtension = nomSansExtension + "." + typeIdNom[i];
+					nomSansExtension = nomSansExtension + "_" + typeIdNom[i];
 				}
 				else {
 					nomSansExtension = typeIdNom[i];
