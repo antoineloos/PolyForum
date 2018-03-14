@@ -6,6 +6,7 @@
 package forum.app.dao.model;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -16,6 +17,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -53,6 +55,51 @@ public class Entretien implements Serializable {
     private Boolean present;
     @Column(name = "retard")
     private Boolean retard;
+    
+    @Transient
+    private Candidat candidat;
+    
+     @Transient
+    private Entreprise entreprise;
+     
+        @Transient
+    private String heureD;
+          @Transient
+    private String heureF;
+
+    public String getHeureD() {
+        return heureD;
+    }
+
+    public void setHeureD(String heureD) {
+        this.heureD = heureD;
+    }
+
+    public String getHeureF() {
+        return heureF;
+    }
+
+    public void setHeureF(String heureF) {
+        this.heureF = heureF;
+    }
+     
+     
+
+    public Candidat getCandidat() {
+        return candidat;
+    }
+
+    public void setCandidat(Candidat candidat) {
+        this.candidat = candidat;
+    }
+
+    public Entreprise getEntreprise() {
+        return entreprise;
+    }
+
+    public void setEntreprise(Entreprise entreprise) {
+        this.entreprise = entreprise;
+    }
 
     public Entretien() {
     }
@@ -65,6 +112,8 @@ public class Entretien implements Serializable {
         this.entretienPK = entretienPK;
         this.heure = heure;
         this.heureFin = heureFin;
+        this.heureD = heure.getHours()+":"+heure.getMinutes();
+        this.heureF = heureFin.getHours()+":"+heureFin.getMinutes();
     }
 
     public Entretien(int idEntreprise, int idCandidat) {

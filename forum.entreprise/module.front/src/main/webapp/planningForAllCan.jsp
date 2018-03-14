@@ -126,21 +126,30 @@
 	<input type="hidden" id="listeCandidat" name="listeCandidat" value="${sessionScope.candidat}"></input>
 	<input type="hidden" id="max" name="max" value="${sessionScope.max}"></input>
 
-	<div class="mainbody-section text-center">
-		<div id="timetables" class="timetables">
-			<c:forEach items="${sessionScope.listeCandidats}" var="candidat">
-				<div class="contentdiv">
-					<div class="visibleContent" id="visibleContent">
-						<div class="timetable" id="timetable${candidat.idCandidat}"></div>
-					</div>
-				</div>
-			</c:forEach>
-		</div>
-		<div class="adm-options" style="display: inline-block; width: 32%;">
-			<button class="btn btn-action hidden-print" style="margin-top: 2%; margin-right: 0.5%; float: left;" onClick="savePage()">Enregistrer le
-				planning</button>
-		</div>
-	</div>
+	    <form name="add_name" id="add_name" role="form"
+					action="changeCan.adm" method="POST">
+					<table class="table table-bordered grid" id="dynamic_field">
+					<thead>
+						<tr>
+							<th class="bg-primary">Nom</th>
+							<th class="bg-primary"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr id="row1">
+							<td><select id="isTitles" name="isTitles" class="form-control" >
+									<option value="Sélectionnez une entreprise">Sélectionnez un candidat</option>
+									<c:forEach var="can" items="${candidats}">
+										<option value="${can.idCandidat}">${can.nom}</option>
+									</c:forEach>
+							</select></td>
+							
+						</tr>
+					</tbody>
+					</table>
+					<input type="submit" id="submit" class="btn btn-info"
+						form="add_name" value="Valider" />
+				</form>
 	<script>
 		var ent = document.getElementById("listeEntretien");
 

@@ -25,6 +25,8 @@
 <!-- Custom timetable -->
 <link rel="stylesheet" href="timetable/styles/timetablejs.css">
 <link rel="stylesheet" href="alerty/css/alerty.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">
 
 
 <!-- Template js -->
@@ -45,6 +47,15 @@
 <script src="html2canvas/html2canvas.min.js"></script>
 <script type="text/javascript" src="canvas2image/canvas2image.js"></script>
 <script type="text/javascript" src="jsPDF/jspdf.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
 </head>
 <body>
 	<!-- Start Logo Section -->
@@ -75,6 +86,10 @@
 								<c:if test="${sessionScope.type == 'candidat'}">
 			                         Bonjour <strong>${sessionScope.prenom} ${sessionScope.nom}</strong>
 								</c:if>
+                                                  <c:if test="${sessionScope.type == 'admin'}">
+                                    <strong>${sessionScope.login}</strong>
+                                    <div class="pull-right">${sessionScope.type}</div>
+                                </c:if>
 
 							</div>
 							<div class="panel-body">
@@ -123,129 +138,49 @@
 			</div>
 		</div>
 	</c:if>
-	<script>
-	var ent = document.getElementById("listeEntretien");
-	if (ent.value != ''){
-		var timetable = new Timetable();
-		timetable.setScope(14, 18)
-
-		var text = document.getElementById("listeEntretien");
-		var ents = document.getElementById("listeEntreprise");
-		var res = text.value.split("_");
-		var tab = ents.value.split("_");
-		var temp = 0;
-		while (tab[temp + 2] != null) {
-			timetable.addLocations([ tab[temp + 1] + ' '
-					+ tab[temp + 2] ]);
-			temp = temp + 3;
-		}
-
-		var i = 1;
-
-		while (res[i + 5] != null) {
-			var temp = i + 4;
-			if (temp % 5 == 0) {
-				var hd = res[i + 3].split(":");
-				var hf = res[i + 4].split(":");
-				var argument1 = res[i + 1];
-				argument1 = argument1 + ' ';
-				argument1 = argument1 + res[i]
-				argument1 = argument1 + ' ';
-				argument1 = argument1 + hd[0];
-				argument1 = argument1 + ":";
-				argument1 = argument1 + hd[1];
-				argument1 = argument1 + "-";
-				argument1 = argument1 + hf[0];
-				argument1 = argument1 + ":";
-				argument1 = argument1 + hf[1];
-
-				var argument2 = res[i + 2];
-				timetable.addEvent(argument1, argument2, new Date(2016, 9, 25,
-						hd[0], hd[1]), new Date(2016, 9, 25, hf[0], hf[1]), {
-					url : '#'
-				});
-			}
-			i = i + 5;
-		}
-		var renderer = new Timetable.Renderer(timetable);
-		renderer.draw('.timetable');
-	} else {
-		alerty.toasts("Aucun entretien n'est prévu pour le moment");
-	}
-	</script>
-	<script>
-		function changeTimetableStyle(style) {
-			var span = document.getElementById("timetable");
-			span.style.backgroundColor = style;
-		}
-		function changeStyle(style) {
-			var i = 1;
-			while (i < 6) {
-				var span = document.getElementById(i);
-				span.style.color = style;
-				i++;
-			}
-		}
-
-		function savePage() {
-			changeTimetableStyle("white");
-			changeStyle("black");
-			var ents = document.getElementById("listeEntreprise");
-			var tab = ents.value.split(" ");
-			var nbEntreprise = tab.length / 3;
-			html2canvas($("#timetable"), {
-				onrendered : function(canvas) {
-					var imageData = canvas.toDataURL("image/jpeg");
-					var image = new Image();
-					image = Canvas2Image.convertToJPEG(canvas);
-					var doc = new jsPDF('p', 'mm', "a4");
-
-					doc.addImage(imageData, 'JPEG', 10, 10, 200,
-							nbEntreprise * 25);
-
-					var hauteur = 1200;
-					var croppingYPosition = hauteur;
-
-					count = (image.height) / hauteur;
-					for (var i = 1; i < count; i++) {
-						doc.addPage();
-						var sourceX = 0;
-						var sourceY = hauteur + (i - 1) * 1400;
-						var sourceWidth = image.width;
-						var sourceHeight = hauteur;
-						var destWidth = sourceWidth;
-						var destHeight = sourceHeight;
-						var destX = 0;
-						var destY = 0;
-						var canvas1 = document.createElement('canvas');
-						canvas1.setAttribute('height', destHeight);
-						canvas1.setAttribute('width', destWidth);
-						var ctx = canvas1.getContext("2d");
-						ctx.fillStyle = "#ffffff";
-						ctx.fillRect(0, 0, canvas1.width, canvas1.height);
-						ctx.drawImage(image, sourceX, sourceY, sourceWidth,
-								sourceHeight, destX, destY, 750, 920);
-						var image2 = new Image();
-						image2 = Canvas2Image.convertToJPEG(canvas1);
-						image2Data = image2.src;
-						doc.addImage(image2Data, 'JPEG', 10, 10);
-						croppingYPosition += destHeight;
-					}
-					var d = new Date().toISOString().slice(0, 19).replace(/-/g,
-							"");
-
-					var tab = ents.value.split("_");
-					filename = 'Planning_' + tab[1] + '.pdf';
-					doc.save(filename);
-					changeTimetableStyle("transparent");
-					changeStyle("white");
-				}
-
-			});
-		}
-		function vider() {
-
-		};
-	</script>
+          <div class="container">
+		<br />
+		<div class="panel panel-default">
+                 
+         <table id="sort" >
+				<thead>
+					<tr>
+						<th class="bg-primary index" style="text-align: center;">Nom de l'entreprise</th>
+						<th class="bg-primary index" style="text-align: center;">Nom du candidat</th>
+                                                <th class="bg-primary index" style="text-align: center;">Salle</th>
+                                                <th class="bg-primary index" style="text-align: center;">Debut</th>
+                                                <th class="bg-primary index" style="text-align: center;">Fin</th>
+						
+						
+					</tr>
+				</thead>
+				<tbody class="sort">
+					<c:forEach var="ent" items="${entretiensEnt}" varStatus="loop">
+						<tr>
+							<td>${ent.entreprise.nom}</td>
+							<td>${ent.candidat.prenom} ${ent.candidat.nom}</td>
+                                                        <td>${ent.idSalle}</td>
+                                                         <td> <fmt:formatDate type = "time" timeStyle = "short" value = "${ent.heure}"/></td>
+                                                        <td>  <fmt:formatDate type = "time" timeStyle = "short" value = "${ent.heureFin}"/></td>
+							
+								</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+                    
+                  
+                </div>
+          </div>
+        <script>
+            
+            $(document).ready(function() {
+    $('#sort').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+        </script>
 </body>
 </html>

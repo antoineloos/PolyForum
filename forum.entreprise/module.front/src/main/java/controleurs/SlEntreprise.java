@@ -115,6 +115,7 @@ public class SlEntreprise extends HttpServlet {
 		Entreprise ent = entrepriseDao.getById(idEntreprise);
 		for (Entretien e : liste) {
 			Candidat c = candidatDao.getById(e.getEntretienPK().getIdCandidat());
+                        e.setCandidat(c);
 			entretiens = entretiens + majAuDebut(c.getNom()) + UNDERSCORE + majAuDebut(c.getPrenom()) + UNDERSCORE
 					+ majAuDebut(ent.getNom()) + " (Salle " + e.getIdSalle() + ")" + UNDERSCORE
 					+ e.getHeure() + UNDERSCORE + e.getHeureFin() + UNDERSCORE;
@@ -124,7 +125,7 @@ public class SlEntreprise extends HttpServlet {
 		entreprise = entreprise + idEntreprise + UNDERSCORE + majAuDebut(ent.getNom()) + UNDERSCORE + "(Salle "
 				+ salle + ")" + UNDERSCORE;
 
-		session.setAttribute("entretiens", entretiens);
+		session.setAttribute("entretiensEnt", liste);
 		session.setAttribute("entreprise", entreprise);
 		return "/planningEnt.jsp";
 	}
@@ -163,7 +164,7 @@ public class SlEntreprise extends HttpServlet {
 				if (idCandidat != -1) {
 					HttpSession session = request.getSession(true);
 					int idCompte = (int) session.getAttribute("idCompte");
-					ChoixEntreprise chxEnt = new ChoixEntreprise(idCandidat, idCompte);
+					ChoixEntreprise chxEnt = new ChoixEntreprise(idCompte, idCandidat);
                                         chxEnt.setPriorite(priorite);
                                         chxEnt.setTempsVoulu(duree);
 					choixEntrepriseDao.createChoixEntreprise(chxEnt);
