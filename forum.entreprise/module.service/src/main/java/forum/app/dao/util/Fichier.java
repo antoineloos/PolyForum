@@ -21,12 +21,12 @@ public class Fichier {
 	public Fichier(File file) {
 		this.file = file;
 		String nomCompletSansExtension = FilenameUtils.getBaseName(file.getName());
-		String[] typeIdNom = nomCompletSansExtension.split("\\.");
+		String[] typeIdNom = nomCompletSansExtension.split("_");
 		if(typeIdNom.length >= 3){
-			if(typeIdNom[0].equalsIgnoreCase("e")){
+			if(typeIdNom[0].equalsIgnoreCase("e_")){
 				type = "entreprise";
 			}
-			else if(typeIdNom[0].equalsIgnoreCase("c")){
+			else if(typeIdNom[0].equalsIgnoreCase("c_")){
 				type = "candidat";
 			}
 			else {
