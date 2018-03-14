@@ -115,6 +115,7 @@ public class SlCandidat extends HttpServlet {
 		Candidat can = candidatDao.getById(idCandidat);
 		for (Entretien e : liste) {
 			Entreprise ent = entrepriseDao.getById(e.getEntretienPK().getIdEntreprise());
+                        e.setEntreprise(ent);
 			entretiens = entretiens + majAuDebut(ent.getNom()) + " (Salle " + e.getIdSalle() + ")" + UNDERSCORE
 					+ e.getHeure() + UNDERSCORE + e.getHeureFin() + UNDERSCORE;
 
