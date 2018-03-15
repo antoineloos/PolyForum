@@ -66,14 +66,6 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <c:if test="${sessionScope.type == 'entreprise' || sessionScope.type == 'candidat'}">
-                        <a class="nav-link" href="accueil.cpt">Accueil <span class="sr-only">(current)</span></a>
-                    </c:if>
-                    <c:if test="${sessionScope.type == 'admin'}">
-                        <a class="nav-link" href="admin.jsp">Accueil <span class="sr-only">(current)</span></a>        
-                    </c:if>
-                </li>
                 <li class="nav-item dropdown">
                     <c:if test="${sessionScope.type == 'entreprise' || sessionScope.type == 'candidat'}">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -101,7 +93,7 @@
                     </c:if>
                 </li>
                 <c:if test="${sessionScope.type == 'admin'}">
-                    <li class="nav-item"><a class="nav-link" href="gererSalles.adm">Salles</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="gererSalles.adm">Salles</a></li>
                 </c:if>
                 <c:if test="${sessionScope.type == 'entreprise'}">
                     <li class="nav-item"><a class="nav-link" href="consulterPlanning.chxE">Planning</a></li>
@@ -116,7 +108,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="genererPlanning.adm">Générer</a>
-                            <a class="dropdown-item" href="cconsulterPlanning.adm">Consulter</a>
+                            <a class="dropdown-item" href="consulterPlanning.adm">Consulter</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">

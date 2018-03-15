@@ -54,7 +54,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <c:if test="${sessionScope.type == 'entreprise' || sessionScope.type == 'candidat'}">
             <a class="navbar-brand" href="accueil.cpt">PolyForum</a>
@@ -69,14 +68,6 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <c:if test="${sessionScope.type == 'entreprise' || sessionScope.type == 'candidat'}">
-                        <a class="nav-link" href="accueil.cpt">Accueil <span class="sr-only">(current)</span></a>
-                    </c:if>
-                    <c:if test="${sessionScope.type == 'admin'}">
-                        <a class="nav-link" href="admin.jsp">Accueil <span class="sr-only">(current)</span></a>        
-                    </c:if>
-                </li>
                 <li class="nav-item dropdown">
                     <c:if test="${sessionScope.type == 'entreprise' || sessionScope.type == 'candidat'}">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -119,7 +110,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="genererPlanning.adm">Générer</a>
-                            <a class="dropdown-item" href="cconsulterPlanning.adm">Consulter</a>
+                            <a class="dropdown-item" href="consulterPlanning.adm">Consulter</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -134,7 +125,7 @@
                 </c:if>
 
                 <c:if test="${sessionScope.type == 'entreprise' || sessionScope.type == 'candidat'}">
-                    <li class="nav-item"><a class="nav-link" href="download.file">Documents</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="download.file">Documents</a></li>
                 </c:if>
                 <c:if test="${sessionScope.type == 'admin'}">
                     <li class="nav-item"><a class="nav-link" href="choixTypeDocument.adm">Documents</a></li>
@@ -149,6 +140,7 @@
                     </div>
                 </li>
             </ul>
+            
             
             <ul class="nav navbar-nav navbar-right">
                 <c:if test="${sessionScope.type == 'entreprise'}">
