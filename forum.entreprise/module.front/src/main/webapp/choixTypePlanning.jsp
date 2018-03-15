@@ -156,7 +156,6 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="logo text-center">
-					<h1>PolyForum</h1>
 					<span>Choisissez l'entité dont vous souhaitez consulter le planning.</span>
 				</div>
 			</div>

@@ -167,17 +167,7 @@
     </nav>
 	<!-- End Logo Section -->
 	<a id="save" href="none" download="name"></a>
-	<section id="logo-section" class="text-center hidden-print">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="logo text-center">
-					<h1>PolyForum</h1>
-				</div>
-			</div>
-		</div>
-	</div>
-	</section>
+
 	<input type="hidden" id="listeEntretien" name="listeEntretien" value="${sessionScope.entretiens}"></input>
 	<input type="hidden" id="listeCandidat" name="listeCandidat" value="${sessionScope.candidat}"></input>
 

@@ -156,7 +156,6 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="logo text-center">
-					<h1>PolyForum</h1>
 					<span>Choisissez le type de document que vous souhaitez consulter.</span>
 				</div>
 			</div>

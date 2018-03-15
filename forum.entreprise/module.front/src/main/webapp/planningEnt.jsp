@@ -166,37 +166,23 @@
         </div>
     </nav>
 	<a id="save" href="none" download="name"></a>
-	<section id="logo-section" class="text-center hidden-print">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="logo text-center">
-					<h1>PolyForum</h1>
-				</div>
-			</div>
-		</div>
-	</div>
-	</section>
+
 	<input type="hidden" id="listeEntretien" name="listeEntretien" value="${sessionScope.entretiens}"></input>
 	<input type="hidden" id="listeEntreprise" name="listeEntreprise" value="${sessionScope.entreprise}"></input>
 
-	<c:if test="${not empty sessionScope.entretiens}">
-		<div class="mainbody-section text-center">
-			<div class="contentdiv">
-				<div class="visibleContent" id="visibleContent">
-					<div class="timetable" id="timetable"></div>
-					<div class="adm-options" style="display: inline-block; width: 32%;">
-						<button class="btn btn-action hidden-print" style="margin-top: 2%; margin-right: 0.5%; float: left;" onClick="savePage()">Enregistrer
-							le planning</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</c:if>
-          <div class="container">
-		<br />
-		<div class="panel panel-default">
-                 
+
+                <div class="container py-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12 mx-auto">
+
+                    <!-- form card login -->
+                    <div class="card rounded-0">
+                        <div class="card-header">
+                            <h3 class="mb-0">Planning</h3>
+                        </div>
+                        <div class="card-body">
          <table id="sort" >
 				<thead>
 					<tr>
@@ -222,10 +208,35 @@
 					</c:forEach>
 				</tbody>
 			</table>
-                    
-                  
+                        </div>
+                        <!--/card-block-->
+                    </div>
+                    <!-- /form card login -->
+
                 </div>
-          </div>
+
+
+            </div>
+            <!--/row-->
+
+        </div>
+        <!--/col-->
+    </div>
+    <!--/row-->
+</div>
+	<c:if test="${not empty sessionScope.entretiens}">
+		<div class="mainbody-section text-center">
+			<div class="contentdiv">
+				<div class="visibleContent" id="visibleContent">
+					<div class="timetable" id="timetable"></div>
+					<div class="adm-options" style="display: inline-block; width: 32%;">
+						<button class="btn btn-action hidden-print" style="margin-top: 2%; margin-right: 0.5%; float: left;" onClick="savePage()">Enregistrer
+							le planning</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</c:if>
         <script>
             
             $(document).ready(function() {
