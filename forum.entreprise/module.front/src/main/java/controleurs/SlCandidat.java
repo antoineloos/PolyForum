@@ -170,7 +170,7 @@ public class SlCandidat extends HttpServlet {
 			}
 			i++;		
 		}
-		return "/index.jsp";
+		return "/listeChoixCan.jsp";
 	}
 	
 	@SuppressWarnings("unchecked")

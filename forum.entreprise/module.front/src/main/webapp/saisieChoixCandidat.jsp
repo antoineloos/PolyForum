@@ -174,7 +174,7 @@
 			<c:if test="${empty listeEntreprises}">
 				<br />
 				<div class="alert alert-warning">
-					<strong>Aucun entreprise n'est disponible!</strong>
+					<strong>Aucune entreprise n'est disponible!</strong>
 				</div>
 			</c:if>
 			<c:if test="${!empty listeEntreprises}">

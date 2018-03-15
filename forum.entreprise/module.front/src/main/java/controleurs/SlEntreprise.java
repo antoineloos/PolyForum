@@ -175,7 +175,7 @@ public class SlEntreprise extends HttpServlet {
 			}
 			i++;
 		}
-		return "/index.jsp";
+		return "/listeChoixEnt.jsp";
 	}
 
 	@SuppressWarnings("unchecked")
