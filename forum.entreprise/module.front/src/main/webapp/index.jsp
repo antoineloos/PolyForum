@@ -184,7 +184,7 @@
 						</div>
 						<br>
 						<br>
-					</c:if>${erreurR}
+					</c:if>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="logo text-center">

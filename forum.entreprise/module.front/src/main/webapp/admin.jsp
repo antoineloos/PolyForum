@@ -173,6 +173,6 @@
 						</div>
 						<br>
 						<br>
-					</c:if>${erreurR}
+					</c:if>
 </body>
 </html>
