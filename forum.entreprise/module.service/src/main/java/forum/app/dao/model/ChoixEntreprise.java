@@ -5,6 +5,7 @@
  */
 package forum.app.dao.model;
 
+import forum.app.dao.impl.CandidatDao;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -13,6 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -40,7 +42,11 @@ public class ChoixEntreprise implements Serializable {
     @Column(name = "priorite")
     private int priorite;
 
+    @Transient
+    private CandidatDao canDAO ;
+    
     public ChoixEntreprise() {
+        canDAO = new CandidatDao();
     }
 
     public ChoixEntreprise(ChoixEntreprisePK choixEntreprisePK) {
@@ -51,6 +57,11 @@ public class ChoixEntreprise implements Serializable {
         this.choixEntreprisePK = choixEntreprisePK;
         this.tempsVoulu = tempsVoulu;
         this.priorite = priorite;
+    }
+    
+    public Candidat getCandidat()
+    {
+        return canDAO.getById(this.choixEntreprisePK.getIdCandidat());
     }
 
     public ChoixEntreprise(int idEntreprise, int idCandidat) {

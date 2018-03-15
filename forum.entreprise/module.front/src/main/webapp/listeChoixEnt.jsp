@@ -184,7 +184,7 @@
 							<tr id='${loop.index+1}' name='${loop.index+1}'>
 								<td id='prenom${loop.index+1}' name='prenom${loop.index+1}'>${varListeChoix.candidat.prenom}</td>
 								<td id='nom${loop.index+1}' name='nom${loop.index+1}'>${varListeChoix.candidat.nom}</td>
-								<td id='temps${loop.index+1}' name='temps${loop.index+1}'>${varListeChoix.temps}</td>
+								<td id='tempsVoulu${loop.index+1}' name='tempsVoulu${loop.index+1}'>${varListeChoix.tempsVoulu}</td>
 								<td id='prio${loop.index+1}' name='prio${loop.index+1}' class="index">${loop.index+1}</td>
 								<td width="5%"><button type="button" name="remove" id="${sessionScope.idCompte} ${varListeChoix.candidat.idCandidat}"
 										class="btn btn-danger btn_remove">X</button></td>
