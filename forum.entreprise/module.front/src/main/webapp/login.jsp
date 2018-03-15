@@ -60,6 +60,15 @@
                             <h3 class="mb-0">Connexion</h3>
                         </div>
                         <div class="card-body">
+                                                  <c:if test="${erreurR != null && erreurR != ''}">
+						<div class="alert-danger" role="alert" >
+								<span class="glyphicon glyphicon-exclamation-sign"  aria-hidden="true"></span>
+								<pre style="display:inline"><c:out value="${erreurR}" /></pre>
+							
+						</div>
+						<br>
+						<br>
+					</c:if>
                             <form action="connecter.cpt" class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
                                 <div class="form-group">
                                     <label for="uname1">Login</label>

@@ -25,7 +25,7 @@ public class SlCompte extends HttpServlet {
     private static Logger logger = Logger.getLogger(SlCompte.class);
 
     private String erreur = "";
-
+    private boolean showError = false;
     private EntrepriseDao entrepriseDao;
     private CandidatDao candidatDao;
 
@@ -43,7 +43,9 @@ public class SlCompte extends HttpServlet {
 
         String demande;
         String vueReponse = "/index.jsp";
+        if(!this.showError)
         erreur = "";
+        this.showError = false;
         request.getSession().removeAttribute("notifR");
         try {
             demande = getDemande(request);
@@ -65,8 +67,9 @@ public class SlCompte extends HttpServlet {
                 vueReponse = accueil(request);
             }
         } catch (Exception e) {
-
+            this.showError = true;
             erreur = e.getMessage();
+
             if (!erreur.equals("")) {
                 if (getDemande(request).equals("modifierCompte_etu.cpt")) {
                     vueReponse = "/modification_etu.jsp";
@@ -181,7 +184,7 @@ public class SlCompte extends HttpServlet {
             }
             return (vueReponse);
         } catch (Exception e) {
-            erreur = e.getMessage();
+            erreur = "Echec authentification";
             e.printStackTrace();
             logger.error(erreur);
             throw new Exception(erreur);

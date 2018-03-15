@@ -140,7 +140,7 @@
                 </c:if>
 
                 <c:if test="${sessionScope.type == 'entreprise' || sessionScope.type == 'candidat'}">
-                    <li class="nav-item active"><a class="nav-link" href="download.file">Documents</a></li>
+                    <li class="nav-item"><a class="nav-link" href="download.file">Documents</a></li>
                 </c:if>
                 <c:if test="${sessionScope.type == 'admin'}">
                     <li class="nav-item"><a class="nav-link" href="choixTypeDocument.adm">Documents</a></li>

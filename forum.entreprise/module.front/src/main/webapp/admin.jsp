@@ -165,6 +165,14 @@
             
         </div>
     </nav>
-
+                      <c:if test="${erreurR != null && erreurR != ''}">
+						<div class="alert-danger" role="alert" >
+								<span class="glyphicon glyphicon-exclamation-sign"  aria-hidden="true"></span>
+								<pre style="display:inline"><c:out value="${erreurR}" /></pre>
+							
+						</div>
+						<br>
+						<br>
+					</c:if>${erreurR}
 </body>
 </html>
