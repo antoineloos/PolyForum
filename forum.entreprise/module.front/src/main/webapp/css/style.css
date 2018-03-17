@@ -85,8 +85,21 @@ p {
     line-height: 21px;
 }
 
+.blue-gradient{background: linear-gradient(40deg, rgb(69, 202, 252), rgb(48, 63, 159));}
+.orange-gradient{background: linear-gradient(40deg, rgb(255, 216, 111), rgb(252, 98, 98));}
+.purple-gradient{background: linear-gradient(40deg, rgb(255, 110, 196), rgb(120, 115, 245));}
+.green-gradient{background: linear-gradient(40deg, #11998e, #38ef7d);}
+.card-header-bk{
+    
+font-family: Roboto,sans-serif;
+color: #fff;
+
+}
+
 .topoffset1{ margin-top: 70px;}
-.topoffset2{ margin-top: 150px;}
+.topoffset2{ margin-top: 30px;}
+.topoffset4{ margin-top: 20px;}
+.topoffset3{ margin-top: 50px;}
 
 .btn-primary {
     border-color: #337ab7;
@@ -103,6 +116,46 @@ p {
     -o-transition: all 0.3s;
     transition: all 0.3s;
 }
+
+/***********************
+  OUTLINE BUTTONS
+************************/
+
+.btn.outline {
+    background: none;
+    padding: 12px 22px;
+}
+.btn-primary.outline {
+    border: 2px solid #0099cc;
+    color: #0099cc;
+    border-radius: 28px;
+}
+.btn-primary.outline:hover, .btn-primary.outline:focus, .btn-primary.outline:active, .btn-primary.outline.active, .open > .dropdown-toggle.btn-primary {
+    color: #777;
+    background-color: #ffffff;
+    border-color: #777;
+}
+.btn-primary.outline:active, .btn-primary.outline.active {
+    border-color: #007299;
+    color: #007299;
+    box-shadow: none;
+}
+
+/***********************
+  CUSTON BTN VALUES
+************************/
+
+.btn {
+    padding: 14px 24px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+
 
 /* Effect 12: circle */
 .cl-effect-12 a::before,
