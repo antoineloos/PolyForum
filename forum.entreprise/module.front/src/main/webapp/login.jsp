@@ -55,7 +55,7 @@
                 <div class="col-md-6 mx-auto">
 
                     <!-- form card login -->
-                    <div class="card rounded-0">
+                    <div class="card rounded-5">
                         <div class="card-header">
                             <h3 class="mb-0">Connexion</h3>
                         </div>
@@ -71,7 +71,7 @@
 					</c:if>
                             <form action="connecter.cpt" class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
                                 <div class="form-group">
-                                    <label for="uname1">Login</label>
+                                    <label for="uname1">Identifiant</label>
                                     <input type="text" class="form-control form-control-lg rounded-0" name="login" id="uname1" required="">
                                     <div class="invalid-feedback">Indiquez un login</div>
                                 </div>

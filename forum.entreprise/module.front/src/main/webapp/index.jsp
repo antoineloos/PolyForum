@@ -71,11 +71,11 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <c:if test="${sessionScope.type == 'entreprise' || sessionScope.type == 'candidat'}">
-                <a class="navbar-brand" href="accueil.cpt">PolyForum</a>
+                <a class="navbar-brand" href="accueil.cpt"><h2 class="logo-h2">POLYFORUM</h2></a>
 
             </c:if>
             <c:if test="${sessionScope.type == 'admin'}">
-                <a class="navbar-brand" href="admin.jsp">PolyForum</a>
+                <a class="navbar-brand" href="admin.jsp">POLYFORUM</a>
             </c:if>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -173,6 +173,7 @@
             </div>
         </nav>
 
+        <div class="well well-lg col-md-6 offset-3 topoffset1">
         <!-- Start Logo Section -->
         <section id="logo-section" class="text-center">
             <div class="container">
@@ -229,6 +230,7 @@
                 </div>
             </div>
         </section>
+        </div>
     </body>
 
 </html>

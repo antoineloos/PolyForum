@@ -10,6 +10,18 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+@font-face {
+    font-family: 'Eurostile LT';
+    src: url('../fonts/EurostileLT-Demi.eot');
+    src: url('../fonts/EurostileLT-Demi.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/EurostileLT-Demi.woff2') format('woff2'),
+        url('../fonts/EurostileLT-Demi.woff') format('woff'),
+        url('../fonts/EurostileLT-Demi.ttf') format('truetype'),
+        url('../fonts/EurostileLT-Demi.svg#EurostileLT-Demi') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
 a,
 a:hover,
 a:focus,
@@ -54,12 +66,16 @@ li {
     list-style: none;
 }
 
+
+
 a {
-    color: #FF432E;
+    color: #019CDE;
+    font-family: 'tahoma';
     text-decoration: none;
 }
 
 a:hover {
+    color: #999;
     text-decoration: none;
 }
 
@@ -69,6 +85,8 @@ p {
     line-height: 21px;
 }
 
+.topoffset1{ margin-top: 70px;}
+.topoffset2{ margin-top: 150px;}
 
 .btn-primary {
     border-color: #337ab7;
@@ -84,6 +102,68 @@ p {
     -moz-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
+}
+
+/* Effect 12: circle */
+.cl-effect-12 a::before,
+.cl-effect-12 a::after {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100px;
+	height: 100px;
+	border: 2px solid rgba(0,0,0,0.1);
+	border-radius: 50%;
+	content: '';
+	opacity: 0;
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+	-moz-transition: -moz-transform 0.3s, opacity 0.3s;
+	transition: transform 0.3s, opacity 0.3s;
+	-webkit-transform: translateX(-50%) translateY(-50%) scale(0.2);
+	-moz-transform: translateX(-50%) translateY(-50%) scale(0.2);
+	transform: translateX(-50%) translateY(-50%) scale(0.2);
+}
+
+.cl-effect-12 a::after {
+	width: 90px;
+	height: 90px;
+	border-width: 6px;
+	-webkit-transform: translateX(-50%) translateY(-50%) scale(0.8);
+	-moz-transform: translateX(-50%) translateY(-50%) scale(0.8);
+	transform: translateX(-50%) translateY(-50%) scale(0.8);
+}
+
+.cl-effect-12 a:hover::before,
+.cl-effect-12 a:hover::after,
+.cl-effect-12 a:focus::before,
+.cl-effect-12 a:focus::after {
+	opacity: 1;
+	-webkit-transform: translateX(-50%) translateY(-50%) scale(1);
+	-moz-transform: translateX(-50%) translateY(-50%) scale(1);
+	transform: translateX(-50%) translateY(-50%) scale(1);
+}
+
+.well {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+}
+.well blockquote {
+  border-color: #ddd;
+  border-color: rgba(0, 0, 0, .15);
+}
+.well-lg {
+  padding: 24px;
+  border-radius: 6px;
+}
+.well-sm {
+  padding: 9px;
+  border-radius: 3px;
 }
 
 .btn-primary:hover,
@@ -122,7 +202,7 @@ fieldset[disabled] .btn-primary.active {
     color: #666 !important;
     //font-style: italic;
     font-size: 28px;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Eurostile LT', sans-serif;
     text-transform: none;
 }
 
@@ -140,15 +220,23 @@ fieldset[disabled] .btn-primary.active {
 #logo-section {
     
 }
+.logo-h2
+{
+    color: #014A75;
+}
 
+.navbar-brand,
 .logo h1 {
-    font-family: 'Oswald', sans-serif;
-    color: #fff;
-    font-size: 60px;
+    font-family: 'Eurostile LT', sans-serif;
+    color: #014A75;
+    font-size: 50px;
+    
 }
 
 .logo span {
-    color: #999;
+     text-align: justify;
+    text-justify: inter-word;
+    color: #777;
 }
 
 
