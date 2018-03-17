@@ -20,9 +20,7 @@ public class DaoFactory {
 		if (Constantes.CHOIX_ENTREPRISE.equalsIgnoreCase(typeOfDao)){
 			return new ChoixEntrepriseDao();
 		}
-		if (Constantes.SALLE.equalsIgnoreCase(typeOfDao)){
-			return new SalleDao();
-		}
+		
 		return null;
 	}
 }

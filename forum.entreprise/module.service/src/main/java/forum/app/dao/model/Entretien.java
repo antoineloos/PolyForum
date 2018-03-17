@@ -108,12 +108,13 @@ public class Entretien implements Serializable {
         this.entretienPK = entretienPK;
     }
 
-    public Entretien(EntretienPK entretienPK, Date heure, Date heureFin) {
+    public Entretien(EntretienPK entretienPK, Date heure, Date heureFin, String idsalle) {
         this.entretienPK = entretienPK;
         this.heure = heure;
         this.heureFin = heureFin;
         this.heureD = heure.getHours()+":"+heure.getMinutes();
         this.heureF = heureFin.getHours()+":"+heureFin.getMinutes();
+        this.idSalle = idsalle;
     }
 
     public Entretien(int idEntreprise, int idCandidat) {

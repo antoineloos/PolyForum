@@ -11,30 +11,28 @@ import java.util.Map;
 
 import forum.app.dao.model.Entreprise;
 import forum.app.dao.model.Entretien;
-import forum.app.dao.model.Salle;
 import forum.app.dao.impl.CandidatDao;
 import forum.app.dao.impl.DaoFactory;
 import forum.app.dao.impl.EntrepriseDao;
 import forum.app.dao.impl.EntretienDao;
-import forum.app.dao.impl.SalleDao;
 import forum.app.dao.model.EntretienPK;
 import forum.app.dao.util.Constantes;
 
 public class Repartition {
 
-	private List<Salle> salles = new ArrayList<Salle>();
+	
 
 	public EntretienDao entretienDao;
 	public EntrepriseDao entrepriseDao;
 	public CandidatDao candidatDao;
-	public SalleDao salleDao;
+
 
 	Map<Integer, Integer> correspSalle = new HashMap<Integer, Integer>();
 
 	private List<Creneau> result = new ArrayList<Creneau>();
 	private Date premierCreneau = null;
 
-	public Map<Integer, Integer> repartir(List<Priorite> tab) throws Exception {
+	public void repartir(List<Priorite> tab) throws Exception {
 		init();
 		
 		for (Priorite p : tab) {
@@ -68,7 +66,7 @@ public class Repartition {
 
 		createEntretienFromResult();
 		System.out.println("FIN !!!");
-		return correspSalle;
+		
 	}
 
 	public List<Creneau> initCreneaux() throws Exception {
@@ -196,9 +194,9 @@ public class Repartition {
 	}
 	
 	public void createEntretien(Creneau c){
-		Entretien e = new Entretien(new EntretienPK(c.getIdEntreprise(), c.getIdCandidat()), new Timestamp(c.getDebut()), new Timestamp(c.getFin()));
-             
-                e.setIdSalle(correspSalle.get(c.getIdEntreprise()).toString());
+            
+		Entretien e = new Entretien(new EntretienPK(c.getIdEntreprise(), c.getIdCandidat()), new Timestamp(c.getDebut()), new Timestamp(c.getFin()), "16");
+
 		entretienDao.createEntretien(e);
 	}
 
@@ -213,37 +211,12 @@ public class Repartition {
 		entretienDao = (EntretienDao) DaoFactory.getDaoInstance(Constantes.ENTRETIEN);
 		entrepriseDao = (EntrepriseDao) DaoFactory.getDaoInstance(Constantes.ENTREPRISE);
 		candidatDao = (CandidatDao) DaoFactory.getDaoInstance(Constantes.CANDIDAT);
-		salleDao = (SalleDao) DaoFactory.getDaoInstance(Constantes.SALLE);
-
-		// on recupère l'ensemble des salles
-		salles = salleDao.getAll();
-		// on associe à chaque entreprise une salle qui lui est propre
-		associerSalleEntreprise();
+		
+		
 	}
 
-	public void associerSalleEntreprise() throws Exception {
-		try {
-			for (Entreprise e : entrepriseDao.getAll()) {
-				int idSalle = getFirstIdSalle();
-				correspSalle.put(e.getIdEntreprise(), idSalle);
-				salleDao.updateCapacite(idSalle);
-			}
-		} catch (Exception e){
-			throw new Exception("Un problème est survenu. Vérifiez que les capacités des salles soient correctes.");
-		}
-	}
+	
 
-	public int getFirstIdSalle() {
-		for (Salle s : salles) {
-			if (s.getDisponible() && capaciteOk(s)) {
-				return s.getIdSalle();
-			}
-		}
-		return -1;
-	}
-
-	public boolean capaciteOk(Salle s) {
-		return s.getCapacite() > 0;
-	}
+	
 
 }

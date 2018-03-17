@@ -63,15 +63,7 @@ public class EntretienDao {
 		return listeEntretiens;
 	}
 	
-	public List<Entretien> getByIdSalle(int idS) {
-		prepareEntityManagerForTransaction();
-		List listeEntretiens = em.createQuery(
-		        "SELECT e FROM Entretien e WHERE e.idSalle = :idS")
-		        .setParameter("idS", idS)
-		        .getResultList();
-		
-		return listeEntretiens;
-	}
+	
 	
 	@SuppressWarnings("unchecked")
 	public List<Entretien> getAll() {

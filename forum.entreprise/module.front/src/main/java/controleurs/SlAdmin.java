@@ -43,14 +43,14 @@ import forum.app.dao.model.ChoixCandidat;
 import forum.app.dao.model.ChoixEntreprise;
 import forum.app.dao.model.Entreprise;
 import forum.app.dao.model.Entretien;
-import forum.app.dao.model.Salle;
+
 import forum.app.dao.impl.CandidatDao;
 import forum.app.dao.impl.ChoixCandidatDao;
 import forum.app.dao.impl.ChoixEntrepriseDao;
 import forum.app.dao.impl.DaoFactory;
 import forum.app.dao.impl.EntrepriseDao;
 import forum.app.dao.impl.EntretienDao;
-import forum.app.dao.impl.SalleDao;
+
 import forum.app.dao.model.EntretienPK;
 import forum.app.dao.util.Constantes;
 import forum.app.dao.util.ImportExcel;
@@ -77,7 +77,7 @@ public class SlAdmin extends HttpServlet {
 	private ChoixCandidatDao choixCandidatDao;
 	private CandidatDao candidatDao;
 	private EntretienDao entretienDao;
-	private SalleDao salleDao;
+	
 	private Map<Integer, Integer> corresp;
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response, String demandeBis)
@@ -117,7 +117,7 @@ public class SlAdmin extends HttpServlet {
 			} else if (demande.equalsIgnoreCase("planningIndCan.adm")) {
 				vueReponse = consulterPlanningCandidat(request);
 			} else if (demande.equalsIgnoreCase("modifierListeSal.adm")) {
-				vueReponse = modifierListeSalle(request);
+				vueReponse = "";
 			} else if (demande.equalsIgnoreCase("modifierListeCan.adm")) {
 				vueReponse = modifierListeCandidat(request);
 			} else if (demande.equalsIgnoreCase("modifierListeEnt.adm")) {
@@ -137,7 +137,7 @@ public class SlAdmin extends HttpServlet {
 			} else if (demande.equalsIgnoreCase("choixTypeDocument.adm")) {
 				vueReponse = choisirTypeDocument(request);
 			} else if (demande.equalsIgnoreCase("gererSalles.adm")) {
-				vueReponse = gererSalles(request);
+				vueReponse = "";
 			} else if (demande.equalsIgnoreCase("saisieEntreprise.adm")) {
 				vueReponse = saisieEntreprise(request);
 			} else if (demande.equalsIgnoreCase("saisieCandidat.adm")) {
@@ -145,13 +145,13 @@ public class SlAdmin extends HttpServlet {
 			} else if (demande.equalsIgnoreCase("saisieSalle.adm")) {
 				vueReponse = saisieSalle(request);
 			} else if (demande.equalsIgnoreCase("ajoutSalle.adm")) {
-				vueReponse = ajoutSalle(request);
+				vueReponse = "";
 			} else if (demande.equalsIgnoreCase("presenceCan.adm")) {
 				vueReponse = presenceCan(request);
 			}  else if (demande.equalsIgnoreCase("presenceEnt.adm")) {
 				vueReponse = presenceEnt(request);
 			} else if (demande.equalsIgnoreCase("dispoSalle.adm")) {
-				vueReponse = dispoSalle(request);
+				vueReponse = "";
 			} else if (demande.equalsIgnoreCase("excelCandidat.adm")) {
 				vueReponse = importerExcelCandidat(request, response);
 			} else if (demande.equalsIgnoreCase("excelEntreprise.adm")) {
@@ -198,12 +198,7 @@ public class SlAdmin extends HttpServlet {
 		return "/saisieSalle.jsp";
 	}
 
-	public String gererSalles(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		List<Salle> salles = salleDao.getAll();
-		session.setAttribute("salles", salles);
-		return "/gererSalles.jsp";
-	}
+	
 
 	public String presenceEnt(HttpServletRequest request) {
 		int idEntreprise = Integer.parseInt(request.getParameter("chaine"));
@@ -214,14 +209,7 @@ public class SlAdmin extends HttpServlet {
 		return "/listeEnt.jsp";
 	}
 
-	public String dispoSalle(HttpServletRequest request) {
-		int idSalle = Integer.parseInt(request.getParameter("chaine"));
-		Salle salle = salleDao.getById(idSalle);
-		if(salle.getDisponible()) salle.setDisponible(false);
-		else salle.setDisponible(true);
-		salleDao.updateSalle(salle);
-		return "/gererSalles.jsp";
-	}
+	
 	
 	public String presenceCan(HttpServletRequest request) {
 		int idCandidat = Integer.parseInt(request.getParameter("chaine"));
@@ -718,18 +706,7 @@ public class SlAdmin extends HttpServlet {
 		return heure + ":" + minute;
 	}
 
-	public String modifierListeSalle(HttpServletRequest request) throws Exception {
-		int idSalle = Integer.parseInt(request.getParameter("chaine"));
-		Salle salle = salleDao.getById(idSalle);
-		List<Entretien> entretiens = entretienDao.getByIdSalle(idSalle);
-		if (entretiens.size() != 0) {
-			throw new Exception(
-					"Des entretiens existent pour la salle sélectionnée, impossible de supprimer la salle.");
-		}
-		salleDao.removeSalle(salle);
-
-		return "/gererSalles.jsp";
-	}
+	
 
 	public String modifierListeCandidat(HttpServletRequest request) {
 		int idCandidat = Integer.parseInt(request.getParameter("chaine"));
@@ -847,31 +824,7 @@ public class SlAdmin extends HttpServlet {
 		return "/listeEnt.jsp";
 	}
 
-	public String ajoutSalle(HttpServletRequest request) throws Exception {
-		int i = 2;
-		List<Integer> avoidToAdd = new ArrayList<Integer>();
-		while (request.getParameter("salle" + i) != null) {
-			int idSalle = Integer.parseInt(request.getParameter("salle" + i));
-			int capaciteSalle = Integer.parseInt(request.getParameter("cap" + i));
-			int result = idSalleAlreadyExists(idSalle);
-			
-			if (result == -1) {
-				Salle salle = new Salle(idSalle);
-                              
-                                salle.setCapacite(capaciteSalle);
-                                salle.setDisponible(true);
-				salleDao.createSalle(salle);
-			} else {
-				avoidToAdd.add(result);
-			}
-			i++;
-		}
-		if (avoidToAdd.size() != 0){
-			logger.error(Utilitaire.creerMsgPourLogs("admin", "admin", true, "Certaines salles existent déjà et n'ont pas été ajoutées : " + listToString(avoidToAdd)));
-			throw new Exception("Certaines salles existent déjà et n'ont pas été ajoutées : " + listToString(avoidToAdd));
-		}
-		return "admin.jsp";
-	}
+	
 	
 	public String listToString(List<Integer> liste){
 		String response = "";
@@ -889,15 +842,7 @@ public class SlAdmin extends HttpServlet {
 		return response;
 	}
 	
-	public int idSalleAlreadyExists(int id){
-		List<Salle> salles = salleDao.getAll();
-		for (Salle s : salles){
-			if (s.getIdSalle() == id){
-				return id;
-			}
-		}
-		return -1;
-	}
+	
 
 	public void majChoixEntreprise(List<ChoixEntreprise> liste, int idCandidat) {
 		int max = candidatDao.getAll().size();
@@ -968,7 +913,7 @@ public class SlAdmin extends HttpServlet {
 	}
 
 	public String genererPlanning(HttpServletRequest request) throws Exception {
-		resetSalle();
+	
 		supprimerEntretiensExistant();
 		Plannification p = new Plannification();
 		corresp = p.genererPlanning();
@@ -987,18 +932,7 @@ public class SlAdmin extends HttpServlet {
 		List<Integer> listeEnt = new ArrayList<Integer>();
 		List<Entreprise> entreprise = entrepriseDao.getAll();
 		if(entretiens.size()>0){
-			for (Entreprise e : entreprise){
-				String idSalle = getIdSalle(e.getIdEntreprise());
-				if(null != idSalle){
-					Salle s = salleDao.getById(Integer.parseInt(getIdSalle(e.getIdEntreprise())));
-					if(s != null){
-						if (s.getCapacite() < s.getCapaciteTotale()){
-							s.setCapacite(s.getCapacite() + 1);
-							salleDao.updateSalle(s);
-						}
-					}
-				}
-			}
+			
 		}
 		for (Entretien e : entretiens) {
 			entretienDao.removeEntretien(e);
@@ -1012,16 +946,7 @@ public class SlAdmin extends HttpServlet {
 		
 	}
 
-	public void resetSalle() throws Exception {
-		List<Salle> salles = salleDao.getAll();
-		for(Salle s : salles){
-			if (s.getCapacite() != s.getCapaciteTotale()){
-				s.setCapacite(s.getCapaciteTotale());
-				salleDao.updateSalle(s);
-
-			}
-		}
-	}
+	
 	
 	public void initAttr() {
 		choixEntrepriseDao = (ChoixEntrepriseDao) DaoFactory.getDaoInstance(Constantes.CHOIX_ENTREPRISE);
@@ -1029,7 +954,7 @@ public class SlAdmin extends HttpServlet {
 		entrepriseDao = (EntrepriseDao) DaoFactory.getDaoInstance(Constantes.ENTREPRISE);
 		candidatDao = (CandidatDao) DaoFactory.getDaoInstance(Constantes.CANDIDAT);
 		entretienDao = (EntretienDao) DaoFactory.getDaoInstance(Constantes.ENTRETIEN);
-		salleDao = (SalleDao) DaoFactory.getDaoInstance(Constantes.SALLE);
+		
     	dirName = rb.getString("path");
     	templateDirName = rb.getString("template");
     	link = "http://" + rb.getString("link");
