@@ -66,7 +66,7 @@ li {
     list-style: none;
 }
 
-
+.inputdiv{min-height: 55px;}
 
 a {
     color: #019CDE;
@@ -100,6 +100,9 @@ color: #fff;
 .topoffset2{ margin-top: 30px;}
 .topoffset4{ margin-top: 20px;}
 .topoffset3{ margin-top: 50px;}
+.topoffset5{margin-top: 10px;}
+
+option{ color: #000;}
 
 .btn-primary {
     border-color: #337ab7;

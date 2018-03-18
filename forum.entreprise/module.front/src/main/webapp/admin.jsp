@@ -64,11 +64,11 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <c:if test="${sessionScope.type == 'entreprise' || sessionScope.type == 'candidat'}">
-            <a class="navbar-brand" href="accueil.cpt">PolyForum</a>
+            <a class="navbar-brand" href="accueil.cpt"><h2 class="logo-h2">POLYFORUM</h2></a>
 
         </c:if>
         <c:if test="${sessionScope.type == 'admin'}">
-            <a class="navbar-brand" href="admin.jsp">PolyForum</a>
+            <a class="navbar-brand" href="admin.jsp"><h2 class="logo-h2">POLYFORUM</h2></a>
         </c:if>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -165,33 +165,109 @@
 
         </div>
     </nav>
-    <c:if test="${erreurR != null && erreurR != ''}">
-        <div class="alert-danger" role="alert" >
-            <span class="glyphicon glyphicon-exclamation-sign"  aria-hidden="true"></span>
-            <pre style="display:inline"><c:out value="${erreurR}" /></pre>
 
-        </div>
-        <br>
-        <br>
-    </c:if>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="logo text-center">
-                <c:if test="${sessionScope.type == 'admin'}">
-                    <span>
-                        <br>
-                        <br>
-                        Bonjour,<br>
-                        en tant qu'admninistrateur vous pouvez saisir des <a href="saisieCandidat.adm">candidats</a> et/ou des <a href="saisieEntreprise.adm">entreprises.</a><br>
-                        Il est également possible de consulter les différents <a href="choixTypeDocument.adm">documents</a> (CV, offres) et d'en mettre en ligne si besoin.<br>
-                        Ne pas oublier de saisir les différentes salles utilisées pour les entretiens !<br>
-                        Une fois que tout est complet, vous pouvez <a href="genererPlanning.adm">générez</a> le planning.<br>
-                        Vous pouvez ensuite accéder au <a href="consulterPlanning.adm">planning complet</a>, mais aussi :<br>
-                        - par candidat<br>
-                        - par entreprise<br>
-                    </span>
-                </c:if>
+    <div class="well well-lg col-md-6 offset-3 topoffset4">
+        <c:if test="${erreurR != null && erreurR != ''}">
+            <div class="alert-danger" role="alert" >
+                <span class="glyphicon glyphicon-exclamation-sign"  aria-hidden="true"></span>
+                <pre style="display:inline"><c:out value="${erreurR}" /></pre>
+
+            </div>
+            <br>
+            <br>
+        </c:if>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="logo text-center">
+                    <c:if test="${sessionScope.type == 'admin'}">
+                        <span class="text-center">
+                           
+                            <h2>Bonjour Mme Perraud,</h2>
+                            <!--en tant qu'admninistrateur vous pouvez saisir des <a href="saisieCandidat.adm">candidats</a> et/ou des <a href="saisieEntreprise.adm">entreprises.</a><br>
+                            Il est également possible de consulter les différents <a href="choixTypeDocument.adm">documents</a> (CV, offres) et d'en mettre en ligne si besoin.<br>
+                            Ne pas oublier de saisir les différentes salles utilisées pour les entretiens !<br>
+                            Une fois que tout est complet, vous pouvez <a href="genererPlanning.adm">générez</a> le planning.<br>
+                            Vous pouvez ensuite accéder au <a href="consulterPlanning.adm">planning complet</a>, mais aussi :<br>
+                            - par candidat<br>
+                            - par entreprise<br>-->
+                        </span>
+                        <div class="row topoffset4">
+                                        <div class="card mb-3 offset-1" style="max-width: 18rem;">
+
+                                            <div class="card-header card-header-bk blue-gradient">
+                                                <h4 class="card-title">SAISIES</h4>
+                                            </div>
+
+                                            <!--Card content-->
+                                            <div class="card-body ">
+                                                <!--Title-->
+
+                                                <!--Text-->
+                                                <p class="card-text">En tant qu'admninistrateur vous pouvez saisir des candidats et des entreprises</p>
+                                                <a href="saisieCandidat.adm" class="btn btn-primary btn-lg outline"> &nbsp;&nbsp;&nbsp;CANDIDAT <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                                <a href="saisieEntreprise.adm" class="btn btn-primary btn-lg outline topoffset5">ENTREPRISE <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                            </div>
+
+                                        </div>
+                                        <div class="card mb-3 offset-1" style="max-width: 18rem;">
+
+                                            <div class="card-header card-header-bk purple-gradient">
+                                                <h4 class="card-title">DOCUMENTS</h4>
+                                            </div>
+
+                                            <!--Card content-->
+                                            <div class="card-body ">
+                                                <!--Title-->
+
+                                                <!--Text-->
+                                                <p class="card-text">Il est également possible de consulter les différents documents (CV, offres) et d'en mettre en ligne si besoin.</p>
+                                                
+                                                
+                                                <a href="choixTypeDocument.adm" class="btn btn-primary btn-lg outline">consulter <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row topoffset4">
+                                        <div class="card mb-3 offset-1" style="max-width: 18rem;">
+
+                                            <div class="card-header card-header-bk green-gradient">
+                                                <h4 class="card-title">GENERATION</h4>
+                                            </div>
+
+                                            <!--Card content-->
+                                            <div class="card-body ">
+                                                <!--Title-->
+
+                                                <!--Text-->
+                                                <p class="card-text">Une fois que tout est complet, vous pouvez générer le planning </p>
+                                                <a href="genererPlanning.adm" class="btn btn-primary btn-lg outline">générer <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                            </div>
+
+                                        </div>
+                                        <div class="card mb-3 offset-1" style="max-width: 18rem;">
+
+                                            <div class="card-header card-header-bk orange-gradient">
+                                                <h4 class="card-title">PLANNING</h4>
+                                            </div>
+
+                                            <!--Card content-->
+                                            <div class="card-body ">
+                                                <!--Title-->
+
+                                                <!--Text-->
+                                                <p class="card-text">Vous pouvez ensuite accéder au planning complet , mais aussi :<br>
+                            - par candidat<br>
+                            - par entreprise<br> </p>
+                                                <a href="consulterPlanning.adm" class="btn btn-primary btn-lg outline">Consulter <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                    </c:if>
+                </div>
             </div>
         </div>
+            
     </body>
 </html>

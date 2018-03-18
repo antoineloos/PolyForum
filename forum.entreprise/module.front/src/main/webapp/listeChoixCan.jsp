@@ -17,7 +17,7 @@
 
 <!-- Custom CSS -->
 <link href="css/animate.css" rel="stylesheet">
-
+<link href="css/fresh-bootstrap-table.css" rel="stylesheet" />
 <!-- Custom CSS -->
 <link href="css/style.css" rel="stylesheet">
 
@@ -39,6 +39,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-table.js"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
@@ -48,11 +49,11 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <c:if test="${sessionScope.type == 'entreprise' || sessionScope.type == 'candidat'}">
-            <a class="navbar-brand" href="accueil.cpt">PolyForum</a>
+            <a class="navbar-brand" href="accueil.cpt"><h2 class="logo-h2">POLYFORUM</h2></a>
 
         </c:if>
         <c:if test="${sessionScope.type == 'admin'}">
-              <a class="navbar-brand" href="admin.jsp">PolyForum</a>
+              <a class="navbar-brand" href="admin.jsp"><h2 class="logo-h2">POLYFORUM</h2></a>
         </c:if>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -165,13 +166,14 @@
                         <div class="card-body">
 		<br /> <font color="grey" size="2"> * Glisser et déposer vos choix pour ordonner selon vos préférences. </font>
 		<form role="form" action="modifierChoixCan.can" method="post">
-			<div class="panel panel-default">
-				<table id="sort" class="table table-bordered table-striped grid">
+                   
+			<div class="panel panel-default fresh-table full-color-blue">
+				<table id="sort"  class="table ">
 					<thead>
 						<tr>
-							<th class="bg-primary index">Nom</th>
-							<th class="bg-primary index">Priorité</th>
-							<th class="bg-primary index"></th>
+							<th >Nom</th>
+							<th >Priorité</th>
+							<th ></th>
 						</tr>
 					</thead>
 					<tbody class="sort">
@@ -273,5 +275,76 @@
 			});
 		};
 	</script>
+         <script type="text/javascript">
+            var $table = $('#sort'),
+                    $alertBtn = $('#alertBtn'),
+                    full_screen = false;
+
+            $().ready(function () {
+                $table.bootstrapTable({
+                    toolbar: ".toolbar",
+
+                    showRefresh: true,
+                    search: true,
+                    showToggle: true,
+                    showColumns: true,
+                    pagination: true,
+                    striped: true,
+                    sortable: true,
+                    pageSize: 8,
+                    pageList: [8, 10, 25, 50, 100],
+
+                    formatShowingRows: function (pageFrom, pageTo, totalRows) {
+                        //do nothing here, we don't want to show the text "showing x of y from..."
+                    },
+                    formatRecordsPerPage: function (pageNumber) {
+                        return pageNumber + " rows visible";
+                    },
+                    icons: {
+                        refresh: 'fa fa-refresh',
+                        toggle: 'fa fa-th-list',
+                        columns: 'fa fa-columns',
+                        detailOpen: 'fa fa-plus-circle',
+                        detailClose: 'fa fa-minus-circle'
+                    }
+                });
+            });
+
+            $(function () {
+                $alertBtn.click(function () {
+                    alert("You pressed on Alert");
+                });
+            });
+
+
+            function operateFormatter(value, row, index) {
+                return [
+                    '<a rel="tooltip" title="Like" class="table-action like" href="javascript:void(0)" title="Like">',
+                    '<i class="fa fa-heart"></i>',
+                    '</a>',
+                    '<a rel="tooltip" title="Edit" class="table-action edit" href="javascript:void(0)" title="Edit">',
+                    '<i class="fa fa-edit"></i>',
+                    '</a>',
+                    '<a rel="tooltip" title="Remove" class="table-action remove" href="javascript:void(0)" title="Remove">',
+                    '<i class="fa fa-remove"></i>',
+                    '</a>'
+                ].join('');
+            }
+
+            window.operateEvents = {
+                'click .like': function (e, value, row, index) {
+                    alert('You click like icon, row: ' + JSON.stringify(row));
+                    console.log(value, row, index);
+                },
+                'click .edit': function (e, value, row, index) {
+                    console.log(value, row, index);
+                },
+                'click .remove': function (e, value, row, index) {
+                    alert('You click remove icon, row: ' + JSON.stringify(row));
+                    console.log(value, row, index);
+                }
+            };
+
+        </script>
 </body>
 </html>
