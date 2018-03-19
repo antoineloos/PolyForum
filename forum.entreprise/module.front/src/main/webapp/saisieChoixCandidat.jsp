@@ -1,8 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="fr">
-
-    <head>
+   <head>
         <link rel="icon" type="image/ico" href="images/favicon.ico" />
         <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
         <meta charset="utf-8">
@@ -15,13 +14,13 @@
 
         <!-- Bootstrap Core CSS -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="css/fresh-bootstrap-table.css" rel="stylesheet" />
         <!-- Font Awesome CSS -->
         <link href="css/font-awesome.min.css" rel="stylesheet">
 
         <!-- Custom CSS -->
         <link href="css/animate.css" rel="stylesheet">
-        <link href="css/fresh-bootstrap-table.css" rel="stylesheet" />
+
         <!-- Custom CSS -->
         <link href="css/style.css" rel="stylesheet">
 
@@ -38,7 +37,6 @@
         <script src="../../js/jqBootstrapValidation.js"></script>
         <script src="../../js/modernizr.custom.js"></script>
         <script src="../../js/script.js"></script>
-        <script type="text/javascript" src="../../js/bootstrap-table.js"></script>
         <script
         src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script
@@ -53,6 +51,7 @@
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
+    
     <body>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -160,6 +159,8 @@
 
             </div>
         </nav>
+        
+        
         <div class="container py-5">
             <div class="row">
                 <div class="col-md-12">
@@ -199,7 +200,7 @@
                                                                     </c:forEach>
                                                                 </select></td>
                                                             <td><button type="button" name="add" id="add"
-                                                                        class="btn btn-success">Ajouter</button></td>
+                                                                        class="btn btn-success">Ajouter</button> </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -224,7 +225,11 @@
             </div>
             <!--/row-->
         </div>
-
+     
+        
+        <input type="hidden" id="temp" name="temp" value="" />
+        
+        
 
         <!-- End Logo Section -->
         <script>
@@ -235,6 +240,7 @@
                                 $('#add')
                                         .click(
                                                 function () {
+                                                    alert('boutonCliquer');
                                                     var e = document.getElementById("listeEntreprises");
                                                     var strUser = e.options[e.selectedIndex].value;
                                                     if ($("#nom1").val() != ""
@@ -243,7 +249,7 @@
                                                         var e = document
                                                                 .getElementById("listeEntreprises");
                                                         i++;
-                                                        $('#dynamic_field')
+                                                        $('#fresh-table')
                                                                 .append(
                                                                         '<tr id="row' + i + '"><td style="display:none;"><input type="text" id="id' + e.options[e.selectedIndex].value + '" name="id' + i + '" value="' + e.options[e.selectedIndex].value + '" class="form-control name_list" readonly="true"/></td><td><input type="text" name="nom'
                                                                         + i
@@ -313,7 +319,6 @@
             $().ready(function () {
                 $table.bootstrapTable({
                     toolbar: ".toolbar",
-
                     showRefresh: true,
                     search: true,
                     showToggle: true,
@@ -323,7 +328,6 @@
                     sortable: true,
                     pageSize: 8,
                     pageList: [8, 10, 25, 50, 100],
-
                     formatShowingRows: function (pageFrom, pageTo, totalRows) {
                         //do nothing here, we don't want to show the text "showing x of y from..."
                     },
