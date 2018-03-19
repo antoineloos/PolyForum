@@ -274,17 +274,93 @@
                                 </c:if>
                                 <c:if test="${sessionScope.type == 'entreprise'}">
                                     <span>
-                                        <br>
-                                        <br>
-                                        Bonjour ${sessionScope.nom},<br>
+                                        
+                                        <!--Bonjour ${sessionScope.nom},<br>
                                         Vous pouvez consultez les différentes CV déposés par les candidats en <a href="consulter.file">cliquant ici.</a><br>
                                         Si vous avez déjà consulté les CV, vous pouvez <a href="initSaisieChoixEnt.chxE">choisir</a> les étudiants que vous souhaitez rencontrer lors du forum.<br>
                                         Si vous souhaitez simplement vérifier vos choix : <a href="consulter.chxE">cliquer ici.</a><br>
                                         Une fois le planning généré par l'administrateur du site vous pourrez le consulter en suivant ce <a href="consulterPlanning.chxE">lien.</a>
+                                    </span>-->
+                                        
+                                    <span class="text-center">
+
+                                        <h2>Bonjour ${sessionScope.nom}</h2>
+                                        
                                     </span>
+
+                                    <div class="row topoffset2">
+                                        <div class="card mb-3 offset-1" style="max-width: 18rem;">
+
+                                            <div class="card-header card-header-bk blue-gradient">
+                                                <h4 class="card-title">CANDIDATS</h4>
+                                            </div>
+
+                                            <!--Card content-->
+                                            <div class="card-body ">
+                                                <!--Title-->
+
+                                                <!--Text-->
+                                                <p class="card-text">Vous pouvez consultez les différentes CV des candidats participant au forum</p>
+                                                <a href="consulter.file" class="btn btn-primary btn-lg outline">Visionner <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                            </div>
+
+                                        </div>
+                                        <div class="card mb-3 offset-1" style="max-width: 18rem;">
+
+                                            <div class="card-header card-header-bk purple-gradient">
+                                                <h4 class="card-title">CHOIX</h4>
+                                            </div>
+
+                                            <!--Card content-->
+                                            <div class="card-body ">
+                                                <!--Title-->
+
+                                                <!--Text-->
+                                                <p class="card-text">Si vous avez déjà consulter les offres, vous pouvez choisir les candidats que vous souhaitez rencontrer lors du forum</p>
+                                                
+                                                
+                                                <a href="initSaisieChoixEnt.chxE" class="btn btn-primary btn-lg outline">choisir <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row topoffset4">
+                                        <div class="card mb-3 offset-1" style="max-width: 18rem;">
+
+                                            <div class="card-header card-header-bk green-gradient">
+                                                <h4 class="card-title">CLASSEMENT</h4>
+                                            </div>
+
+                                            <!--Card content-->
+                                            <div class="card-body ">
+                                                <!--Title-->
+
+                                                <!--Text-->
+                                                <p class="card-text">Si vous souhaitez simplement vérifier vos choix ou les classer dans l'ordre de vos préférences </p>
+                                                <a href="consulter.chxE" class="btn btn-primary btn-lg outline">Classer <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                            </div>
+
+                                        </div>
+                                        <div class="card mb-3 offset-1" style="max-width: 18rem;">
+
+                                            <div class="card-header card-header-bk orange-gradient">
+                                                <h4 class="card-title">PLANNING</h4>
+                                            </div>
+
+                                            <!--Card content-->
+                                            <div class="card-body ">
+                                                <!--Title-->
+
+                                                <!--Text-->
+                                                <p class="card-text">Une fois le planning généré par l'administrateur du site vous pourrez le consulter</p>
+                                                <a href="consulterPlanning.chxE" class="btn btn-primary btn-lg outline">Consulter <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </c:if>
                                 <c:if test="${sessionScope.type == 'admin'}">
-                                    <span>
+                                    <!--<span>
                                         <br>
                                         <br>
                                         Bonjour,<br>
@@ -295,7 +371,7 @@
                                         Vous pouvez ensuite accéder au <a href="consulterPlanning.adm">planning complet</a>, mais aussi :<br>
                                         - par candidat<br>
                                         - par entreprise<br>
-                                    </span>
+                                    </span>-->
                                 </c:if>
                             </div>
                         </div>
