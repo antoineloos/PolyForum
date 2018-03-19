@@ -106,23 +106,25 @@ public class SlCandidat extends HttpServlet {
 		String candidat = "";
 
 		int idCandidat = (int) session.getAttribute("idCompte");
-		List<Entretien> listeEntretiens = entretienDao.getByIdCandidat(idCandidat);
-		if (listeEntretiens.size() == 0){
+                List<Entretien> liste = entretienDao.getByIdCandidat(idCandidat);
+		
+		if (liste.size() == 0){
 			throw new Exception("Votre planning n'a pas encore été généré, veuillez contacter l'administrateur du site.");
 		}
 		
-		List<Entretien> liste = entretienDao.getByIdCandidat(idCandidat);
+		
 		Candidat can = candidatDao.getById(idCandidat);
 		for (Entretien e : liste) {
 			Entreprise ent = entrepriseDao.getById(e.getEntretienPK().getIdEntreprise());
                         e.setEntreprise(ent);
+                        e.setCandidat(can);
 			entretiens = entretiens + majAuDebut(ent.getNom()) + " (Salle " + e.getIdSalle() + ")" + UNDERSCORE
 					+ e.getHeure() + UNDERSCORE + e.getHeureFin() + UNDERSCORE;
 
 		}
 		candidat = can.getPrenom() + " " + can.getNom();
 
-		session.setAttribute("entretiens", entretiens);
+		session.setAttribute("entretiensEnt", liste);
 		session.setAttribute("candidat", candidat);
 		return "/planningCan.jsp";
 	}

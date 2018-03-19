@@ -240,7 +240,7 @@
                                 $('#add')
                                         .click(
                                                 function () {
-                                                    alert('boutonCliquer');
+                                                    //alert('boutonCliquer');
                                                     var e = document.getElementById("listeEntreprises");
                                                     var strUser = e.options[e.selectedIndex].value;
                                                     if ($("#nom1").val() != ""
