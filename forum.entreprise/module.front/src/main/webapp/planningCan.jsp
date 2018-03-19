@@ -15,7 +15,7 @@
 
         <!-- Custom CSS -->
         <link href="css/animate.css" rel="stylesheet">
-      
+
         <!-- Custom CSS -->
         <link href="css/style.css" rel="stylesheet">
 
@@ -32,7 +32,7 @@
         <!-- Template js -->
         <script src="js/jquery-2.1.1.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
-       
+
         <script src="js/jquery.appear.js"></script>
         <script src="js/contact_me.js"></script>
         <script src="js/jqBootstrapValidation.js"></script>
@@ -166,55 +166,76 @@
 
         </div>
     </nav>
-    <div class="well well-lg col-md-10 offset-1 topoffset3">
-        <!-- End Logo Section -->
-        <a id="save" href="none" download="name"></a>
 
-        <input type="hidden" id="listeEntretien" name="listeEntretien" value="${sessionScope.entretiens}"></input>
-        <input type="hidden" id="listeCandidat" name="listeCandidat" value="${sessionScope.candidat}"></input>
+    <!-- End Logo Section -->
+    <a id="save" href="none" download="name"></a>
 
-        <c:if test="${not empty sessionScope.entretiens}">
+    <input type="hidden" id="listeEntretien" name="listeEntretien" value="${sessionScope.entretiens}"></input>
+    <input type="hidden" id="listeCandidat" name="listeCandidat" value="${sessionScope.candidat}"></input>
 
-
-
-            <div class="container">
-                <br />
-                <div class="fresh-table full-color-blue">
-
-                    <table id="sort" class="table" >
-                        <thead>
-                            <tr>
-                                <th  style="text-align: center;">Nom de l'entreprise</th>
-                                <th  style="text-align: center;">Nom du candidat</th>
-                                <th  style="text-align: center;">Salle</th>
-                                <th  style="text-align: center;">Debut</th>
-                                <th  style="text-align: center;">Fin</th>
+   
 
 
-                            </tr>
-                        </thead>
-                        <tbody class="sort">
-                            <c:forEach var="ent" items="${entretiensEnt}" varStatus="loop">
-                                <tr>
-                                    <td>${ent.entreprise.nom}</td>
-                                    <td>${ent.candidat.prenom} ${ent.candidat.nom}</td>
-                                    <td>${ent.idSalle}</td>
-                                    <td> <fmt:formatDate type = "time" timeStyle = "short" value = "${ent.heure}"/></td>
-                                    <td>  <fmt:formatDate type = "time" timeStyle = "short" value = "${ent.heureFin}"/></td>
 
-                                </tr>
-                            </c:forEach>
-                        </tbody>
-                    </table>
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12 mx-auto">
 
+                            <!-- form card login -->
+                            <div class="card rounded-0">
+                                <div class="card-header">
+                                    <h3 class="mb-0">Planning</h3>
+                                </div>
+                                <div class="card-body">
+                                    <table id="sort" >
+                                        <thead>
+                                            <tr>
+                                                <th  style="text-align: center;">Nom de l'entreprise</th>
+                                                <th  style="text-align: center;">Nom du candidat</th>
+                                                <th  style="text-align: center;">Salle</th>
+                                                <th  style="text-align: center;">Debut</th>
+                                                <th  style="text-align: center;">Fin</th>
+
+
+                                            </tr>
+                                        </thead>
+                                        <tbody class="sort">
+                                            <c:forEach var="ent" items="${entretiensEnt}" varStatus="loop">
+                                                <tr>
+                                                    <td>${ent.entreprise.nom}</td>
+                                                    <td>${ent.candidat.prenom} ${ent.candidat.nom}</td>
+                                                    <td>${ent.idSalle}</td>
+                                                    <td> <fmt:formatDate type = "time" timeStyle = "short" value = "${ent.heure}"/></td>
+                                                    <td>  <fmt:formatDate type = "time" timeStyle = "short" value = "${ent.heureFin}"/></td>
+
+                                                </tr>
+                                            </c:forEach>
+                                        </tbody>
+                                    </table>
+
+
+                                </div>
+                                <!--/card-block-->
+                            </div>
+                            <!-- /form card login -->
+
+                        </div>
+
+
+                    </div>
+                    <!--/row-->
 
                 </div>
+                <!--/col-->
             </div>
+            <!--/row-->
         </div>
-    </c:if>
-   
-   
-   <script>
+    
+
+
+    <script>
 
         $(document).ready(function () {
             $('#sort').DataTable({
