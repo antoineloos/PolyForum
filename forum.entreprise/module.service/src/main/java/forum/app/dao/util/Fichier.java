@@ -23,10 +23,10 @@ public class Fichier {
 		String nomCompletSansExtension = FilenameUtils.getBaseName(file.getName());
 		String[] typeIdNom = nomCompletSansExtension.split("_");
 		if(typeIdNom.length >= 3){
-			if(typeIdNom[0].equalsIgnoreCase("e_")){
+			if(typeIdNom[0].equalsIgnoreCase("e")){
 				type = "entreprise";
 			}
-			else if(typeIdNom[0].equalsIgnoreCase("c_")){
+			else if(typeIdNom[0].equalsIgnoreCase("c")){
 				type = "candidat";
 			}
 			else {
