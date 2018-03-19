@@ -198,9 +198,7 @@
 	</section>
 	<div class="container">
 		<div class="form-group">
-							<form role="form" action="templateExcelCandidat.adm" method="POST" enctype="multipart/form-data">
-					<input type="submit" id="submitExcel" class="btn btn-success pull-right" value="Télécharger le template" />
-					</form>
+
 					<form role="form" action="excelCandidat.adm" method="POST" enctype="multipart/form-data">
 					<table class="table" id="dynamic_field">
 						<tr id="row">
@@ -209,6 +207,9 @@
 					</table>
 
 					<input type="submit" id="submitExcel" class="btn btn-info" value="Valider" />
+					</form>
+                    							<form role="form" action="templateExcelCandidat.adm" method="POST" enctype="multipart/form-data">
+					<input type="submit" id="submitExcel" class="btn btn-success pull-right" value="Télécharger le template" />
 					</form>
 
 		</div>

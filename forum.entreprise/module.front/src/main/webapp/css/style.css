@@ -48,7 +48,7 @@ ul li {
 th,td {
     text-align: right;
     padding: 2px 4px;
-    border: 1px solid;
+  
 }
 .connectedSortable tr, .ui-sortable-helper {
     cursor: move;

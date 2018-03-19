@@ -70,11 +70,11 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <c:if test="${sessionScope.type == 'entreprise' || sessionScope.type == 'candidat'}">
-            <a class="navbar-brand" href="accueil.cpt">PolyForum</a>
+            <a class="navbar-brand" href="accueil.cpt"><h2 class="logo-h2">POLYFORUM</h2></a>
 
         </c:if>
         <c:if test="${sessionScope.type == 'admin'}">
-              <a class="navbar-brand" href="admin.jsp">PolyForum</a>
+              <a class="navbar-brand" href="admin.jsp"><h2 class="logo-h2">POLYFORUM</h2></a>
         </c:if>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -171,7 +171,7 @@
             
         </div>
     </nav>
-	
+<div class="well well-lg col-md-8 offset-2 topoffset4">
 	<div id="test-popup" class="white-popup mfp-hide"
 		style="position: relative; background: #FFF; padding: 20px; width: auto; max-width: 500px; margin: 20px auto;">
 		<div id="add_entretien" name="add_entretien" class="white-popup-block">
@@ -203,7 +203,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="logo text-center">
-						<span>Consultation du planning</span>
+                                            <span class="text-center"><h2>Consultation du planning</h2></span>
 					</div>
 				</div>
 			</div>
@@ -220,11 +220,11 @@
             <table id="sort" class="table table-bordered table-striped grid">
 				<thead>
 					<tr>
-						<th class="bg-primary index" style="text-align: center;">Nom de l'entreprise</th>
-						<th class="bg-primary index" style="text-align: center;">Nom du candidat</th>
-                                                <th class="bg-primary index" style="text-align: center;">Salle</th>
-                                                <th class="bg-primary index" style="text-align: center;">Debut</th>
-                                                <th class="bg-primary index" style="text-align: center;">Fin</th>
+						<th  style="text-align: center;">Nom de l'entreprise</th>
+						<th  style="text-align: center;">Nom du candidat</th>
+                                                <th  style="text-align: center;">Salle</th>
+                                                <th  style="text-align: center;">Debut</th>
+                                                <th  style="text-align: center;">Fin</th>
 						
 						
 					</tr>
@@ -244,22 +244,21 @@
 			</table>
                 </div>
             </div>
-		<div class="contentdiv">
-			<div class="timetable" id="timetable"></div>
-			<div class="adm-options" style="display: inline-block; width: 32%;">
-				<button class="btn btn-action hidden-print" style="margin-top: 2%; margin-right: 0.5%; float: left;" onClick="savePage()">Enregistrer le
-					planning</button>
-				<form class="hidden-print btn-planning" method="get" action="choixTypePlanning.jsp" style="float: left; margin-top: 2%;">
-					<button type="submit" class="btn btn-action btn-planning" style="min-width: 160px;">Plannings individuels</button>
+		<div class="contentdiv col-md-12 ">
+			
+			<div class="adm-options row  topoffset4" >
+			
+				<form class="hidden-print btn-planning mb-3 offset-1" method="get" action="choixTypePlanning.jsp" >
+					<button type="submit" class="btn btn-primary btn-lg outline" >Plannings individuels</button>
 				</form>
-				<form class="hidden-print btn-planning" method="get" action="vider.adm" style="float: left; margin-top: 2%;; margin-left: 0.5%;">
-					<button type="submit" class="btn btn-action btn-planning" style="min-width: 160px;">Vider le planning</button>
+				<form class="hidden-print btn-planning md-3 offset-3" method="get" action="vider.adm" >
+					<button type="submit" class="btn btn-primary btn-lg outline" >Vider le planning</button>
 				</form>
 			</div>
 		</div>
 
 	</div>
-
+</div>
        
               <script>
             
