@@ -238,8 +238,8 @@ public class SlCandidat extends HttpServlet {
         String[] fields = chaine.split("\n");
         int i = 0;
         while (i < fields.length) {
-            if (!"".equals(fields[i])) {
-                result.add(fields[i]);
+            if (!"".equals(fields[i].replaceAll("\\s", ""))) {
+                result.add(fields[i].replaceAll("\\s", ""));
             }
             i++;
         }

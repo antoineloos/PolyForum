@@ -26,265 +26,274 @@ import forum.app.dao.impl.EntrepriseDao;
 import forum.app.dao.impl.EntretienDao;
 import forum.app.dao.util.Constantes;
 import forum.app.dao.util.Utilitaire;
+import java.util.regex.*;
 
 @SuppressWarnings("serial")
 public class SlEntreprise extends HttpServlet {
 
-	private String UNDERSCORE = "_";
-	
-	private static Logger logger = Logger.getLogger(SlEntreprise.class);
+    private String UNDERSCORE = "_";
 
-	private String erreur = "";
- private String notif = "";
-	private EntrepriseDao entrepriseDao;
-	private ChoixEntrepriseDao choixEntrepriseDao;
-	private CandidatDao candidatDao;
-	private EntretienDao entretienDao;
+    private static Logger logger = Logger.getLogger(SlEntreprise.class);
 
-	public SlEntreprise() {
-	}
+    private String erreur = "";
+    private String notif = "";
+    private EntrepriseDao entrepriseDao;
+    private ChoixEntrepriseDao choixEntrepriseDao;
+    private CandidatDao candidatDao;
+    private EntretienDao entretienDao;
+    private static Pattern pattern;
+    private static Matcher matcher;
 
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		int idCompte = (int) session.getAttribute("idCompte");
-		String demande;
-		String vueReponse = "/index.jsp";
-		initAttr();
-		erreur = "";
-		request.getSession().removeAttribute("notifR");
-		try {
-			demande = getDemande(request);
-			if (demande.equalsIgnoreCase("choixEnt.chxE")) {
-				vueReponse = enregistrerChoixEntreprise(request);
-			} else if (demande.equalsIgnoreCase("consulter.chxE")) {
-				vueReponse = consulterChoixEntreprise(request);
-			} else if (demande.equalsIgnoreCase("modifierChoixEnt.chxE")) {
-				vueReponse = rafraichirPriorite(request);
-			} else if (demande.equalsIgnoreCase("initSaisieChoixEnt.chxE")) {
-				vueReponse = initSaisieChoixEnt(request);
-			} else if (demande.equalsIgnoreCase("supprimerChoix.chxE")) {
-				vueReponse = supprimerChoix(request);
-			} else if (demande.equalsIgnoreCase("consulterPlanning.chxE")) {
-				vueReponse = consulterPlanning(request);
-			}
+    public SlEntreprise() {
+        pattern = Pattern.compile("[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._\\s-]+");
+    }
 
-		} catch (Exception e) {
-			erreur = e.getMessage();
-			logger.error(Utilitaire.creerMsgPourLogs(String.valueOf(idCompte), "entreprise", true, erreur));
-		} finally {
-			request.setAttribute("erreurR", erreur);
-                         request.setAttribute("notifR", notif);
-			if (!"".equalsIgnoreCase(erreur) && getDemande(request).equalsIgnoreCase("choixEnt.chxE")) {
-				vueReponse = "/saisieChoixEntreprise.jsp";
-			}
-			logger.debug(Utilitaire.creerMsgPourLogs(String.valueOf(idCompte), "entreprise", false, vueReponse));
-			request.setAttribute("pageR", vueReponse);
-			RequestDispatcher dsp = request.getRequestDispatcher(vueReponse);
-			dsp.forward(request, response);
-		}
-	}
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        int idCompte = (int) session.getAttribute("idCompte");
+        String demande;
+        String vueReponse = "/index.jsp";
+        initAttr();
+        erreur = "";
+        request.getSession().removeAttribute("notifR");
+        try {
+            demande = getDemande(request);
+            if (demande.equalsIgnoreCase("choixEnt.chxE")) {
+                vueReponse = enregistrerChoixEntreprise(request);
+            } else if (demande.equalsIgnoreCase("consulter.chxE")) {
+                vueReponse = consulterChoixEntreprise(request);
+            } else if (demande.equalsIgnoreCase("modifierChoixEnt.chxE")) {
+                vueReponse = rafraichirPriorite(request);
+            } else if (demande.equalsIgnoreCase("initSaisieChoixEnt.chxE")) {
+                vueReponse = initSaisieChoixEnt(request);
+            } else if (demande.equalsIgnoreCase("supprimerChoix.chxE")) {
+                vueReponse = supprimerChoix(request);
+            } else if (demande.equalsIgnoreCase("consulterPlanning.chxE")) {
+                vueReponse = consulterPlanning(request);
+            }
 
-	public void initAttr() {
-		entrepriseDao = (EntrepriseDao) DaoFactory.getDaoInstance(Constantes.ENTREPRISE);
-		candidatDao = (CandidatDao) DaoFactory.getDaoInstance(Constantes.CANDIDAT);
-		choixEntrepriseDao = (ChoixEntrepriseDao) DaoFactory.getDaoInstance(Constantes.CHOIX_ENTREPRISE);
-		entretienDao = (EntretienDao) DaoFactory.getDaoInstance(Constantes.ENTRETIEN);
-	}
+        } catch (Exception e) {
+            erreur = e.getMessage();
+            logger.error(Utilitaire.creerMsgPourLogs(String.valueOf(idCompte), "entreprise", true, erreur));
+        } finally {
+            request.setAttribute("erreurR", erreur);
+            request.setAttribute("notifR", notif);
+            if (!"".equalsIgnoreCase(erreur) && getDemande(request).equalsIgnoreCase("choixEnt.chxE")) {
+                vueReponse = "/saisieChoixEntreprise.jsp";
+            }
+            logger.debug(Utilitaire.creerMsgPourLogs(String.valueOf(idCompte), "entreprise", false, vueReponse));
+            request.setAttribute("pageR", vueReponse);
+            RequestDispatcher dsp = request.getRequestDispatcher(vueReponse);
+            dsp.forward(request, response);
+        }
+    }
 
-	private String getDemande(HttpServletRequest request) {
-		String demande = "";
-		demande = request.getRequestURI();
-		demande = demande.substring(demande.lastIndexOf("/") + 1);
-		return demande;
-	}
+    public void initAttr() {
+        entrepriseDao = (EntrepriseDao) DaoFactory.getDaoInstance(Constantes.ENTREPRISE);
+        candidatDao = (CandidatDao) DaoFactory.getDaoInstance(Constantes.CANDIDAT);
+        choixEntrepriseDao = (ChoixEntrepriseDao) DaoFactory.getDaoInstance(Constantes.CHOIX_ENTREPRISE);
+        entretienDao = (EntretienDao) DaoFactory.getDaoInstance(Constantes.ENTRETIEN);
+    }
 
-	private String consulterPlanning(HttpServletRequest request) throws Exception {
-		HttpSession session = request.getSession();
+    private String getDemande(HttpServletRequest request) {
+        String demande = "";
+        demande = request.getRequestURI();
+        demande = demande.substring(demande.lastIndexOf("/") + 1);
+        return demande;
+    }
 
-		String entretiens = "";
-		String entreprise = "";
+    private String consulterPlanning(HttpServletRequest request) throws Exception {
+        HttpSession session = request.getSession();
 
-		int idEntreprise = (int) session.getAttribute("idCompte");
-		List<Entretien> listeEntretiens = entretienDao.getByIdEntreprise(idEntreprise);
-		if (listeEntretiens.size() == 0){
-			throw new Exception("Votre planning n'a pas encore été généré, veuillez contacter l'administrateur du site.");
-		}
-		
-		entretiens = entretiens + idEntreprise + "/_";
-		List<Entretien> liste = entretienDao.getByIdEntreprise(idEntreprise);
-		Entreprise ent = entrepriseDao.getById(idEntreprise);
-		for (Entretien e : liste) {
-			Candidat c = candidatDao.getById(e.getEntretienPK().getIdCandidat());
-                        e.setCandidat(c);
-                        e.setEntreprise(ent);
-			entretiens = entretiens + majAuDebut(c.getNom()) + UNDERSCORE + majAuDebut(c.getPrenom()) + UNDERSCORE
-					+ majAuDebut(ent.getNom()) + " (Salle " + e.getIdSalle() + ")" + UNDERSCORE
-					+ e.getHeure() + UNDERSCORE + e.getHeureFin() + UNDERSCORE;
+        String entretiens = "";
+        String entreprise = "";
 
-		}
-		String salle = String.valueOf(entretienDao.getByIdEntreprise(idEntreprise).get(0).getIdSalle());
-		entreprise = entreprise + idEntreprise + UNDERSCORE + majAuDebut(ent.getNom()) + UNDERSCORE + "(Salle "
-				+ salle + ")" + UNDERSCORE;
+        int idEntreprise = (int) session.getAttribute("idCompte");
+        List<Entretien> listeEntretiens = entretienDao.getByIdEntreprise(idEntreprise);
+        if (listeEntretiens.size() == 0) {
+            throw new Exception("Votre planning n'a pas encore été généré, veuillez contacter l'administrateur du site.");
+        }
 
-		session.setAttribute("entretiensEnt", liste);
-		session.setAttribute("entreprise", entreprise);
-		return "/planningEnt.jsp";
-	}
+        entretiens = entretiens + idEntreprise + "/_";
+        List<Entretien> liste = entretienDao.getByIdEntreprise(idEntreprise);
+        Entreprise ent = entrepriseDao.getById(idEntreprise);
+        for (Entretien e : liste) {
+            Candidat c = candidatDao.getById(e.getEntretienPK().getIdCandidat());
+            e.setCandidat(c);
+            e.setEntreprise(ent);
+            entretiens = entretiens + majAuDebut(c.getNom()) + UNDERSCORE + majAuDebut(c.getPrenom()) + UNDERSCORE
+                    + majAuDebut(ent.getNom()) + " (Salle " + e.getIdSalle() + ")" + UNDERSCORE
+                    + e.getHeure() + UNDERSCORE + e.getHeureFin() + UNDERSCORE;
 
-	public String convertirHeure(Timestamp t) {
-		String heure = String.valueOf(t.getHours());
-		String minute = String.valueOf(t.getMinutes());
-		if (minute.length() == 1) {
-			minute = "0" + minute;
-		}
-		return heure + ":" + minute;
-	}
+        }
+        String salle = String.valueOf(entretienDao.getByIdEntreprise(idEntreprise).get(0).getIdSalle());
+        entreprise = entreprise + idEntreprise + UNDERSCORE + majAuDebut(ent.getNom()) + UNDERSCORE + "(Salle "
+                + salle + ")" + UNDERSCORE;
 
-	public String majAuDebut(String chaine) {
-		String chaineMaj = chaine.replaceFirst(".", (chaine.charAt(0) + "").toUpperCase());
-		return chaineMaj;
-	}
+        session.setAttribute("entretiensEnt", liste);
+        session.setAttribute("entreprise", entreprise);
+        return "/planningEnt.jsp";
+    }
 
-	public String initSaisieChoixEnt(HttpServletRequest request) {
-		String vueReponse = "/saisieChoixEntreprise.jsp";
-		HttpSession session = request.getSession();
-		int idEntreprise = (int) session.getAttribute("idCompte");
-		List<Candidat> listeCandidats = choixEntrepriseDao.getCandidatNonChoisi(idEntreprise);
-		session.setAttribute("listeCandidats", listeCandidats);
-		return vueReponse;
-	}
+    public String convertirHeure(Timestamp t) {
+        String heure = String.valueOf(t.getHours());
+        String minute = String.valueOf(t.getMinutes());
+        if (minute.length() == 1) {
+            minute = "0" + minute;
+        }
+        return heure + ":" + minute;
+    }
 
-	public String enregistrerChoixEntreprise(HttpServletRequest request) throws Exception {
-		String vueReponse;
-		int priorite = candidatDao.getAll().size();
-		int i = 2;
-		while (i < candidatDao.getAll().size() * 3) {
-			if (request.getParameter("id" + i) != null) {
-				int idCandidat = Integer.parseInt(request.getParameter("id" + i));
-				int duree = Integer.parseInt(request.getParameter("duree" + i));
-				if (idCandidat != -1) {
-					HttpSession session = request.getSession(true);
-					int idCompte = (int) session.getAttribute("idCompte");
-					ChoixEntreprise chxEnt = new ChoixEntreprise(idCompte, idCandidat);
-                                        chxEnt.setPriorite(priorite);
-                                        chxEnt.setTempsVoulu(duree);
-                                          notif = "Vos choix ont été validés, vous pouvez dès à présent les consulter.";
-					choixEntrepriseDao.createChoixEntreprise(chxEnt);
-				} else {
-					throw new Exception("Une erreur s'est produite, le candidat " + idCandidat + " n'existe pas !");
-				}
-				priorite--;
-			}
-			i++;
-		}
-		 return "/index.jsp";
-	}
+    public String majAuDebut(String chaine) {
+        String chaineMaj = chaine.replaceFirst(".", (chaine.charAt(0) + "").toUpperCase());
+        return chaineMaj;
+    }
 
-	@SuppressWarnings("unchecked")
-	public String modifierChoixEntreprise(HttpServletRequest request) throws Exception {
-		String vueReponse;
-		HttpSession session = request.getSession(true);
-		List<ChoixEntreprise> listeChoix = (List<ChoixEntreprise>) session.getAttribute("listeChoix");
-		int priorite = candidatDao.getAll().size();
-		int idCompte = (int) session.getAttribute("idCompte");
-		choixEntrepriseDao.deleteAllEntreprise(idCompte);
-		for (int i = 0; i < listeChoix.size(); i++) {
-			ChoixEntreprise chxEnt = new ChoixEntreprise(listeChoix.get(i).getChoixEntreprisePK().getIdCandidat(),
-					listeChoix.get(i).getChoixEntreprisePK().getIdEntreprise());
-                       
-                        chxEnt.setPriorite(priorite);
-                        chxEnt.setTempsVoulu(listeChoix.get(i).getTempsVoulu());
-			choixEntrepriseDao.createChoixEntreprise(chxEnt);
-			priorite--;
-		}
-		return "/listeChoix.jsp";
-	}
+    public String initSaisieChoixEnt(HttpServletRequest request) {
+        String vueReponse = "/saisieChoixEntreprise.jsp";
+        HttpSession session = request.getSession();
+        int idEntreprise = (int) session.getAttribute("idCompte");
+        List<Candidat> listeCandidats = choixEntrepriseDao.getCandidatNonChoisi(idEntreprise);
+        session.setAttribute("listeCandidats", listeCandidats);
+        return vueReponse;
+    }
 
-	public String consulterChoixEntreprise(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		int idEntreprise = (int) session.getAttribute("idCompte");
-		List<ChoixEntreprise> choix = choixEntrepriseDao.getByIdEntreprise(idEntreprise);
-		session.setAttribute("listeChoix", choix);
-		return "/listeChoixEnt.jsp";
-	}
+    public String enregistrerChoixEntreprise(HttpServletRequest request) throws Exception {
+        String vueReponse;
+        int priorite = candidatDao.getAll().size();
+        int i = 2;
+        while (i < candidatDao.getAll().size() * 3) {
+            if (request.getParameter("id" + i) != null) {
+                int idCandidat = Integer.parseInt(request.getParameter("id" + i));
+                int duree = Integer.parseInt(request.getParameter("duree" + i));
+                if (idCandidat != -1) {
+                    HttpSession session = request.getSession(true);
+                    int idCompte = (int) session.getAttribute("idCompte");
+                    ChoixEntreprise chxEnt = new ChoixEntreprise(idCompte, idCandidat);
+                    chxEnt.setPriorite(priorite);
+                    chxEnt.setTempsVoulu(duree);
+                    notif = "Vos choix ont été validés, vous pouvez dès à présent les consulter.";
+                    choixEntrepriseDao.createChoixEntreprise(chxEnt);
+                } else {
+                    throw new Exception("Une erreur s'est produite, le candidat " + idCandidat + " n'existe pas !");
+                }
+                priorite--;
+            }
+            i++;
+        }
+        return "/index.jsp";
+    }
 
-	public String rafraichirPriorite(HttpServletRequest request) {
-		Map<String, String> test = request.getParameterMap();
-		for (String ent : test.keySet()) {
-			List<String> params = getParamsFromQueryString(request.getParameter(ent));
-			int i = 0;
-			int priorite = candidatDao.getAll().size();
-			while (i < params.size()) {
-				if (i % 5 == 0) {
-					int idCandidat = retrouverCandidat(params.get(i + 1), params.get(i));
-					HttpSession session = request.getSession();
-					int idEntreprise = (int) session.getAttribute("idCompte");
-					List<ChoixEntreprise> liste = choixEntrepriseDao.getByIdEntreprise(idEntreprise);
-					for (ChoixEntreprise chx : liste) {
-						if (chx.getChoixEntreprisePK().getIdCandidat() == idCandidat) {
-							chx.setPriorite(priorite);
-							choixEntrepriseDao.updateEntreprise(chx);
-							priorite--;
-						}
-					}
-				}
-				i++;
-			}
-		}
-		return "jsdhgfsdgfshdgfhdsfghdfghdfhfgkgj";
-	}
+    @SuppressWarnings("unchecked")
+    public String modifierChoixEntreprise(HttpServletRequest request) throws Exception {
+        String vueReponse;
+        HttpSession session = request.getSession(true);
+        List<ChoixEntreprise> listeChoix = (List<ChoixEntreprise>) session.getAttribute("listeChoix");
+        int priorite = candidatDao.getAll().size();
+        int idCompte = (int) session.getAttribute("idCompte");
+        choixEntrepriseDao.deleteAllEntreprise(idCompte);
+        for (int i = 0; i < listeChoix.size(); i++) {
+            ChoixEntreprise chxEnt = new ChoixEntreprise(listeChoix.get(i).getChoixEntreprisePK().getIdCandidat(),
+                    listeChoix.get(i).getChoixEntreprisePK().getIdEntreprise());
 
-	public List<String> getParamsFromQueryString(String chaine) {
-		List<String> result = new ArrayList<String>();
-		System.out.println(chaine);
-		// la chaine nécessite des modifications
-		chaine = chaine.replaceAll("\t", "");
-		String[] fields = chaine.split("\n");
-		int i = 0;
-		while (i < fields.length) {
-			if (!"".equals(fields[i])) {
-				result.add(fields[i]);
-			}
-			i++;
-		}
-		result.remove(3);
-		result.remove(2);
-		result.remove(1);
-		result.remove(0);
-		return result;
-	}
+            chxEnt.setPriorite(priorite);
+            chxEnt.setTempsVoulu(listeChoix.get(i).getTempsVoulu());
+            choixEntrepriseDao.createChoixEntreprise(chxEnt);
+            priorite--;
+        }
+        return "/listeChoix.jsp";
+    }
 
-	public int retrouverCandidat(String nom, String prenom) {
-		List<Candidat> liste = candidatDao.getAll();
-		for (Candidat c : liste) {
-			if (nom.equalsIgnoreCase(c.getNom()) && prenom.equalsIgnoreCase(c.getPrenom())) {
-				return c.getIdCandidat();
-			}
-		}
-		// code d'erreur
-		return -1;
-	}
+    public String consulterChoixEntreprise(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        int idEntreprise = (int) session.getAttribute("idCompte");
+        List<ChoixEntreprise> choix = choixEntrepriseDao.getByIdEntreprise(idEntreprise);
+        session.setAttribute("listeChoix", choix);
+        return "/listeChoixEnt.jsp";
+    }
 
-	public String supprimerChoix(HttpServletRequest request) {
-		String[] idEntrepriseCandidat = request.getParameter("chaine").split(" ");
-		int idEntreprise = Integer.parseInt(idEntrepriseCandidat[0]);
-		int idCandidat = Integer.parseInt(idEntrepriseCandidat[1]);
-		ChoixEntreprise choix = choixEntrepriseDao.getByIdEntrepriseIdCandidat(idEntreprise, idCandidat);
-		choixEntrepriseDao.removeChoixEntreprise(choix);
-		return consulterChoixEntreprise(request);
-	}
+    public String rafraichirPriorite(HttpServletRequest request) {
+        Map<String, String> test = request.getParameterMap();
+        for (String ent : test.keySet()) {
+            List<String> params = getParamsFromQueryString(request.getParameter(ent));
+            int i = 0;
+            int priorite = candidatDao.getAll().size();
+            while (i < params.size()) {
+                if (i % 5 == 0) {
+                    int idCandidat = retrouverCandidat(params.get(i + 1), params.get(i));
+                    HttpSession session = request.getSession();
+                    int idEntreprise = (int) session.getAttribute("idCompte");
+                    List<ChoixEntreprise> liste = choixEntrepriseDao.getByIdEntreprise(idEntreprise);
+                    for (ChoixEntreprise chx : liste) {
+                        if (chx.getChoixEntreprisePK().getIdCandidat() == idCandidat) {
+                            chx.setPriorite(priorite);
+                            choixEntrepriseDao.updateEntreprise(chx);
+                            priorite--;
+                        }
+                    }
+                }
+                i++;
+            }
+        }
+        return "jsdhgfsdgfshdgfhdsfghdfghdfhfgkgj";
+    }
 
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		processRequest(request, response);
-	}
+    public List<String> getParamsFromQueryString(String chaine) {
+        List<String> result = new ArrayList<String>();
+        System.out.println(chaine);
+        // la chaine nécessite des modifications
+        
+        chaine = chaine.replaceAll("\t", "");
+        String[] fields = chaine.split("\n");
+        
+        int i = 0;
+        while (i < fields.length) {
+            if (!"".equals(fields[i].replaceAll("\\s", ""))) {
+                result.add(fields[i].replaceAll("\\s", ""));
+            }
+            i++;
+        }
+        
+        System.out.println(result);
+        result.remove(3);
+        result.remove(2);
+        result.remove(1);
+        result.remove(0);
 
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		processRequest(request, response);
-	}
+        return result;
+    }
+
+    public int retrouverCandidat(String nom, String prenom) {
+        List<Candidat> liste = candidatDao.getAll();
+        for (Candidat c : liste) {
+            if (nom.equalsIgnoreCase(c.getNom()) && prenom.equalsIgnoreCase(c.getPrenom())) {
+                return c.getIdCandidat();
+            }
+        }
+        // code d'erreur
+        return -1;
+    }
+
+    public String supprimerChoix(HttpServletRequest request) {
+        String[] idEntrepriseCandidat = request.getParameter("chaine").split(" ");
+        int idEntreprise = Integer.parseInt(idEntrepriseCandidat[0]);
+        int idCandidat = Integer.parseInt(idEntrepriseCandidat[1]);
+        ChoixEntreprise choix = choixEntrepriseDao.getByIdEntrepriseIdCandidat(idEntreprise, idCandidat);
+        choixEntrepriseDao.removeChoixEntreprise(choix);
+        return consulterChoixEntreprise(request);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
 
 }

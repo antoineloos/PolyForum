@@ -201,7 +201,7 @@
                             <tr>
                                 <th class="bg-primary index">Prénom</th>
                                 <th class="bg-primary index">Nom</th>
-                                <th class="bg-primary index">Temps (en min)</th>
+                                <th class="bg-primary index">Temps</th>
                                 <th class="bg-primary index">Priorité</th>
                                 <th class="bg-primary index"></th>
                             </tr>
