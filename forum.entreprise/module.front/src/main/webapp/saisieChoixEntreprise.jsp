@@ -177,21 +177,45 @@
             </div>
         </nav>
     
-	<section id="logo-section" class="text-center">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="logo text-center">
-						<span>Ajout des candidats</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<input type="hidden" id="temp" name="temp" value="" />
-	<div class="container">
-		<br /> <br /> <font color="grey" size="2">* Ajoutez vos différents choix puis validez pour enregistrer.</font>
-		<div class="form-group">
+            <div class="well well-lg col-md-6 offset-3 topoffset4">
+            <section id="logo-section" class="text-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="logo text-center">
+                                <span><h2>Ajouter un documents</h2></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="container topoffset4">
+                <div class="form-group ">
+                    <form role="form" action="upload.file" method="POST" enctype="multipart/form-data">
+
+                        <td><input type="file" id="document" name="document" class="form-control name_list inputdiv" accept=".pdf"/></td>
+
+                        <input type="submit" id="submit" class="btn btn-info pull-right topoffset4" value="Valider" />
+                    </form>
+                </div>
+            </div>
+            <br />
+            <br />
+            <section id="logo-section" class="text-center ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="logo text-center">
+                                <span><h2>Ajout des candidats</h2></span>
+                                <span><font color="grey" size="2">* Ajoutez vos différents choix puis validez pour enregistrer.</font></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="container">
+                <br />
+                <div class="fresh-table full-color-blue">
 			<c:if test="${empty listeCandidats}">
 				<br />
 				<div class="alert alert-warning">
@@ -239,8 +263,12 @@
 						form="add_name" value="Valider" />
 				</form>
 			</c:if>
-		</div>
-	</div>
+                    
+                </div>
+            </div>
+        </div>
+    
+	<input type="hidden" id="temp" name="temp" value="" />
 
 	<!-- End Logo Section -->
 	<script>
