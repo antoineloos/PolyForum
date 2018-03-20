@@ -176,74 +176,59 @@
 
             </div>
         </nav>
-        
-        
-        
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-6 mx-auto">
 
-                            <!-- form card login -->
-                            <div class="card rounded-0">
-                                <div class="card-header">
-                                    <h3 class="mb-0">Choix des entreprises</h3>
-                                </div>
-                                <div class="card-body">
+        <div class="well well-lg col-md-6 offset-3 topoffset4">
+            <section id="logo-section" class="text-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="logo">
+                                <span><h2>Choix des entreprises</h2></span>
                                     <c:if test="${empty listeEntreprises}">
                                         <br />
                                         <div class="alert alert-warning">
                                             <strong>Aucune entreprise n'est disponible!</strong>
                                         </div>
                                     </c:if>
-                                    <c:if test="${!empty listeEntreprises}">
-                                        <form name="add_name" id="add_name" role="form"
-                                              action="choixCan.can" method="POST">
-                                            <div class="fresh-table full-color-blue">
-
-                                                <table id="fresh-table" class="table" >
-                                                    <thead>
-                                                        <tr>
-                                                            <th >Nom</th>
-                                                            <th ></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr id="row1">
-                                                            <td><select name=nom1 class="form-control" id="listeEntreprises">
-                                                                    <option value="Sélectionnez une entreprise">Sélectionnez une entreprise</option>
-                                                                    <c:forEach var="enterprise" items="${listeEntreprises}">
-                                                                        <option value="${enterprise.idEntreprise}">${enterprise.nom}</option>
-                                                                    </c:forEach>
-                                                                </select></td>
-                                                            <td><button type="button" name="add" id="add"
-                                                                        class="btn btn-success">Ajouter</button> </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <input type="submit" id="submit" class="btn btn-info"
-                                                   form="add_name" value="Valider" />
-                                        </form>
-                                    </c:if>
-                                </div>
-                                <!--/card-block-->
                             </div>
-                            <!-- /form card login -->
-
                         </div>
-
-
                     </div>
-                    <!--/row-->
-
                 </div>
-                <!--/col-->
+            </section>
+            <div class="container topoffset4">
+                <div class="form-group ">
+                    <form name="add_name" id="add_name" role="form"
+                          action="choixCan.can" method="POST">
+                        <div class="fresh-table full-color-blue">
+
+                            <table id="fresh-table" class="table" >
+                                <thead>
+                                    <tr>
+                                        <th >Nom</th>
+                                        <th ></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr id="row1">
+                                        <td><select name=nom1 class="form-control" id="listeEntreprises">
+                                                <option value="Sélectionnez une entreprise">Sélectionnez une entreprise</option>
+                                                <c:forEach var="enterprise" items="${listeEntreprises}">
+                                                    <option value="${enterprise.idEntreprise}">${enterprise.nom}</option>
+                                                </c:forEach>
+                                            </select></td>
+                                        <td><button type="button" name="add" id="add"
+                                                    class="btn btn-success">Ajouter</button> </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <input type="submit" id="submit" class="btn btn-info"
+                               form="add_name" value="Valider" />
+                    </form>
+                </div>
             </div>
-            <!--/row-->
+
         </div>
-     
         
         <input type="hidden" id="temp" name="temp" value="" />
         

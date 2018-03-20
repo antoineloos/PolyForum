@@ -177,47 +177,49 @@
     
     
 	<!-- End Logo Section -->
-	
-	<section id="logo-section" class="text-center">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="logo text-center">
-						<span>Consulter les documents disponibles</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<div class="container">
-		<br />
-		<div class="panel panel-default">
-			<table id="sort" class="table table-bordered table-striped grid">
-				<thead>
-					<tr>
-						<th class="bg-primary index" style="text-align: center;">Ajouté par</th>
-						<th class="bg-primary index" style="text-align: center;">Nom du fichier</th>
-						<th class="bg-primary index" style="text-align: center;"></th>
-					</tr>
-				</thead>
-				<tbody class="sort">
-					<c:forEach var="varListeFichiers" items="${listeFichiers}"
-						varStatus="loop">
-							<tr id="${varListeFichiers.file.name}">
-								<td class="text-center">${varListeFichiers.nomProprietaire}</td>
-								<td class="text-center">${varListeFichiers.nomSansExtension}</td>
-								<td width="5%">
-									<form class="form col-md-12 center-block" role="form" action="recupererFichier.file" method="post">
-										<button name="bouton" type="submit" class="btn btn-success btn_remove btn-lg" value="${varListeFichiers.file.name}">
-											<span class="glyphicon glyphicon-save" aria-hidden="true"></span>
-										</button>
-									</form>
-								</td>
-							</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-	</div>
+       <div class="well well-lg col-md-6 offset-3 topoffset4">
+            <section id="logo-section" class="text-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="logo text-center">
+                                <span><h2>Consulter les documents disponibles</h2></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="container topoffset4">
+                <div class="form-group ">
+                    <table id="sort" class="table table-bordered table-striped grid">
+                            <thead>
+                                    <tr>
+                                            <th class="bg-primary index" style="text-align: center;">Ajouté par</th>
+                                            <th class="bg-primary index" style="text-align: center;">Nom du fichier</th>
+                                            <th class="bg-primary index" style="text-align: center;"></th>
+                                    </tr>
+                            </thead>
+                            <tbody class="sort">
+                                    <c:forEach var="varListeFichiers" items="${listeFichiers}"
+                                            varStatus="loop">
+                                                    <tr id="${varListeFichiers.file.name}">
+                                                            <td class="text-center">${varListeFichiers.nomProprietaire}</td>
+                                                            <td class="text-center">${varListeFichiers.nomSansExtension}</td>
+                                                            <td width="5%">
+                                                                    <form class="form col-md-12 center-block" role="form" action="recupererFichier.file" method="post">
+                                                                            <button name="bouton" type="submit" class="btn btn-success btn_remove btn-lg" value="${varListeFichiers.file.name}">
+                                                                                    <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+                                                                            </button>
+                                                                    </form>
+                                                            </td>
+                                                    </tr>
+                                    </c:forEach>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
 </body>
 </html>
