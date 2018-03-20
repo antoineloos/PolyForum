@@ -173,22 +173,22 @@
             </div>
         </nav>
     
+       <div class="well well-lg col-md-8 offset-2 topoffset4">
+            <section id="logo-section" class="text-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="logo text-center">
+                                <span><h2>Ajout de salle</h2></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="container topoffset4">
+                <div class="form-group ">
 
-	<section id="logo-section" class="text-center">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="logo text-center">
-	
-						<span>Ajout de salle</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<div class="container">
-		<div class="form-group">
-			<form name="add_salle" id="add_salle" role="form" action="ajoutSalle.adm" method="POST">
+   			<form name="add_salle" id="add_salle" role="form" action="ajoutSalle.adm" method="POST">
 				<table class="table" id="dynamic_field">
 					<tr id="row1">
 						<td><input type="text" id="salle1" name="salle1" placeholder="Numéro de la salle" class="form-control name_list" /></td>
@@ -198,8 +198,13 @@
 				</table>
 				<input type="submit" id="submit" class="btn btn-info" form="add_salle" value="Valider" />
 			</form>
-		</div>
-	</div>
+                    
+                    
+                </div>
+            </div>
+
+        </div>
+
 
 	<!-- End Logo Section -->
 	<script>

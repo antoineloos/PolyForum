@@ -188,13 +188,13 @@
                 <div class="form-group ">
                     <form role="form" action="modifierChoixCan.can" method="post">
 
-                            <div class="panel panel-default fresh-table full-color-blue">
+                            <div class="panel panel-default fresh-table">
                                     <table id="sort"  class="table ">
                                             <thead>
                                                     <tr>
-                                                            <th >Nom</th>
-                                                            <th >Priorité</th>
-                                                            <th ></th>
+                                                            <th class="bg-primary index">Nom</th>
+                                                            <th class="bg-primary index">Priorité</th>
+                                                            <th class="bg-primary index"></th>
                                                     </tr>
                                             </thead>
                                             <tbody class="sort">

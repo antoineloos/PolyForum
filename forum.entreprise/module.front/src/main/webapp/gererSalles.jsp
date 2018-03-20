@@ -193,11 +193,11 @@
                 <table id="sort" class="table table-bordered table-striped grid">
                     <thead>
                         <tr>
-                            <th  style="text-align: center;">Numéro de la salle</th>
-                            <th  style="text-align: center;">Places totale</th>
-                            <th  style="text-align: center;">Places restantes</th>
-                            <th  style="text-align: center;">Utilisation de la salle</th>
-                            <th  style="text-align: center;"></th>
+                            <th class="bg-primary index" style="text-align: center;">Numéro de la salle</th>
+                            <th class="bg-primary index" style="text-align: center;">Places totale</th>
+                            <th class="bg-primary index" style="text-align: center;">Places restantes</th>
+                            <th class="bg-primary index" style="text-align: center;">Utilisation de la salle</th>
+                            <th class="bg-primary index" style="text-align: center;"></th>
                         </tr>
                     </thead>
                     <tbody class="sort">

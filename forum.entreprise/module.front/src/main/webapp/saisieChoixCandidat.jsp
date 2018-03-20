@@ -199,13 +199,13 @@
                 <div class="form-group ">
                     <form name="add_name" id="add_name" role="form"
                           action="choixCan.can" method="POST">
-                        <div class="fresh-table full-color-blue">
+                        <div class="fresh-table">
 
                             <table id="fresh-table" class="table" >
                                 <thead>
                                     <tr>
-                                        <th >Nom</th>
-                                        <th ></th>
+                                        <th class="bg-primary index">Nom</th>
+                                        <th class="bg-primary index"></th>
                                     </tr>
                                 </thead>
                                 <tbody>

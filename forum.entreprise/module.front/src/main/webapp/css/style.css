@@ -297,7 +297,9 @@ fieldset[disabled] .btn-primary.active {
     color: #777;
 }
 
-
+th {
+    color: white;
+}
 
 /**** Start Background Color ****/
 

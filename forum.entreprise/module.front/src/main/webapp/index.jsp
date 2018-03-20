@@ -195,7 +195,7 @@
                 <div class="container">
                     <c:if test="${erreurR != null && erreurR != ''}">
                         <div class="alert-danger" role="alert" >
-                            <span class="glyphicon glyphicon-exclamation-sign"  aria-hidden="true"></span>
+                            <span class="fa fa-exclamation-triangle"  aria-hidden="true"></span>
                             <pre style="display:inline"><c:out value="${erreurR}" /></pre>
 
                         </div>
@@ -300,7 +300,7 @@
                                         
                                     <span class="text-center">
 
-                                        <h2>Bonjour ${sessionScope.nom}</h2>
+                                        <h2>Entreprise ${sessionScope.nom}</h2>
                                         
                                     </span>
 

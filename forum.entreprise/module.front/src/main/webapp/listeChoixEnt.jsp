@@ -191,11 +191,11 @@
                     <table id="sort" class="table table-bordered table-striped grid">
                         <thead>
                             <tr>
-                                <th>Prénom</th>
-                                <th>Nom</th>
-                                <th>Temps (en min)</th>
-                                <th>Priorité</th>
-                                <th></th>
+                                <th class="bg-primary index">Prénom</th>
+                                <th class="bg-primary index">Nom</th>
+                                <th class="bg-primary index">Temps (en min)</th>
+                                <th class="bg-primary index">Priorité</th>
+                                <th class="bg-primary index"></th>
                             </tr>
                         </thead>
                         <tbody class="sort">

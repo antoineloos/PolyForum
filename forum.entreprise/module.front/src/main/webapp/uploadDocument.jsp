@@ -215,13 +215,13 @@
             </section>
             <div class="container">
                 <br />
-                <div class="fresh-table full-color-blue">
+                <div class="fresh-table">
                     <table id="fresh-table" class="table">
                         <thead>
                             <tr>
-                                <th  style="text-align: center;">Nom du fichier</th>
-                                <th  style="text-align: center;"></th>
-                                <th  style="text-align: center;"></th>
+                                <th class="bg-primary index" style="text-align: center;">Nom du fichier</th>
+                                <th class="bg-primary index" style="text-align: center;"></th>
+                                <th class="bg-primary index" style="text-align: center;"></th>
                             </tr>
                         </thead>
                         <tbody >
@@ -232,7 +232,7 @@
                                     <td width="5%">
                                         <form class="form col-md-12 center-block" role="form" action="recupererFichier.file" method="post">
                                             <button name="bouton" type="submit" class="btn btn-success btn_remove btn-lg" value="${varListeFichiers.file.name}">
-                                                <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+                                                <span class="fa fa-download" aria-hidden="true"></span>
                                             </button>
                                         </form>
                                     </td>
