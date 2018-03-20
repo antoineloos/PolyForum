@@ -30,7 +30,6 @@
 
 
         <!-- Template js -->
-        <script src="js/jquery-2.1.1.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="js/jquery.appear.js"></script>
         <script src="js/contact_me.js"></script>
@@ -199,8 +198,8 @@
             <table class="table table-bordered grid" id="dynamic_field">
                 <thead>
                     <tr>
-                        <th >Nom</th>
-                        <th></th>
+                        <th class="bg-primary index" >Nom</th>
+                        <th class="bg-primary index" ></th>
                     </tr>
                 </thead>
                 <tbody>

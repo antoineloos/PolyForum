@@ -202,8 +202,8 @@
             <table class="table table-bordered grid" id="dynamic_field">
                 <thead>
                     <tr>
-                        <th >Nom</th>
-                        <th ></th>
+                        <th class="bg-primary index" >Nom</th>
+                        <th class="bg-primary index" ></th>
                     </tr>
                 </thead>
                 <tbody>

@@ -239,11 +239,11 @@
             <table id="sort" class="table table-bordered table-striped grid">
 				<thead>
 					<tr>
-						<th  style="text-align: center;">Nom de l'entreprise</th>
-						<th  style="text-align: center;">Nom du candidat</th>
-                                                <th  style="text-align: center;">Salle</th>
-                                                <th  style="text-align: center;">Debut</th>
-                                                <th  style="text-align: center;">Fin</th>
+						<th class="bg-primary index" style="text-align: center;">Nom de l'entreprise</th>
+						<th class="bg-primary index" style="text-align: center;">Nom du candidat</th>
+                                                <th class="bg-primary index" style="text-align: center;">Salle</th>
+                                                <th class="bg-primary index" style="text-align: center;">Debut</th>
+                                                <th class="bg-primary index" style="text-align: center;">Fin</th>
 						
 						
 					</tr>

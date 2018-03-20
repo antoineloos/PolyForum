@@ -31,13 +31,13 @@
 
 
 <!-- Template js -->
-<script src="../../js/jquery-2.1.1.min.js"></script>
 <script src="../../bootstrap/js/bootstrap.min.js"></script>
 <script src="../../js/jquery.appear.js"></script>
 <script src="../../js/contact_me.js"></script>
 <script src="../../js/jqBootstrapValidation.js"></script>
 <script src="../../js/modernizr.custom.js"></script>
 <script src="../../js/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
 <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>

@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
+        <link rel="icon" type="image/ico" href="images/favicon.ico" />
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>Poly Forum</title>
 
@@ -205,11 +206,11 @@
                                     <table id="sort" >
                                         <thead>
                                             <tr>
-                                                <th  style="text-align: center;">Nom de l'entreprise</th>
-                                                <th  style="text-align: center;">Nom du candidat</th>
-                                                <th  style="text-align: center;">Salle</th>
-                                                <th  style="text-align: center;">Debut</th>
-                                                <th  style="text-align: center;">Fin</th>
+                                                <th class="bg-primary index" style="text-align: center;">Nom de l'entreprise</th>
+                                                <th class="bg-primary index" style="text-align: center;">Nom du candidat</th>
+                                                <th class="bg-primary index" style="text-align: center;">Salle</th>
+                                                <th class="bg-primary index" style="text-align: center;">Debut</th>
+                                                <th class="bg-primary index" style="text-align: center;">Fin</th>
 
 
                                             </tr>
