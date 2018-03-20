@@ -30,7 +30,6 @@
 
         <!-- Template js -->
         <script src="alerty/js/alerty.min.js"></script>
-        <script src="js/jquery-2.1.1.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="js/jquery.appear.js"></script>
         <script src="js/contact_me.js"></script>

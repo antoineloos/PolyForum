@@ -30,7 +30,6 @@
         <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">
 
         <!-- Template js -->
-        <script src="js/jquery-2.1.1.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
 
         <script src="js/jquery.appear.js"></script>
@@ -40,7 +39,6 @@
         <script src="js/script.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script src="dom-to-image/dom-to-image.min.js"></script>
         <script src="alerty/js/alerty.min.js"></script>
