@@ -117,8 +117,8 @@
                 return 0; //It is not IE
         }
 
-        if (GetIEVersion() > 0)
+        if (GetIEVersion() > 0){
             alert("Vous utilisez une version d'internet explorer qui est obsolète\n ce site n'est pas compatible vous allez être redirigé");
-        window.location.replace("http://www.msn.com/");
+        window.location.replace("http://www.msn.com/");}
     </script>
 </html>
