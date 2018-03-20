@@ -289,7 +289,7 @@
 
                                 </c:if>
                                 <c:if test="${sessionScope.type == 'entreprise'}">
-                                    <span>
+                                    <span class="text-center">
                                         
                                         <!--Bonjour ${sessionScope.nom},<br>
                                         Vous pouvez consultez les différentes CV déposés par les candidats en <a href="consulter.file">cliquant ici.</a><br>
