@@ -50,7 +50,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="well well-lg col-md-6">
+                        <div class="well well-lg col-md-8">
                             <!-- Start Logo Section -->
                             <section id="logo-section" class="text-center">
                                 <div class="container">
