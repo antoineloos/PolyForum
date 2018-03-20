@@ -16,6 +16,6 @@ public final class Constantes {
 	public static String POLYFORUM = "polyforum2";
 	
 	// envoie de mail
-	public static String MAILPOLYFORUM = "polyforum69@gmail.com";
-	public static String PWDPOLYFORUM = "pforum69";
+	public static String MAILPOLYFORUM = "polyforum.lyon@gmail.com";
+	public static String PWDPOLYFORUM = "polyforumAdmin2015";
 }

@@ -244,12 +244,13 @@ public class SlCompte extends HttpServlet {
             int idCandidat = (int) session.getAttribute("idCompte");
             String type = (String) session.getAttribute("type");
             String mdp_old = (String) request.getParameter("mdp_old");
+            String old_HASh = Utilitaire.generatePassword(mdp_old);
             String mdp_new = request.getParameter("mdp_new");
             String mdp_new2 = request.getParameter("mdp_new2");
             Candidat candidat = candidatDao.getById(idCandidat);
-            if (mdp_old.equals(candidat.getPassword())) {
+            if (old_HASh.equals(candidat.getPassword())) {
                 if (mdp_new.equals(mdp_new2)) {
-                    candidat.setPassword(mdp_new);
+                    candidat.setPassword(Utilitaire.generatePassword(mdp_new));
                     candidatDao.updateCandidat(candidat);
                 } else {
                     throw new Exception("La confirmation du mot de passe n'est pas bonne");
@@ -270,12 +271,13 @@ public class SlCompte extends HttpServlet {
             int idEntreprise = (int) session.getAttribute("idCompte");
             String type = (String) session.getAttribute("type");
             String mdp_old = (String) request.getParameter("mdp_old");
+                String old_HASh = Utilitaire.generatePassword(mdp_old);
             String mdp_new = request.getParameter("mdp_new");
             String mdp_new2 = request.getParameter("mdp_new2");
             Entreprise e = entrepriseDao.getById(idEntreprise);
-            if (mdp_old.equals(e.getPassword())) {
+            if (old_HASh.equals(e.getPassword())) {
                 if (mdp_new.equals(mdp_new2)) {
-                    e.setPassword(mdp_new);
+                    e.setPassword(Utilitaire.generatePassword(mdp_new));
                     entrepriseDao.updateEntreprise(e);
                 } else {
                     throw new Exception("La confirmation du mot de passe n'est pas bonne");
