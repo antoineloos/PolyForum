@@ -22,7 +22,7 @@
 
         <!-- Custom CSS -->
         <link href="css/animate.css" rel="stylesheet">
-<link href="css/fresh-bootstrap-table.css" rel="stylesheet" />
+        <link href="css/fresh-bootstrap-table.css" rel="stylesheet" />
         <!-- Custom CSS -->
         <link href="css/style.css" rel="stylesheet">
 
@@ -31,13 +31,16 @@
 
 
         <!-- Template js -->
-        <script src="js/jquery-2.1.1.min.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script src="js/jquery.appear.js"></script>
-        <script src="js/contact_me.js"></script>
-        <script src="js/jqBootstrapValidation.js"></script>
-        <script src="js/modernizr.custom.js"></script>
-        <script src="js/script.js"></script>
+       <script src="../../js/jquery-2.1.1.min.js"></script>
+        <script src="../../bootstrap/js/bootstrap.min.js"></script>
+        <script src="../../js/jquery.appear.js"></script>
+        <script src="../../js/contact_me.js"></script>
+        <script src="../../js/jqBootstrapValidation.js"></script>
+        <script src="../../js/modernizr.custom.js"></script>
+        <script src="../../js/script.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
 
         <!--[if lt IE 9]>
                     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -180,7 +183,10 @@
                     </form>
                 </div>
             </div>
+
             <br><br>
+
+
             <section id="logo-section" class="text-center">
                 <div class="container">
                     <div class="row">
