@@ -171,62 +171,54 @@
 
 	<!-- End Logo Section -->
 
-<div class="container py-5">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-6 mx-auto">
-
-                    <!-- form card login -->
-                    <div class="card rounded-0">
-                        <div class="card-header">
-                            <h3 class="mb-0">Consulter mes choix</h3>
+       <div class="well well-lg col-md-6 offset-3 topoffset4">
+            <section id="logo-section" class="text-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="logo text-center">
+                                <span><h2>Consulter mes choix</h2></span>
+                                <span><font color="grey" size="2"> * Glisser et déposer vos choix pour ordonner selon vos préférences. </font></span>
+                            </div>
                         </div>
-                        <div class="card-body">
-		<br /> <font color="grey" size="2"> * Glisser et déposer vos choix pour ordonner selon vos préférences. </font>
-		<form role="form" action="modifierChoixCan.can" method="post">
-                   
-			<div class="panel panel-default fresh-table full-color-blue">
-				<table id="sort"  class="table ">
-					<thead>
-						<tr>
-							<th >Nom</th>
-							<th >Priorité</th>
-							<th ></th>
-						</tr>
-					</thead>
-					<tbody class="sort">
-						<c:forEach var="varListeChoix" items="${listeChoix}" varStatus="loop">
-							<tr id='${loop.index+1}' name='${loop.index+1}'>
-								<td id='nom${loop.index+1}' name='nom${loop.index+1}'>${varListeChoix.getEntreprise().nom}</td>
-								<td id='prio${loop.index+1}' name='prio${loop.index+1}' class="index">${loop.index+1}</td>
-								<td width="5%"><button type="button" name="remove" id="${sessionScope.idCompte} ${varListeChoix.getChoixCandidatPK().idEntreprise}"
-										class="btn btn-danger btn_remove">X</button></td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-		</form>
-		<form method="get" action="initSaisieChoixCan.can">
-			<button type="submit" class="btn btn-action">Ajouter une entreprise</button>
-		</form>
-                        </div>
-                        <!--/card-block-->
                     </div>
-                    <!-- /form card login -->
-
                 </div>
+            </section>
+            <div class="container topoffset4">
+                <div class="form-group ">
+                    <form role="form" action="modifierChoixCan.can" method="post">
 
-
+                            <div class="panel panel-default fresh-table full-color-blue">
+                                    <table id="sort"  class="table ">
+                                            <thead>
+                                                    <tr>
+                                                            <th >Nom</th>
+                                                            <th >Priorité</th>
+                                                            <th ></th>
+                                                    </tr>
+                                            </thead>
+                                            <tbody class="sort">
+                                                    <c:forEach var="varListeChoix" items="${listeChoix}" varStatus="loop">
+                                                            <tr id='${loop.index+1}' name='${loop.index+1}'>
+                                                                    <td id='nom${loop.index+1}' name='nom${loop.index+1}'>${varListeChoix.getEntreprise().nom}</td>
+                                                                    <td id='prio${loop.index+1}' name='prio${loop.index+1}' class="index">${loop.index+1}</td>
+                                                                    <td width="5%"><button type="button" name="remove" id="${sessionScope.idCompte} ${varListeChoix.getChoixCandidatPK().idEntreprise}"
+                                                                                    class="btn btn-danger btn_remove">X</button></td>
+                                                            </tr>
+                                                    </c:forEach>
+                                            </tbody>
+                                    </table>
+                            </div>
+                    </form>
+                    <form method="get" action="initSaisieChoixCan.can">
+                            <button type="submit" class="btn btn-action">Ajouter une entreprise</button>
+                    </form>
+                </div>
             </div>
-            <!--/row-->
-
+            <br />
+            <br />
         </div>
-        <!--/col-->
-    </div>
-    <!--/row-->
-</div>
+        
 	<script>
 		$('.sort').sortable({
 			cursor : 'move',
