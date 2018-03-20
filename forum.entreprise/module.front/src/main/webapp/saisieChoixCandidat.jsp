@@ -227,8 +227,7 @@
                     </form>
                 </div>
             </div>
-            <br />
-            <br />
+
         </div>
         
         <input type="hidden" id="temp" name="temp" value="" />
