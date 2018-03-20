@@ -26,12 +26,12 @@ public class Mail {
 		Session session = Session.getDefaultInstance(props,
 				new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication("polyforum69@gmail.com", "pforum69");
+						return new PasswordAuthentication("polyforum.lyon@gmail.com", "polyforumAdmin2015");
 					}
 				});
 		session.setDebug(true);
 		Transport transport = session.getTransport();
-		InternetAddress addressFrom = new InternetAddress("polyforum69@gmail.com");
+		InternetAddress addressFrom = new InternetAddress("polyforum.lyon@gmail.com");
 		MimeMessage message = new MimeMessage(session);
 		message.setSender(addressFrom);
 

@@ -1103,17 +1103,17 @@ public class SlAdmin extends HttpServlet {
 					}
 					else {
 						Candidat can = new Candidat(0,nomCan);
-                                            
+                                                String password = Utilitaire.generateFirstPAssword();
                                                 can.setPrenom(prenomCan);
                                                 can.setPresent(Boolean.TRUE);
                                                 can.setTrouve(Boolean.TRUE);
 						can.setLogin(mailCan.toLowerCase());
 						can.setNom(nomCan);
 						can.setPrenom(prenomCan);
-						can.setPassword(generatePassword(nomCan.toLowerCase()));
+						can.setPassword(generatePassword(password));
 						augmenterPrioriteChoixEntreprise();
 						candidatDao.createCandidat(can);
-						envoiMail(can.getLogin(), can.getPassword());
+						envoiMail(can.getLogin(), password);
 					}
 				} else {
 					logger.error(Utilitaire.creerMsgPourLogs("admin", "admin", true, "Une erreur s'est produite, le candidat " + prenomCan + " " + nomCan + " existe déjà !"));
@@ -1179,11 +1179,11 @@ public class SlAdmin extends HttpServlet {
 		message.setSubject("Confirmation de votre inscription à PolyForum");
 		String content = "";
 		
-		content = content + "<br>Bonjour, <br><br>";
+		content = content + "<br>Bonjour,<br><br>";
 		content = content + "Si vous n'êtes pas concerné par l'évènement, merci de faire suivre ce mail aux personnes présentes au forum Polytech.<br>";
-		content = content + "Voici vos identifiants pour vous connecter à PolyForum:<br><br>";
-		content = content + "Login: " + login + "<br>";
-		content = content + "Mot de passe: " + mdp + "<br><br>";
+		content = content + "Voici vos identifiants pour vous connecter à PolyForum : <br><br>";
+		content = content + "Login : " + login + "<br>";
+		content = content + "Mot de passe : " + mdp + "<br><br>";
 		
 		if (!link.equals("") && link != null){
 			content = content + "Vous pouvez vous connecter à votre compte sur <a href=\"" + link + "\">notre site</a><br><br>";
@@ -1263,15 +1263,15 @@ public class SlAdmin extends HttpServlet {
 					}
 					else {
 						Entreprise ent = new Entreprise(0,nomEnt);
-                                               
+                                               String password = Utilitaire.generateFirstPAssword();
                                                 ent.setNomRepresentant(nomRepr);
                                                 ent.setPresent(Boolean.TRUE);
                                                
 						ent.setLogin(mailRepr.toLowerCase());
-						ent.setPassword(generatePassword(nomEnt.toLowerCase()));
+						ent.setPassword(generatePassword(password));
 						augmenterPrioriteChoixCandidat();
 						entrepriseDao.createEntreprise(ent);
-						//envoiMail(ent.getLogin(), ent.getPassword());
+						//envoiMail(ent.getLogin(), password);
 					}
 				} else {
 					logger.error(Utilitaire.creerMsgPourLogs("admin", "admin", true, "Une erreur s'est produite, l'entreprise " + nomEnt + " " + nomRepr + " existe déjà !"));
@@ -1290,16 +1290,8 @@ public class SlAdmin extends HttpServlet {
 	}
 
 	public String generatePassword(String nom) {
-		String result = nom;
-		int i = 0;
-		int num;
-		while (i < 4) {
-			Double nume = new Double(Math.random() * (9 - 1));
-			num = nume.intValue();
-			result = result + num;
-			i++;
-		}
-		return result;
+		
+		return Utilitaire.generatePassword(nom);
 	}
 
 	public int retrouverEntreprise(String nomEnt, String nomRepr) {
@@ -1324,6 +1316,7 @@ public class SlAdmin extends HttpServlet {
 			MultipartRequest m=new MultipartRequest(request, dirName, 100000000);  
 			String fileName = dirName + "/" + m.getOriginalFileName("document");
 			List<Candidat> listeC = ImportExcel.excelRecupererCandidat(fileName);
+                          String password = Utilitaire.generateFirstPAssword();
 			String listeErreurs = "";
 			for(int i = 0; i < listeC.size(); i++){
 				Candidat can = listeC.get(i);
@@ -1337,9 +1330,10 @@ public class SlAdmin extends HttpServlet {
 						logger.error(Utilitaire.creerMsgPourLogs("admin", "admin", true, "Le mail " + mail + " est invalide pour le candidat "  + prenom + " " + nom + " !"));
 					}
 					else {
+                                            can.setPassword(Utilitaire.generatePassword(password));
 						augmenterPrioriteChoixEntreprise();
 						candidatDao.createCandidat(can);
-						envoiMail(can.getLogin(), can.getPassword());
+						envoiMail(can.getLogin(), password);
 					}
 				}
 				else {
@@ -1373,6 +1367,7 @@ public class SlAdmin extends HttpServlet {
 			MultipartRequest m=new MultipartRequest(request, dirName, 100000000);
 			String fileName = dirName + "/" + m.getOriginalFileName("document");
 			List<Entreprise> listeE = ImportExcel.excelRecupererEntreprise(fileName);
+                        String password = Utilitaire.generateFirstPAssword();
 			String listeErreurs = "";
 			for(int i = 0; i < listeE.size(); i++){
 				Entreprise en = listeE.get(i);
@@ -1386,8 +1381,9 @@ public class SlAdmin extends HttpServlet {
 					}
 					else {
 						augmenterPrioriteChoixCandidat();
+                                                en.setPassword(Utilitaire.generatePassword(password));
 						entrepriseDao.createEntreprise(en);
-						envoiMail(en.getLogin(), en.getPassword());
+						envoiMail(en.getLogin(),password);
 					}
 				}
 				else {

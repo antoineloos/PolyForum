@@ -60,7 +60,7 @@ public class ImportExcel {
 		c.setLogin(mail);
 		
 		// Initialisation des autres attributs du Candidat
-		c.setPassword(Utilitaire.generatePassword(nom));
+		//c.setPassword(Utilitaire.generatePassword(mail));
 		c.setPresent(true);
 		c.setTrouve(false);
 		
@@ -114,7 +114,7 @@ public class ImportExcel {
 		e.setLogin(mail);
 		
 		// Initialisation des autres attributs du Entreprise
-		e.setPassword(Utilitaire.generatePassword(nom));
+		//e.setPassword(Utilitaire.generatePassword(mail));
 		e.setPresent(true);
 
 		if(!StringUtils.isNullOrEmpty(e.getNom()) && !StringUtils.isNullOrEmpty(e.getLogin())){
