@@ -35,7 +35,7 @@ public class SlEntreprise extends HttpServlet {
 	private static Logger logger = Logger.getLogger(SlEntreprise.class);
 
 	private String erreur = "";
-
+ private String notif = "";
 	private EntrepriseDao entrepriseDao;
 	private ChoixEntrepriseDao choixEntrepriseDao;
 	private CandidatDao candidatDao;
@@ -74,6 +74,7 @@ public class SlEntreprise extends HttpServlet {
 			logger.error(Utilitaire.creerMsgPourLogs(String.valueOf(idCompte), "entreprise", true, erreur));
 		} finally {
 			request.setAttribute("erreurR", erreur);
+                         request.setAttribute("notifR", notif);
 			if (!"".equalsIgnoreCase(erreur) && getDemande(request).equalsIgnoreCase("choixEnt.chxE")) {
 				vueReponse = "/saisieChoixEntreprise.jsp";
 			}
@@ -116,6 +117,7 @@ public class SlEntreprise extends HttpServlet {
 		for (Entretien e : liste) {
 			Candidat c = candidatDao.getById(e.getEntretienPK().getIdCandidat());
                         e.setCandidat(c);
+                        e.setEntreprise(ent);
 			entretiens = entretiens + majAuDebut(c.getNom()) + UNDERSCORE + majAuDebut(c.getPrenom()) + UNDERSCORE
 					+ majAuDebut(ent.getNom()) + " (Salle " + e.getIdSalle() + ")" + UNDERSCORE
 					+ e.getHeure() + UNDERSCORE + e.getHeureFin() + UNDERSCORE;
@@ -167,6 +169,7 @@ public class SlEntreprise extends HttpServlet {
 					ChoixEntreprise chxEnt = new ChoixEntreprise(idCompte, idCandidat);
                                         chxEnt.setPriorite(priorite);
                                         chxEnt.setTempsVoulu(duree);
+                                          notif = "Vos choix ont été validés, vous pouvez dès à présent les consulter.";
 					choixEntrepriseDao.createChoixEntreprise(chxEnt);
 				} else {
 					throw new Exception("Une erreur s'est produite, le candidat " + idCandidat + " n'existe pas !");
@@ -175,7 +178,7 @@ public class SlEntreprise extends HttpServlet {
 			}
 			i++;
 		}
-		return "/listeChoixEnt.jsp";
+		 return "/index.jsp";
 	}
 
 	@SuppressWarnings("unchecked")
