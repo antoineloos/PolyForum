@@ -180,7 +180,7 @@
             </div>
         </nav>
 
-       <div class="well well-lg col-md-8 offset-2 topoffset4">
+       <div class="well well-lg col-md-8">
             <section id="logo-section" class="text-center">
                 <div class="container">
                     <div class="row">

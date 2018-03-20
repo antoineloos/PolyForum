@@ -193,7 +193,7 @@
         </nav>
     
     
-    <div class="well well-lg col-md-6 offset-3 topoffset4">
+    <div class="well well-lg col-md-6">
         <c:if test="${erreurR != null && erreurR != ''}">
             <div class="alert-danger" role="alert" >
                 <span class="glyphicon glyphicon-exclamation-sign"  aria-hidden="true"></span>

@@ -184,7 +184,7 @@
 	<!-- End Logo Section -->
 
         
-        <div class="well well-lg col-md-8 offset-2 topoffset4">
+        <div class="well well-lg col-md-8">
             <section id="logo-section" class="text-center">
                 <div class="container">
                     <div class="row">
@@ -207,7 +207,6 @@
 						<th class="bg-primary index" style="text-align: center;">Nom du candidat</th>
 						<th class="bg-primary index" style="text-align: center;">Prenom du candidat</th>
 						<th class="bg-primary index" style="text-align: center;">Login</th>
-						<th class="bg-primary index" style="text-align: center;">Mot de passe</th>
 					</tr>
 				</thead>
 				<tbody class="sort">
@@ -216,7 +215,6 @@
 							<td>${varListeCandidat.nom}</td>
 							<td>${varListeCandidat.prenom}</td>
 							<td>${varListeCandidat.login}</td>	
-							<td>${varListeCandidat.password}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -233,7 +231,7 @@
         </div>
         
         
-        <div class="well well-lg col-md-8 offset-2 topoffset4">
+        <div class="well well-lg col-md-8">
             <section id="logo-section" class="text-center">
                 <div class="container">
                     <div class="row">
@@ -256,7 +254,6 @@
 						<th class="bg-primary index" style="text-align: center;">Nom de l'entreprise</th>
 						<th class="bg-primary index" style="text-align: center;">Nom du représentant</th>
 						<th class="bg-primary index" style="text-align: center;">Login</th>
-						<th class="bg-primary index" style="text-align: center;">Mot de passe</th>
 					</tr>
 				</thead>
 				<tbody class="sort">
@@ -265,7 +262,6 @@
 							<td>${varListeEntreprise.nom}</td>
 							<td>${varListeEntreprise.nomRepresentant}</td>
 							<td>${varListeEntreprise.login}</td>	
-							<td>${varListeEntreprise.password}</td>
 						</tr>
 					</c:forEach>
 				</tbody>

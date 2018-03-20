@@ -181,7 +181,7 @@
         </nav>
         
 
-        <div class="well well-lg col-md-6 offset-3 topoffset4">
+        <div class="well well-lg col-md-8">
             <section id="logo-section" class="text-center">
                 <div class="container">
                     <div class="row">
