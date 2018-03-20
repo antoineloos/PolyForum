@@ -80,7 +80,7 @@
 
                                             <div class="logo text-center">
                                                 <span>PolyForum est une plateforme conçue par des étudiants
-                                                    de Polytech Lyon afin de simplifer l'organisation de l'evenement et aider les entreprises, les futures étudiants et les professeurs
+                                                    de Polytech Lyon afin de simplifer l'organisation de l'événement et aider les entreprises, les futurs étudiants et les professeurs
                                                     le jour du forum
                                                     <br/>
                                                     <br/>

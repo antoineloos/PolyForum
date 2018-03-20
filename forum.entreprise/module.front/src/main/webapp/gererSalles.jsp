@@ -202,7 +202,7 @@
                     <thead>
                         <tr>
                             <th class="bg-primary index" style="text-align: center;">Numéro de la salle</th>
-                            <th class="bg-primary index" style="text-align: center;">Places totale</th>
+                            <th class="bg-primary index" style="text-align: center;">Places totales</th>
                             <th class="bg-primary index" style="text-align: center;">Places restantes</th>
                             <th class="bg-primary index" style="text-align: center;">Utilisation de la salle</th>
                             <th class="bg-primary index" style="text-align: center;"></th>

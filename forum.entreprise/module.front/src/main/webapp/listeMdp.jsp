@@ -205,7 +205,7 @@
 				<tr ><th class="bg-primary index" style="text-align: center;" colspan=4 >Candidats</th></tr>
 					<tr>
 						<th class="bg-primary index" style="text-align: center;">Nom du candidat</th>
-						<th class="bg-primary index" style="text-align: center;">Prenom du candidat</th>
+						<th class="bg-primary index" style="text-align: center;">Prénom du candidat</th>
 						<th class="bg-primary index" style="text-align: center;">Login</th>
 					</tr>
 				</thead>
