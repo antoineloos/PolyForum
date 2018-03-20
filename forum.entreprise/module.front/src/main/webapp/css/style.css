@@ -1132,3 +1132,5 @@ and (max-width : 991px) {
     padding: 20px;
     color: #fff;
 }
+
+.bg-primary{background-color: #327CCB;}
