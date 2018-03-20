@@ -67,6 +67,8 @@
 
     </head>
     <body>
+              <input type="HIDDEN"  id="notif" value="${notifR}">
+              
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light navbarpoly">
             <c:if test="${sessionScope.type == 'entreprise' || sessionScope.type == 'candidat'}">

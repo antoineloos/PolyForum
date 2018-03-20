@@ -25,6 +25,7 @@ public class Plannification {
 	EntrepriseDao entrepriseDao;
 
 	public Map<Integer, Integer> genererPlanning () throws Exception {
+            
 		choixEntrepriseDao = (ChoixEntrepriseDao) DaoFactory.getDaoInstance(Constantes.CHOIX_ENTREPRISE);
 		choixCandidatDao = (ChoixCandidatDao) DaoFactory.getDaoInstance(Constantes.CHOIX_CANDIDAT);
 		candidatDao = (CandidatDao) DaoFactory.getDaoInstance(Constantes.CANDIDAT);
