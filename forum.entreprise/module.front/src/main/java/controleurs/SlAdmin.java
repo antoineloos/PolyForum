@@ -1424,7 +1424,7 @@ public class SlAdmin extends HttpServlet {
 		File file = null; 
 		BufferedInputStream from = null; 
 		try {  
-			file = new File(templateDirName + separator + filename); 
+			file = new File("C://" + filename); 
 			response.setContentLength((int) file.length());  
 			int bufferSize = 64 * 1024; 
 			from = new BufferedInputStream(new FileInputStream(file), bufferSize * 2); 
