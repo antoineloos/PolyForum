@@ -8,6 +8,7 @@ import javax.persistence.Query;
 
 import forum.app.dao.model.Entreprise;
 import forum.app.dao.util.PersistenceUtil;
+import forum.app.dao.util.SHA512;
 
 public class EntrepriseDao {
 	
@@ -72,14 +73,15 @@ public class EntrepriseDao {
 	}
 	
 	public int connecter(String login, String pwd) throws Exception {
+             String pwdH = SHA512.generatePassword(pwd);
     	prepareEntityManagerForTransaction();
         List<Entreprise> listeEntreprise = em.createQuery("SELECT e FROM Entreprise e WHERE e.login = :login").setParameter("login", login).getResultList();
         if(listeEntreprise.isEmpty()){
             return -1;
         }
          
-        if (listeEntreprise.stream().anyMatch((en)->en.getPassword().equals(pwd))){
-           return ((Entreprise)listeEntreprise.stream().filter((e)->e.getPassword().equals(pwd)).toArray()[0]).getIdEntreprise();
+        if (listeEntreprise.stream().anyMatch((en)->en.getPassword().equals(pwdH))){
+           return ((Entreprise)listeEntreprise.stream().filter((e)->e.getPassword().equals(pwdH)).toArray()[0]).getIdEntreprise();
         }
         // Code erreur
         return -1;
