@@ -205,7 +205,7 @@
 				<thead>
 					<tr>
 						<th class="bg-primary index" style="text-align: center;">Nom du candidat</th>
-						<th class="bg-primary index" style="text-align: center;">Prenom du candidat</th>
+						<th class="bg-primary index" style="text-align: center;">Prénom du candidat</th>
 						<c:if test="${sessionScope.type == 'admin'}">
 							<th class="bg-primary index" style="text-align: center;">Présent</th>
 						</c:if>

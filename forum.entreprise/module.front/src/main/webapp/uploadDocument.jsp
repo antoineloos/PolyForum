@@ -192,7 +192,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="logo text-center">
-                                <span><h2>Ajouter un documents</h2></span>
+                                <span><h2>Ajouter un document</h2></span>
                             </div>
                         </div>
                     </div>
