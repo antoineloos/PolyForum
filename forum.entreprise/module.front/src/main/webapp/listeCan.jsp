@@ -31,6 +31,7 @@
 
 
 <!-- Template js -->
+
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="js/jquery.appear.js"></script>
 <script src="js/contact_me.js"></script>
@@ -176,22 +177,22 @@
 
 
 	<!-- End Logo Section -->
+       <div class="well well-lg col-md-8 offset-2 topoffset4">
+            <section id="logo-section" class="text-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="logo text-center">
+                                <span><h2>Consulter les candidats</h2></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="container topoffset4">
+                <div class="form-group ">
 
-	<section id="logo-section" class="text-center">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="logo text-center">
-					<span>Consulter les candidats</span>
-				</div>
-			</div>
-		</div>
-	</div>
-	</section>
-
-	<div class="container">
-		<br />
-		<div class="panel panel-default">
+                 		<div class="panel panel-default">
 			<table id="sort" class="table table-bordered table-striped grid">
 				<thead>
 					<tr>
@@ -227,7 +228,12 @@
 		<form method="get" action="saisieCandidat.jsp">
 			<button type="submit" class="btn btn-action">Ajouter un candidat</button>
 		</form>
-	</div>
+                    
+                </div>
+            </div>
+
+        </div>
+        
 	<script>
 		$(document).ready(function() {
 			$(document).on('click', '.btn_remove', function() {

@@ -172,22 +172,21 @@
             </div>
         </nav>
 
+       <div class="well well-lg col-md-8 offset-2 topoffset4">
+            <section id="logo-section" class="text-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="logo text-center">
+                                <span><h2>Consulter les entreprises</h2></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="container topoffset4">
+                <div class="form-group ">
 
-
-	<section id="logo-section" class="text-center">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="logo text-center">
-					<span>Consulter les entreprises</span>
-				</div>
-			</div>
-		</div>
-	</div>
-	</section>
-
-	<div class="container">
-		<br />
 		<div class="panel panel-default">
 			<table id="sort" class="table table-bordered table-striped grid">
 				<thead>
@@ -225,7 +224,12 @@
 		<form method="get" action="saisieEntreprise.jsp">
 			<button type="submit" class="btn btn-action">Ajouter une entreprise</button>
 		</form>
-	</div>
+                    
+                </div>
+            </div>
+
+        </div>
+
 	<script>
 		$(document).ready(function() {
 			$(document).on('click', '.btn_remove', function() {
