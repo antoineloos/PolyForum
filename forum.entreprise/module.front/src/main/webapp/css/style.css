@@ -22,6 +22,10 @@ body {
     font-style: normal;
 }
 
+.navbarpoly{
+    padding: 5px 10px 5px 10px;
+}
+
 a,
 a:hover,
 a:focus,
@@ -273,15 +277,13 @@ fieldset[disabled] .btn-primary.active {
 
 /**** Start Logo Section ****/
 
-#logo-section {
-    
-}
-.logo-h2
-{
+.logo-h3 {
     color: #014A75;
+    margin-bottom: 0px;
+    font-family: 'Eurostile LT', sans-serif;
 }
 
-.navbar-brand,
+.logo-brand,
 .logo h1 {
     font-family: 'Eurostile LT', sans-serif;
     color: #014A75;
