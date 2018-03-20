@@ -48,19 +48,19 @@
         <script src="html2canvas/jquery.plugin.html2canvas.js"></script>
         <script type="text/javascript" src="jsPDF/jspdf.min.js"></script>
         <script type="text/javascript" src="canvas2image/canvas2image.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
-<body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <c:if test="${sessionScope.type == 'entreprise' || sessionScope.type == 'candidat'}">
-            <a class="navbar-brand" href="accueil.cpt">PolyForum</a>
+            <a class="navbar-brand" href="accueil.cpt"><h2 class="logo-h2">POLYFORUM</h2></a>
 
         </c:if>
         <c:if test="${sessionScope.type == 'admin'}">
-              <a class="navbar-brand" href="admin.jsp">PolyForum</a>
+            <a class="navbar-brand" href="admin.jsp"><h2 class="logo-h2">POLYFORUM</h2></a>
         </c:if>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -96,14 +96,14 @@
                 </li>
                 <c:if test="${sessionScope.type == 'admin'}">
                     <li class="nav-item"><a class="nav-link" href="gererSalles.adm">Salles</a></li>
-                </c:if>
-                <c:if test="${sessionScope.type == 'entreprise'}">
+                    </c:if>
+                    <c:if test="${sessionScope.type == 'entreprise'}">
                     <li class="nav-item"><a class="nav-link" href="consulterPlanning.chxE">Planning</a></li>
-                </c:if>
-                <c:if test="${sessionScope.type == 'candidat'}">
+                    </c:if>
+                    <c:if test="${sessionScope.type == 'candidat'}">
                     <li class="nav-item"><a class="nav-link" href="consulterPlanning.can">Planning</a></li>
-                </c:if>
-                <c:if test="${sessionScope.type == 'admin'}">
+                    </c:if>
+                    <c:if test="${sessionScope.type == 'admin'}">
                     <li class="nav-item dropdown active">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Planning
@@ -126,10 +126,10 @@
 
                 <c:if test="${sessionScope.type == 'entreprise' || sessionScope.type == 'candidat'}">
                     <li class="nav-item"><a class="nav-link" href="download.file">Documents</a></li>
-                </c:if>
-                <c:if test="${sessionScope.type == 'admin'}">
+                    </c:if>
+                    <c:if test="${sessionScope.type == 'admin'}">
                     <li class="nav-item"><a class="nav-link" href="choixTypeDocument.adm">Documents</a></li>
-                </c:if>
+                    </c:if>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Liens
@@ -140,86 +140,86 @@
                     </div>
                 </li>
             </ul>
-            
-            
+
+
             <ul class="nav navbar-nav navbar-right">
                 <c:if test="${sessionScope.type == 'entreprise'}">
                     <li class="nav-item"><a class="nav-link" href='modifier_ent.cpt'>Bonjour <strong>${sessionScope.nom_representant}</strong></a></li>
-                </c:if>
-                <c:if test="${sessionScope.type == 'candidat'}">
+                    </c:if>
+                    <c:if test="${sessionScope.type == 'candidat'}">
                     <li class="nav-item"><a class="nav-link" href='modifier_etu.cpt'>Bonjour <strong>${sessionScope.prenom}</strong></a></li>
-                </c:if>
-                <c:if test="${sessionScope.type == 'admin'}">
+                    </c:if>
+                    <c:if test="${sessionScope.type == 'admin'}">
                     <li class="nav-item" ><a class="nav-link" href='consulterMdp.adm'>Consulter comptes</a></li>
-                </c:if>
+                    </c:if>
                 <li class="nav-item"><a class="nav-link" href='deconnecter.cpt'>Déconnexion</a></li>
             </ul>
-            
+
         </div>
     </nav>
-
-    <section id="logo-section" class="text-center hidden-print">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="logo text-center">
-                        <span>Planning individuel</span>
+    <div class="well well-lg col-md-8 offset-2 topoffset4">
+        <section id="logo-section" class="text-center hidden-print">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="logo text-center">
+                            <span>Planning individuel</span>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <input type="hidden" id="listeEntretien" name="listeEntretien" value="${sessionScope.entretiens}"></input>
+        <input type="hidden" id="listeEntreprise" name="listeEntreprise" value="${sessionScope.entreprise}"></input>
+        <input type="hidden" id="max" name="max" value="${sessionScope.max}"></input>
+
+
+
+
+
+        <form name="add_name" id="add_name" role="form"
+              action="changeEnt.adm" method="POST">
+            <table class="table table-bordered grid" id="dynamic_field">
+                <thead>
+                    <tr>
+                        <th >Nom</th>
+                        <th ></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="row1">
+                        <td><select id="isTitles" name="isTitles" class="form-control" >
+                                <option value="Sélectionnez une entreprise">Sélectionnez une entreprise</option>
+                                <c:forEach var="enterprise" items="${entreprises}">
+                                    <option value="${enterprise.idEntreprise}">${enterprise.nom}</option>
+                                </c:forEach>
+                            </select></td>
+
+                    </tr>
+                </tbody>
+            </table>
+            <input type="submit" id="submit" class="btn btn-info"
+                   form="add_name" value="Valider" />
+        </form>
+    </div>
+
+    <!--   <div class="mainbody-section text-center">
+           <div id="timetables" class="timetables">
+               
+    <c:forEach items="${sessionScope.listeEntreprises}" var="entreprise">
+        <div class="contentdiv">
+            <div class="visibleContent" id="visibleContent">
+                <div class="timetable" id="timetable${entreprise.idEntreprise}"></div>
+            </div>
         </div>
-    </section>
-   
-    <input type="hidden" id="listeEntretien" name="listeEntretien" value="${sessionScope.entretiens}"></input>
-    <input type="hidden" id="listeEntreprise" name="listeEntreprise" value="${sessionScope.entreprise}"></input>
-    <input type="hidden" id="max" name="max" value="${sessionScope.max}"></input>
-   
-      
-     
-      
-            
-            <form name="add_name" id="add_name" role="form"
-					action="changeEnt.adm" method="POST">
-					<table class="table table-bordered grid" id="dynamic_field">
-					<thead>
-						<tr>
-							<th class="bg-primary">Nom</th>
-							<th class="bg-primary"></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr id="row1">
-							<td><select id="isTitles" name="isTitles" class="form-control" >
-									<option value="Sélectionnez une entreprise">Sélectionnez une entreprise</option>
-									<c:forEach var="enterprise" items="${entreprises}">
-										<option value="${enterprise.idEntreprise}">${enterprise.nom}</option>
-									</c:forEach>
-							</select></td>
-							
-						</tr>
-					</tbody>
-					</table>
-					<input type="submit" id="submit" class="btn btn-info"
-						form="add_name" value="Valider" />
-				</form>
-       
-  
- <!--   <div class="mainbody-section text-center">
-        <div id="timetables" class="timetables">
-            
-            <c:forEach items="${sessionScope.listeEntreprises}" var="entreprise">
-                <div class="contentdiv">
-                    <div class="visibleContent" id="visibleContent">
-                        <div class="timetable" id="timetable${entreprise.idEntreprise}"></div>
-                    </div>
-                </div>
-            </c:forEach>
-        </div>
-        <div class="adm-options" style="display: inline-block; width: 32%;">
-            <button class="btn btn-action hidden-print" style="margin-top: 2%; margin-right: 0.5%; float: left;" onClick="savePage()">Enregistrer le
-                planning</button>
-        </div>
-    </div> -->
+    </c:forEach>
+</div>
+<div class="adm-options" style="display: inline-block; width: 32%;">
+    <button class="btn btn-action hidden-print" style="margin-top: 2%; margin-right: 0.5%; float: left;" onClick="savePage()">Enregistrer le
+        planning</button>
+</div>
+</div> -->
     <script>
         var ent = document.getElementById("listeEntretien");
         if (ent.value != '') {
