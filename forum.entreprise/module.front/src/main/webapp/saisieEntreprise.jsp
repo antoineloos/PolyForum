@@ -22,7 +22,7 @@
 
         <!-- Custom CSS -->
         <link href="css/animate.css" rel="stylesheet">
-<link href="css/fresh-bootstrap-table.css" rel="stylesheet" />
+        <link href="css/fresh-bootstrap-table.css" rel="stylesheet" />
         <!-- Custom CSS -->
         <link href="css/style.css" rel="stylesheet">
 

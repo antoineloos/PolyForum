@@ -213,7 +213,7 @@
 
                                                 <!--Text-->
                                                 <p class="card-text">Vous pouvez consultez les différentes offres émises par les entreprises pour les postes à pourvoir</p>
-                                                <a href="download.file" class="btn btn-primary btn-lg outline">Visionner <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                                <a href="consulter.file" class="btn btn-primary btn-lg outline">Visionner <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                                             </div>
 
                                         </div>
