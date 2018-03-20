@@ -138,7 +138,15 @@
                                     <a class="dropdown-item" href="consulterEnt.adm">Consulter</a>
                                 </div>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="gererSalles.adm">Salles</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Salles
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="gererSalles.adm">Gérer</a>
+                                    <a class="dropdown-item" href="saisieSalle.adm">Ajouter</a>
+                                </div>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Planning
@@ -239,11 +247,11 @@
             <table id="sort" class="table table-bordered table-striped grid">
 				<thead>
 					<tr>
-						<th  style="text-align: center;">Nom de l'entreprise</th>
-						<th  style="text-align: center;">Nom du candidat</th>
-                                                <th  style="text-align: center;">Salle</th>
-                                                <th  style="text-align: center;">Debut</th>
-                                                <th  style="text-align: center;">Fin</th>
+						<th class="bg-primary index" style="text-align: center;">Nom de l'entreprise</th>
+						<th class="bg-primary index" style="text-align: center;">Nom du candidat</th>
+                                                <th class="bg-primary index" style="text-align: center;">Salle</th>
+                                                <th class="bg-primary index" style="text-align: center;">Debut</th>
+                                                <th class="bg-primary index" style="text-align: center;">Fin</th>
 						
 						
 					</tr>

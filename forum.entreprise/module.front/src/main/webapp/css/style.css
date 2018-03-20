@@ -300,7 +300,9 @@ fieldset[disabled] .btn-primary.active {
 th {
     color: white;
 }
-
+.table td {
+    vertical-align: middle;
+}
 /**** Start Background Color ****/
 
 .blue {
