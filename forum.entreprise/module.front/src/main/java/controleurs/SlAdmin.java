@@ -727,7 +727,6 @@ public class SlAdmin extends HttpServlet {
 					"Des entretiens existent pour la salle sélectionnée, impossible de supprimer la salle.");
 		}
 		salleDao.removeSalle(salle);
-
 		return "/gererSalles.jsp";
 	}
 

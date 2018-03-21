@@ -67,7 +67,7 @@ public class EntretienDao {
 		prepareEntityManagerForTransaction();
 		List listeEntretiens = em.createQuery(
 		        "SELECT e FROM Entretien e WHERE e.idSalle = :idS")
-		        .setParameter("idS", idS)
+		        .setParameter("idS", String.valueOf(idS))
 		        .getResultList();
 		
 		return listeEntretiens;
