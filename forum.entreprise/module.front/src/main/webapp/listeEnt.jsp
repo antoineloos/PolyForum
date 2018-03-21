@@ -266,7 +266,7 @@
 				url : 'modifierListeEnt.adm',
 				data : dataObj,
 				success : function(msg) {
-					alerty.toasts("Le mot de passe à été renvoyé!")
+					alerty.toasts("L'entreprise a bien été supprimée !")
 				}
 			});
 		};
@@ -279,7 +279,7 @@
 				url : 'genererpwdEnt.adm',
 				data : dataObj,
 				success : function(msg) {
-					alerty.toasts("L'entreprise a bien été supprimée !")
+					alerty.toasts("Le mot de passe à été renvoyé!")
 				}
 			});
 		};
