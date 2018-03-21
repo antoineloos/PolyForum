@@ -1114,6 +1114,7 @@ public class SlAdmin extends HttpServlet {
 						augmenterPrioriteChoixEntreprise();
 						candidatDao.createCandidat(can);
 						envoiMail(can.getLogin(), password);
+                                                notif = "Le candidat a été ajouté, vous pouvez dès à présent consulter la liste.";
 					}
 				} else {
 					logger.error(Utilitaire.creerMsgPourLogs("admin", "admin", true, "Une erreur s'est produite, le candidat " + prenomCan + " " + nomCan + " existe déjà !"));
@@ -1271,7 +1272,8 @@ public class SlAdmin extends HttpServlet {
 						ent.setPassword(generatePassword(password));
 						augmenterPrioriteChoixCandidat();
 						entrepriseDao.createEntreprise(ent);
-						//envoiMail(ent.getLogin(), password);
+						envoiMail(ent.getLogin(), password);
+                                                notif = "L'entreprise a été ajouté, vous pouvez dès à présent consulter la liste.";
 					}
 				} else {
 					logger.error(Utilitaire.creerMsgPourLogs("admin", "admin", true, "Une erreur s'est produite, l'entreprise " + nomEnt + " " + nomRepr + " existe déjà !"));
