@@ -206,6 +206,7 @@
 							<th class="bg-primary index" style="text-align: center;">Présent</th>
 						</c:if>
 						<th class="bg-primary index" style="text-align: center;"></th>
+                                                <th class="bg-primary index" style="text-align: center;"></th>
 					</tr>
 				</thead>
 				<tbody class="sort">
@@ -224,6 +225,7 @@
 								</td>
 							</c:if>
 							<td width="5%"><button type="button" name="remove" id="${varListeCandidat.idCandidat}" class="btn btn-danger btn_remove">X</button></td>
+                                                        <td width="5%"><button type="button" name="genere" id="${varListeCandidat.idCandidat}" class="btn btn-danger btn_genere">generer mot de passe</button></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -245,6 +247,12 @@
 				$('#' + button_id + '').remove();
 				update(button_id);
 			});
+                        $(document).on('click', '.btn_genere', function() {
+                            //alert('Btn genere');
+				var button_id = $(this).attr("id");
+				//$('#' + button_id + '').genere();
+				updatepwd(button_id);
+			});
 			$(document).on('change', '.presence', function() {
 				var button_id = $(this).attr("id");
 				presence(button_id);
@@ -260,6 +268,19 @@
 				data : dataObj,
 				success : function(msg) {
 					alerty.toasts("Le candidat a bien été supprimé !")
+				}
+			});
+		};
+                function updatepwd(id) {
+			var dataObj = {
+				'chaine' : id
+			};
+			$.ajax({
+				type : 'POST',
+				url : 'genererpwdCan.adm',
+				data : dataObj,
+				success : function(msg) {
+					alerty.toasts("Le candidat  !")
 				}
 			});
 		};
