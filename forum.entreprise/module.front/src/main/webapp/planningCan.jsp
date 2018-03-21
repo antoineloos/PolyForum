@@ -199,63 +199,57 @@
     <input type="hidden" id="listeCandidat" name="listeCandidat" value="${sessionScope.candidat}"></input>
 
    
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-12 mx-auto">
+    <div class="well well-lg col-md-8">
+	<div class="frame" id="logo-section" class="text-center">
+		<div class="contentdiv hidden-print">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="logo text-center">
+                                            <span class="text-center"><h2>Consultation du planning</h2></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-                            <!-- form card login -->
-                            <div class="card rounded-0">
-                                <div class="card-header">
-                                    <h3 class="mb-0">Planning</h3>
-                                </div>
-                                <div class="card-body">
-                                    <table id="sort" >
-                                        <thead>
-                                            <tr>
-                                                <th class="bg-primary index" style="text-align: center;">Nom de l'entreprise</th>
-                                                <th class="bg-primary index" style="text-align: center;">Nom du candidat</th>
-                                                <th class="bg-primary index" style="text-align: center;">Salle</th>
-                                                <th class="bg-primary index" style="text-align: center;">Début</th>
-                                                <th class="bg-primary index" style="text-align: center;">Fin</th>
-
-
-                                            </tr>
-                                        </thead>
-                                        <tbody class="sort">
-                                            <c:forEach var="ent" items="${entretiensEnt}" varStatus="loop">
-                                                <tr>
-                                                    <td>${ent.entreprise.nom}</td>
-                                                    <td>${ent.candidat.prenom} ${ent.candidat.nom}</td>
-                                                    <td>${ent.idSalle}</td>
-                                                    <td> <fmt:formatDate type = "time" timeStyle = "short" value = "${ent.heure}"/></td>
-                                                    <td>  <fmt:formatDate type = "time" timeStyle = "short" value = "${ent.heureFin}"/></td>
-
-                                                </tr>
-                                            </c:forEach>
-                                        </tbody>
-                                    </table>
+	<input type="hidden" id="listeEntretien" name="listeEntretien" value="${sessionScope.entretiens}" />
+	<input type="hidden" id="listeEntreprise" name="listeEntreprise" value="${sessionScope.entreprises}" />
+	<input type="hidden" id="eventWanted" name="eventWanted" value="false" />
+	<div class="mainbody-section text-center">
+            <div class="container">
+		<br />
+		<div class="panel panel-default">
+                    <table id="sort" >
+                        <thead>
+                            <tr>
+                                <th class="bg-primary index" style="text-align: center;">Nom de l'entreprise</th>
+                                <th class="bg-primary index" style="text-align: center;">Nom du candidat</th>
+                                <th class="bg-primary index" style="text-align: center;">Salle</th>
+                                <th class="bg-primary index" style="text-align: center;">Début</th>
+                                <th class="bg-primary index" style="text-align: center;">Fin</th>
 
 
-                                </div>
-                                <!--/card-block-->
-                            </div>
-                            <!-- /form card login -->
+                            </tr>
+                        </thead>
+                        <tbody class="sort">
+                            <c:forEach var="ent" items="${entretiensEnt}" varStatus="loop">
+                                <tr>
+                                    <td>${ent.entreprise.nom}</td>
+                                    <td>${ent.candidat.prenom} ${ent.candidat.nom}</td>
+                                    <td>${ent.idSalle}</td>
+                                    <td> <fmt:formatDate type = "time" timeStyle = "short" value = "${ent.heure}"/></td>
+                                    <td>  <fmt:formatDate type = "time" timeStyle = "short" value = "${ent.heureFin}"/></td>
 
-                        </div>
-
-
-                    </div>
-                    <!--/row-->
-
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
                 </div>
-                <!--/col-->
             </div>
-            <!--/row-->
-        </div>
-    
 
+	</div>
+</div>
+        
 
     <script>
 
