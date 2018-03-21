@@ -249,7 +249,7 @@
 			});
                         $(document).on('click', '.btn_generer', function() {
 				var button_id = $(this).attr("id");
-				$('#' + button_id + '').remove();
+				//$('#' + button_id + '').remove();
 				generer(button_id);
 			});
 			$(document).on('change', '.presence', function() {
@@ -266,7 +266,7 @@
 				url : 'modifierListeEnt.adm',
 				data : dataObj,
 				success : function(msg) {
-					alerty.toasts("L'entreprise a bien été supprimée !")
+					alerty.toasts("Le mot de passe à été renvoyé!")
 				}
 			});
 		};

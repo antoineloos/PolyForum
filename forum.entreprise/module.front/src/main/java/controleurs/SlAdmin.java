@@ -250,6 +250,8 @@ public class SlAdmin extends HttpServlet {
             int idCandidat = Integer.parseInt(request.getParameter("chaine"));
             Candidat candidat = candidatDao.getById(idCandidat);
             String pwd = Utilitaire.generateFirstPAssword();
+            candidat.setPassword(Utilitaire.generatePassword(pwd));
+            candidatDao.updateCandidat(candidat);
             envoiMail(candidat.getLogin(), pwd);
             notif = "Le candidat à reçu un e-mail avec son nouveau mot de passe";
         } catch (Exception e) {
@@ -263,6 +265,9 @@ public class SlAdmin extends HttpServlet {
             int idEntreprise = Integer.parseInt(request.getParameter("chaine"));
             Entreprise entreprise = entrepriseDao.getById(idEntreprise);
             String pwd = Utilitaire.generateFirstPAssword();
+            entreprise.setPassword(Utilitaire.generatePassword(pwd));
+            entrepriseDao.updateEntreprise(entreprise);
+
             envoiMail(entreprise.getLogin(), pwd);
             //notif = "Le candidat à reçu un e-mail avec son nouveau mot de passe";
         } catch (Exception e) {
@@ -464,7 +469,7 @@ public class SlAdmin extends HttpServlet {
             long debutOccupe = e.getHeure().getTime();
             long finOccupe = e.getHeureFin().getTime();
             if (debutOccupe > debutVoulu && finOccupe < finVoulue) {
-				// s'il y a un creneau entre les dates de debut et de fin
+                // s'il y a un creneau entre les dates de debut et de fin
                 // voulues
                 if (logicalXOR(e.getEntretienPK().getIdCandidat() == idCandidat, e.getEntretienPK().getIdEntreprise() == idEntreprise)) {
                     return false;
@@ -633,7 +638,7 @@ public class SlAdmin extends HttpServlet {
     public String consulterPlanningEntrepriseAdm(HttpServletRequest request) throws Exception {
         HttpSession session = request.getSession();
         int idEntreprise = Integer.parseInt(request.getParameter("isTitles"));
-		//int idEntreprise = Integer.parseInt(request.getParameter("entreprises"));
+        //int idEntreprise = Integer.parseInt(request.getParameter("entreprises"));
 
         List<Entretien> liste = entretienDao.getByIdEntreprise(idEntreprise);
         String text = "";
@@ -1041,7 +1046,7 @@ public class SlAdmin extends HttpServlet {
         for (Entretien e : entretiens) {
             entretienDao.removeEntretien(e);
             if (!listeEnt.contains(e.getEntretienPK().getIdEntreprise())) {
-				//Salle s = salleDao.getById(e.getIdSalle());
+                //Salle s = salleDao.getById(e.getIdSalle());
                 //s.setCapacite(s.getCapacite() + 1);
                 //salleDao.updateSalle(s);
                 listeEnt.add(e.getEntretienPK().getIdEntreprise());
@@ -1240,7 +1245,7 @@ public class SlAdmin extends HttpServlet {
         // Put parts in message
         message.setContent(multipart);
 
-		//message.setContent(content, "text/html; charset=utf-8");
+        //message.setContent(content, "text/html; charset=utf-8");
         //message.setText(content, "UTF-8", "html");
         //message.setText(content, "UTF-8", "html");
         message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(login));

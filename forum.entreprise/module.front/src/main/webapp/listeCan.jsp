@@ -280,7 +280,7 @@
 				url : 'genererpwdCan.adm',
 				data : dataObj,
 				success : function(msg) {
-					alerty.toasts("Le candidat  !")
+					alerty.toasts("Le mot de passe à été renvoyé !")
 				}
 			});
 		};
