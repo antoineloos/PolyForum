@@ -652,7 +652,7 @@ public class SlAdmin extends HttpServlet {
 		List<Entretien> liste = entretienDao.getAll();
 		if(liste.size()==0){
 			throw new Exception(
-					"Le planning n'a pas encore été  généré. Veuillez générer un planning avant de le consulter.");
+					"Le planning n'a pas encore été généré. Veuillez générer un planning avant de le consulter.");
 		
 		}
 		String text = "";

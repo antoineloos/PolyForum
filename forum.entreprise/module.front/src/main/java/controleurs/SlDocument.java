@@ -138,21 +138,21 @@ public class SlDocument extends HttpServlet {
             String fileName = m.getOriginalFileName("document");
             if (null != fileName) {
                 File fileUpload = new File(dirName + separator + fileName);
-                int idCompte = (int) session.getAttribute("idCompte");
-                String type = (String) session.getAttribute("type");
+                String type = (String) session.getAttribute("type");               
                 if (type.equalsIgnoreCase("candidat")) {
-
-                    if (fileUpload.renameTo(new File(dirName + separator + "c_" + idCompte + "_" + fileName)) == false) {
-                        
+                    int idCompte = (int) session.getAttribute("idCompte");
+                    if (fileUpload.renameTo(new File(dirName + separator + "c_" + idCompte + "_" + fileName)) == false) {                       
                         System.err.println("Error Rename ! : "+dirName + separator + "c_" + idCompte + "_" + fileName);
                     }
                 } else if (type.equalsIgnoreCase("entreprise")) {
-
+                    int idCompte = (int) session.getAttribute("idCompte");
                     if (fileUpload.renameTo(new File(dirName + separator + "e_" + idCompte + "_" + fileName)) == false) {
                         System.out.println("Error Rename !");
                     }
-                } else {
+                } else if (type.equalsIgnoreCase("admin")){
+                    int idCompte = 0;
                     fileUpload.renameTo(new File(dirName + separator + "a_" + idCompte + "_" + fileName));
+                    System.out.println("Error Rename !");
                 }
             }
         } catch (IOException lEx) {
@@ -163,8 +163,13 @@ public class SlDocument extends HttpServlet {
 
     public String recupererListeDocuments(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        int idCompte = (int) session.getAttribute("idCompte");
         String type = (String) session.getAttribute("type");
+        int idCompte = -1;
+        if (type.equalsIgnoreCase("candidat") || type.equalsIgnoreCase("entreprise")){
+            idCompte = (int) session.getAttribute("idCompte");
+        } else if (type.equalsIgnoreCase("admin")){
+            idCompte = 0;
+        }
         File repertoire = new File(dirName);
         String[] listeFile = repertoire.list();
         List<Fichier> listeFichiers = new ArrayList<Fichier>();
