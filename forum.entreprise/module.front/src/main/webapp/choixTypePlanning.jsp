@@ -199,7 +199,7 @@
                     <div class="panel panel-success card " style="padding: 30px;">
                         <div class="panel-heading row col-md-6 offset-3" >
                             <div>
-                                <div align="center">Quel type de document souhaitez-vous consulter ?</div>
+                                <div align="center">Quel type de planning souhaitez-vous consulter ?</div>
                             </div>
                         </div>
                         <div class="panel-body row col-md-6 offset-3 topoffset4">

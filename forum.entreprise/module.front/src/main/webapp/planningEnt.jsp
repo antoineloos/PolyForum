@@ -214,7 +214,7 @@
                                             <th class="bg-primary index" style="text-align: center;">Nom de l'entreprise</th>
                                             <th class="bg-primary index" style="text-align: center;">Nom du candidat</th>
                                             <th class="bg-primary index" style="text-align: center;">Salle</th>
-                                            <th class="bg-primary index" style="text-align: center;">Debut</th>
+                                            <th class="bg-primary index" style="text-align: center;">Début</th>
                                             <th class="bg-primary index" style="text-align: center;">Fin</th>
 
 
