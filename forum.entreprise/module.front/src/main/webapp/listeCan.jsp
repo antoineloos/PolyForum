@@ -29,24 +29,20 @@
 <link rel="stylesheet" href="alerty/css/alerty.css">
 
 
-
 <!-- Template js -->
-
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="js/jquery.appear.js"></script>
-<script src="js/contact_me.js"></script>
-<script src="js/jqBootstrapValidation.js"></script>
-<script src="js/modernizr.custom.js"></script>
-<script src="js/script.js"></script>
-
+<script src="../../js/jquery-2.1.1.min.js"></script>
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<script src="../../js/jquery.appear.js"></script>
+<script src="../../js/contact_me.js"></script>
+<script src="../../js/jqBootstrapValidation.js"></script>
+<script src="../../js/modernizr.custom.js"></script>
+<script src="../../js/script.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="alerty/js/alerty.min.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script src="bootstrapToggle/bootstrap-toggle.min.js"></script>        
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-
-
+<script src="bootstrapToggle/bootstrap-toggle.min.js"></script>
+<script src="alerty/js/alerty.min.js"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
