@@ -61,54 +61,54 @@
     <body>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<input type="HIDDEN"  id="notif" value="${notifR}">
-               
-<nav class="navbar navbar-expand-lg navbar-light bg-light navbarpoly">
-            <c:if test="${sessionScope.type == 'entreprise' || sessionScope.type == 'candidat'}">
-                <a class="navbar-brand" href="accueil.cpt"><h3 class="logo-h3">POLYFORUM</h3></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <input type="HIDDEN"  id="notif" value="${notifR}">
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                               Mes choix
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <c:if test="${sessionScope.type == 'entreprise'}">
-                                    <a class="dropdown-item" href="initSaisieChoixEnt.chxE">Saisir</a>
-                                    <a class="dropdown-item" href="consulter.chxE">Consulter</a>
-                                </c:if>
-                                <c:if test="${sessionScope.type == 'candidat'}">
-                                    <a class="dropdown-item" href="initSaisieChoixCan.can">Saisir</a>
-                                    <a class="dropdown-item" href="consulter.can">Consulter</a>
-                                </c:if>
-                            </div>
-                        </li>
-                        
-                        <c:if test="${sessionScope.type == 'entreprise'}">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbarpoly">
+        <c:if test="${sessionScope.type == 'entreprise' || sessionScope.type == 'candidat'}">
+            <a class="navbar-brand" href="accueil.cpt"><h3 class="logo-h3">POLYFORUM</h3></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Mes choix
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <c:if test="${sessionScope.type == 'entreprise'}">
+                                <a class="dropdown-item" href="initSaisieChoixEnt.chxE">Saisir</a>
+                                <a class="dropdown-item" href="consulter.chxE">Consulter</a>
+                            </c:if>
+                            <c:if test="${sessionScope.type == 'candidat'}">
+                                <a class="dropdown-item" href="initSaisieChoixCan.can">Saisir</a>
+                                <a class="dropdown-item" href="consulter.can">Consulter</a>
+                            </c:if>
+                        </div>
+                    </li>
+
+                    <c:if test="${sessionScope.type == 'entreprise'}">
                         <li class="nav-item"><a class="nav-link" href="consulterPlanning.chxE">Planning</a></li>
                         </c:if>
-                        
-                        <c:if test="${sessionScope.type == 'candidat'}">
+
+                    <c:if test="${sessionScope.type == 'candidat'}">
                         <li class="nav-item"><a class="nav-link" href="consulterPlanning.can">Planning</a></li>
                         </c:if>    
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Documents
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="download.file">Ajouter</a>
-                                <a class="dropdown-item" href="consulter.file">Consulter</a>
-                            </div>
-                        </li>                        
-            </c:if>
-                
-                
-            <c:if test="${sessionScope.type == 'admin'}">
-                <a class="navbar-brand" href="admin.jsp"><h3 class="logo-h3">POLYFORUM</h3></a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Documents
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="download.file">Ajouter</a>
+                            <a class="dropdown-item" href="consulter.file">Consulter</a>
+                        </div>
+                    </li>                        
+                </c:if>
+
+
+                <c:if test="${sessionScope.type == 'admin'}">
+                    <a class="navbar-brand" href="admin.jsp"><h3 class="logo-h3">POLYFORUM</h3></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -161,64 +161,57 @@
                                     <a class="dropdown-item" href="consulterOffres.file">Offres</a>
                                 </div>
                             </li>                              
-            </c:if>
-                
+                        </c:if>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Liens
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="http://polytech.univ-lyon1.fr/">Polytech</a>
-                            <a class="dropdown-item" href="http://www.formasup-arl.fr/">Formasup</a>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Liens
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="http://polytech.univ-lyon1.fr/">Polytech</a>
+                                <a class="dropdown-item" href="http://www.formasup-arl.fr/">Formasup</a>
+                            </div>
+                        </li>
+                    </ul>
+
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <c:if test="${sessionScope.type == 'entreprise'}">
+                            <li class="nav-item"><a class="nav-link" href='modifier_ent.cpt'>Bonjour <strong>${sessionScope.nom_representant}</strong></a></li>
+                            </c:if>
+                            <c:if test="${sessionScope.type == 'candidat'}">
+                            <li class="nav-item"><a class="nav-link" href='modifier_etu.cpt'>Bonjour <strong>${sessionScope.prenom}</strong></a></li>
+                            </c:if>
+                            <c:if test="${sessionScope.type == 'admin'}">
+                            <li class="nav-item" ><a class="nav-link" href='consulterMdp.adm'>Consulter comptes</a></li>
+                            </c:if>
+                        <li class="nav-item"><a class="nav-link" href='deconnecter.cpt'>Déconnexion</a></li>
+                    </ul>
+
+                </div>
+                </nav>
+
+
+                <div class="well well-lg col-md-6">
+                    <c:if test="${erreurR != null && erreurR != ''}">
+                        <div class="alert-danger" role="alert" >
+                            <span class="glyphicon glyphicon-exclamation-sign"  aria-hidden="true"></span>
+                            <pre style="display:inline"><c:out value="${erreurR}" /></pre>
+
                         </div>
-                    </li>
-                </ul>
+                        <br>
+                        <br>
+                    </c:if>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="logo text-center">
+                                <c:if test="${sessionScope.type == 'admin'}">
+                                    <span class="text-center">
 
-
-                <ul class="nav navbar-nav navbar-right">
-                    <c:if test="${sessionScope.type == 'entreprise'}">
-                        <li class="nav-item"><a class="nav-link" href='modifier_ent.cpt'>Bonjour <strong>${sessionScope.nom_representant}</strong></a></li>
-                        </c:if>
-                        <c:if test="${sessionScope.type == 'candidat'}">
-                        <li class="nav-item"><a class="nav-link" href='modifier_etu.cpt'>Bonjour <strong>${sessionScope.prenom}</strong></a></li>
-                        </c:if>
-                        <c:if test="${sessionScope.type == 'admin'}">
-                        <li class="nav-item" ><a class="nav-link" href='consulterMdp.adm'>Consulter comptes</a></li>
-                        </c:if>
-                    <li class="nav-item"><a class="nav-link" href='deconnecter.cpt'>Déconnexion</a></li>
-                </ul>
-
-            </div>
-        </nav>
-    
-    
-    <div class="well well-lg col-md-6">
-        <c:if test="${erreurR != null && erreurR != ''}">
-            <div class="alert-danger" role="alert" >
-                <span class="glyphicon glyphicon-exclamation-sign"  aria-hidden="true"></span>
-                <pre style="display:inline"><c:out value="${erreurR}" /></pre>
-
-            </div>
-            <br>
-            <br>
-        </c:if>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="logo text-center">
-                    <c:if test="${sessionScope.type == 'admin'}">
-                        <span class="text-center">
-                           
-                            <h2>Bonjour Mme Perraud,</h2>
-                            <!--en tant qu'admninistrateur vous pouvez saisir des <a href="saisieCandidat.adm">candidats</a> et/ou des <a href="saisieEntreprise.adm">entreprises.</a><br>
-                            Il est également possible de consulter les différents <a href="choixTypeDocument.adm">documents</a> (CV, offres) et d'en mettre en ligne si besoin.<br>
-                            Ne pas oublier de saisir les différentes salles utilisées pour les entretiens !<br>
-                            Une fois que tout est complet, vous pouvez <a href="genererPlanning.adm">générez</a> le planning.<br>
-                            Vous pouvez ensuite accéder au <a href="consulterPlanning.adm">planning complet</a>, mais aussi :<br>
-                            - par candidat<br>
-                            - par entreprise<br>-->
-                        </span>
-                        <div class="row topoffset4">
+                                        <h2>Bonjour Mme Perraud,</h2>
+                                    </span>
+                                    <div class="row topoffset4">
                                         <div class="card mb-3 offset-1" style="max-width: 18rem;">
 
                                             <div class="card-header card-header-bk blue-gradient">
@@ -248,8 +241,8 @@
 
                                                 <!--Text-->
                                                 <p class="card-text">Consultez les différents documents (CV, offres) et rajoutez en !</p>
-                                                
-                                                
+
+
                                                 <a href="consulterCV.file" class="btn btn-primary btn-lg outline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CV <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                                                 <a href="consulterOffres.file" class="btn btn-primary btn-lg outline topoffset5"> Offres <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
 
@@ -285,18 +278,18 @@
                                                 <!--Title-->
 
                                                 <!--Text-->
-                                                <p class="card-text">Vous pouvez ensuite accéder au planning complet , mais aussi :<br>
-                            - par candidat<br>
-                            - par entreprise<br> </p>
+                                                <p class="card-text">Vous pouvez ensuite accéder au planning complet, mais aussi :<br>
+                                                    - par candidat<br>
+                                                    - par entreprise<br> </p>
                                                 <a href="consulterPlanning.adm" class="btn btn-primary btn-lg outline">Consulter <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                                             </div>
 
                                         </div>
                                     </div>
-                    </c:if>
-                </div>
-            </div>
-        </div>
-            
-    </body>
-</html>
+                                </c:if>
+                            </div>
+                        </div>
+                    </div>
+
+                    </body>
+                    </html>

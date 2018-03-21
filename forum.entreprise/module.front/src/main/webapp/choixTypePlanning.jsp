@@ -197,19 +197,23 @@
                 <div class="container" >
 
                     <div class="panel panel-success card " style="padding: 30px;">
-                        <div class="panel-heading row col-md-6 offset-3" >
-                            <div>
+                        <div class="panel-heading row " >
+                            <div class="col"></div>
+                            <div class="col-9">
                                 <div align="center">Quel type de planning souhaitez-vous consulter ?</div>
-                            </div>
+                             </div>
+                            <div class="col"></div>
                         </div>
-                        <div class="panel-body row col-md-6 offset-3 topoffset4">
-                            <div class="panel-body">
+                        <div class="panel-body row ">
+                            <div class="col"></div>
+                            <div class="col-9 panel-body">
                                 <form role="form" action="typePlanning.adm" method="post">
                                     <input type="submit" class="btn btn-danger" style="width: 100%; height: 50px; font-size: 120%;" name="boutton_entreprise" value="Entreprise">
                                     <input type="submit" class="btn btn-danger" style="width: 100%; height: 50px; font-size: 120%; margin-top: 2%;" name="boutton_candidat"
                                            value="Candidat">
                                 </form>
                             </div>
+                            <div class="col"></div>
 
                         </div>
                     </div>

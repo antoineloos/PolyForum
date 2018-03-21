@@ -206,7 +206,7 @@
 					<tr>
 						<th class="bg-primary index" style="text-align: center;">Nom du candidat</th>
 						<th class="bg-primary index" style="text-align: center;">Prénom du candidat</th>
-						<th class="bg-primary index" style="text-align: center;">Login</th>
+						<th class="bg-primary index" style="text-align: center;">Identifiant</th>
 					</tr>
 				</thead>
 				<tbody class="sort">
@@ -253,7 +253,7 @@
 					<tr>
 						<th class="bg-primary index" style="text-align: center;">Nom de l'entreprise</th>
 						<th class="bg-primary index" style="text-align: center;">Nom du représentant</th>
-						<th class="bg-primary index" style="text-align: center;">Login</th>
+						<th class="bg-primary index" style="text-align: center;">Identifiant</th>
 					</tr>
 				</thead>
 				<tbody class="sort">

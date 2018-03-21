@@ -3,96 +3,96 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<link rel="icon" type="image/ico" href="images/favicon.ico" />
-<!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Poly Forum</title>
+    <head>
+        <link rel="icon" type="image/ico" href="images/favicon.ico" />
+        <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <title>Poly Forum</title>
 
-<!-- Bootstrap Core CSS -->
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap Core CSS -->
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Font Awesome CSS -->
-<link href="css/font-awesome.min.css" rel="stylesheet">
+        <!-- Font Awesome CSS -->
+        <link href="css/font-awesome.min.css" rel="stylesheet">
 
-<!-- Custom CSS -->
-<link href="css/animate.css" rel="stylesheet">
-<link href="css/fresh-bootstrap-table.css" rel="stylesheet" />
-<!-- Custom CSS -->
-<link href="css/style.css" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="css/animate.css" rel="stylesheet">
+        <link href="css/fresh-bootstrap-table.css" rel="stylesheet" />
+        <!-- Custom CSS -->
+        <link href="css/style.css" rel="stylesheet">
 
-<!-- Custom Fonts -->
-<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+        <!-- Custom Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 
 
-<!-- Template js -->
-<script src="../../js/jquery-2.1.1.min.js"></script>
-<!-- <script src="../../bootstrap/js/bootstrap.min.js"></script> -->
-<script src="../../js/bootstrap.min.js"></script>
-<script src="../../js/wow.min.js"></script>
-<script src="../../js/jquery.appear.js"></script>
-<script src="../../js/contact_me.js"></script>
-<script src="../../js/jqBootstrapValidation.js"></script>
-<script src="../../js/modernizr.custom.js"></script>
-<script src="../../js/script.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script type="text/javascript" src="../../js/bootstrap-table.js"></script>
+        <!-- Template js -->
+        <script src="../../js/jquery-2.1.1.min.js"></script>
+        <!-- <script src="../../bootstrap/js/bootstrap.min.js"></script> -->
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/wow.min.js"></script>
+        <script src="../../js/jquery.appear.js"></script>
+        <script src="../../js/contact_me.js"></script>
+        <script src="../../js/jqBootstrapValidation.js"></script>
+        <script src="../../js/modernizr.custom.js"></script>
+        <script src="../../js/script.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script type="text/javascript" src="../../js/bootstrap-table.js"></script>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
-<body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light navbarpoly">
-            <c:if test="${sessionScope.type == 'entreprise' || sessionScope.type == 'candidat'}">
-                <a class="navbar-brand" href="accueil.cpt"><h3 class="logo-h3">POLYFORUM</h3></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbarpoly">
+        <c:if test="${sessionScope.type == 'entreprise' || sessionScope.type == 'candidat'}">
+            <a class="navbar-brand" href="accueil.cpt"><h3 class="logo-h3">POLYFORUM</h3></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                               Mes choix
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <c:if test="${sessionScope.type == 'entreprise'}">
-                                    <a class="dropdown-item" href="initSaisieChoixEnt.chxE">Saisir</a>
-                                    <a class="dropdown-item" href="consulter.chxE">Consulter</a>
-                                </c:if>
-                                <c:if test="${sessionScope.type == 'candidat'}">
-                                    <a class="dropdown-item" href="initSaisieChoixCan.can">Saisir</a>
-                                    <a class="dropdown-item" href="consulter.can">Consulter</a>
-                                </c:if>
-                            </div>
-                        </li>
-                        
-                        <c:if test="${sessionScope.type == 'entreprise'}">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Mes choix
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <c:if test="${sessionScope.type == 'entreprise'}">
+                                <a class="dropdown-item" href="initSaisieChoixEnt.chxE">Saisir</a>
+                                <a class="dropdown-item" href="consulter.chxE">Consulter</a>
+                            </c:if>
+                            <c:if test="${sessionScope.type == 'candidat'}">
+                                <a class="dropdown-item" href="initSaisieChoixCan.can">Saisir</a>
+                                <a class="dropdown-item" href="consulter.can">Consulter</a>
+                            </c:if>
+                        </div>
+                    </li>
+
+                    <c:if test="${sessionScope.type == 'entreprise'}">
                         <li class="nav-item"><a class="nav-link" href="consulterPlanning.chxE">Planning</a></li>
                         </c:if>
-                        
-                        <c:if test="${sessionScope.type == 'candidat'}">
+
+                    <c:if test="${sessionScope.type == 'candidat'}">
                         <li class="nav-item"><a class="nav-link" href="consulterPlanning.can">Planning</a></li>
                         </c:if>    
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Documents
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="download.file">Ajouter</a>
-                                <a class="dropdown-item" href="consulter.file">Consulter</a>
-                            </div>
-                        </li>                        
-            </c:if>
-                
-                
-            <c:if test="${sessionScope.type == 'admin'}">
-                <a class="navbar-brand" href="admin.jsp"><h3 class="logo-h3">POLYFORUM</h3></a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Documents
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="download.file">Ajouter</a>
+                            <a class="dropdown-item" href="consulter.file">Consulter</a>
+                        </div>
+                    </li>                        
+                </c:if>
+
+
+                <c:if test="${sessionScope.type == 'admin'}">
+                    <a class="navbar-brand" href="admin.jsp"><h3 class="logo-h3">POLYFORUM</h3></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -145,224 +145,231 @@
                                     <a class="dropdown-item" href="consulterOffres.file">Offres</a>
                                 </div>
                             </li>                              
-            </c:if>
-                
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Liens
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="http://polytech.univ-lyon1.fr/">Polytech</a>
-                            <a class="dropdown-item" href="http://www.formasup-arl.fr/">Formasup</a>
-                        </div>
-                    </li>
-                </ul>
-
-
-                <ul class="nav navbar-nav navbar-right">
-                    <c:if test="${sessionScope.type == 'entreprise'}">
-                        <li class="nav-item"><a class="nav-link" href='modifier_ent.cpt'>Bonjour <strong>${sessionScope.nom_representant}</strong></a></li>
                         </c:if>
-                        <c:if test="${sessionScope.type == 'candidat'}">
-                        <li class="nav-item"><a class="nav-link" href='modifier_etu.cpt'>Bonjour <strong>${sessionScope.prenom}</strong></a></li>
-                        </c:if>
-                        <c:if test="${sessionScope.type == 'admin'}">
-                        <li class="nav-item" ><a class="nav-link" href='consulterMdp.adm'>Consulter comptes</a></li>
-                        </c:if>
-                    <li class="nav-item"><a class="nav-link" href='deconnecter.cpt'>Déconnexion</a></li>
-                </ul>
-
-            </div>
-        </nav>
 
 
-	<!-- End Logo Section -->
-
-       <div class="well well-lg col-md-8">
-            <section id="logo-section" class="text-center">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="logo text-center">
-                                <span><h2>Consulter mes choix</h2></span>
-                                <span><font color="grey" size="2"> * Glisser et déposer vos choix pour ordonner selon vos préférences. </font></span>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Liens
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="http://polytech.univ-lyon1.fr/">Polytech</a>
+                                <a class="dropdown-item" href="http://www.formasup-arl.fr/">Formasup</a>
                             </div>
+                        </li>
+                    </ul>
+
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <c:if test="${sessionScope.type == 'entreprise'}">
+                            <li class="nav-item"><a class="nav-link" href='modifier_ent.cpt'>Bonjour <strong>${sessionScope.nom_representant}</strong></a></li>
+                            </c:if>
+                            <c:if test="${sessionScope.type == 'candidat'}">
+                            <li class="nav-item"><a class="nav-link" href='modifier_etu.cpt'>Bonjour <strong>${sessionScope.prenom}</strong></a></li>
+                            </c:if>
+                            <c:if test="${sessionScope.type == 'admin'}">
+                            <li class="nav-item" ><a class="nav-link" href='consulterMdp.adm'>Consulter comptes</a></li>
+                            </c:if>
+                        <li class="nav-item"><a class="nav-link" href='deconnecter.cpt'>Déconnexion</a></li>
+                    </ul>
+
+                </div>
+                </nav>
+
+
+                <!-- End Logo Section -->
+
+                <div class="well well-lg col-md-8">
+                    <section id="logo-section" class="text-center">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="logo text-center">
+                                        <span><h2>Consulter mes choix</h2></span>
+                                        <span><font color="grey" size="2"> * Glisser et déposer vos choix pour ordonner selon vos préférences. </font></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="container topoffset4">
+                        <div class="form-group ">
+                            <form role="form" action="modifierChoixCan.can" method="post">
+
+                                <div class="panel panel-default fresh-table">
+                                    <table id="sort"  class="table ">
+                                        <thead>
+                                            <tr>
+                                                <th class="bg-primary index">Nom</th>
+                                                <th class="bg-primary index">Priorité</th>
+                                                <th class="bg-primary index"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="sort">
+                                            <c:forEach var="varListeChoix" items="${listeChoix}" varStatus="loop">
+                                                <tr id='${loop.index+1}' name='${loop.index+1}'>
+                                                    <td id='nom${loop.index+1}' name='nom${loop.index+1}'>${varListeChoix.getEntreprise().nom}</td>
+                                                    <td id='prio${loop.index+1}' name='prio${loop.index+1}' class="index">${loop.index+1}</td>
+                                                    <td width="5%"><button type="button" name="remove" id="${sessionScope.idCompte} ${varListeChoix.getChoixCandidatPK().idEntreprise}"
+                                                                           class="btn btn-danger btn_remove">X</button></td>
+                                                </tr>
+                                            </c:forEach>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </form>
+                            <form method="get" action="initSaisieChoixCan.can">
+                                <button type="submit" class="btn btn-action">Ajouter une entreprise</button>
+                            </form>
                         </div>
                     </div>
+
                 </div>
-            </section>
-            <div class="container topoffset4">
-                <div class="form-group ">
-                    <form role="form" action="modifierChoixCan.can" method="post">
 
-                            <div class="panel panel-default fresh-table">
-                                    <table id="sort"  class="table ">
-                                            <thead>
-                                                    <tr>
-                                                            <th class="bg-primary index">Nom</th>
-                                                            <th class="bg-primary index">Priorité</th>
-                                                            <th class="bg-primary index"></th>
-                                                    </tr>
-                                            </thead>
-                                            <tbody class="sort">
-                                                    <c:forEach var="varListeChoix" items="${listeChoix}" varStatus="loop">
-                                                            <tr id='${loop.index+1}' name='${loop.index+1}'>
-                                                                    <td id='nom${loop.index+1}' name='nom${loop.index+1}'>${varListeChoix.getEntreprise().nom}</td>
-                                                                    <td id='prio${loop.index+1}' name='prio${loop.index+1}' class="index">${loop.index+1}</td>
-                                                                    <td width="5%"><button type="button" name="remove" id="${sessionScope.idCompte} ${varListeChoix.getChoixCandidatPK().idEntreprise}"
-                                                                                    class="btn btn-danger btn_remove">X</button></td>
-                                                            </tr>
-                                                    </c:forEach>
-                                            </tbody>
-                                    </table>
-                            </div>
-                    </form>
-                    <form method="get" action="initSaisieChoixCan.can">
-                            <button type="submit" class="btn btn-action">Ajouter une entreprise</button>
-                    </form>
-                </div>
-            </div>
+                <script>
+                    $('.sort').sortable({
+                        cursor: 'move',
+                        axis: 'y',
+                        update: function (e, ui) {
 
-        </div>
-        
-	<script>
-		$('.sort').sortable({
-			cursor : 'move',
-			axis : 'y',
-			update : function(e, ui) {
+                            $(this).sortable("refresh");
+                            //var field = $("#nom3").text();
+                            var dataObj = {
+                                'chaine': nom1
+                            };
+                            $("#sort").each(function (index) {
+                                dataObj["chaine"] = $(this).text();
+                                console.log(index + ": " + $(this).text());
+                            });
 
-				$(this).sortable("refresh");
-				//var field = $("#nom3").text();
-				var dataObj = {
-					'chaine' : nom1
-				};
-				$("#sort").each(function(index) {
-					dataObj["chaine"] = $(this).text();
-					console.log(index + ": " + $(this).text());
-				});
+                            $.ajax({
+                                type: 'POST',
+                                url: 'modifierChoixCan.can',
+                                data: dataObj,
+                                success: function (msg) {
+                                }
+                            });
+                        }
+                    });
+                </script>
+                <script>
+                    var fixHelperModified = function (e, tr) {
+                        var $originals = tr.children();
+                        var $helper = tr.clone();
+                        $helper.children().each(function (index) {
+                            $(this).width($originals.eq(index).width())
+                        });
+                        return $helper;
+                    }, updateIndex = function (e, ui) {
+                        $('td.index', ui.item.parent()).each(function (i) {
+                            $(this).html(i + 1);
+                        });
+                    };
 
-				$.ajax({
-					type : 'POST',
-					url : 'modifierChoixCan.can',
-					data : dataObj,
-					success : function(msg) {
-					}
-				});
-			}
-		});
-	</script>
-	<script>
-		var fixHelperModified = function(e, tr) {
-			var $originals = tr.children();
-			var $helper = tr.clone();
-			$helper.children().each(function(index) {
-				$(this).width($originals.eq(index).width())
-			});
-			return $helper;
-		}, updateIndex = function(e, ui) {
-			$('td.index', ui.item.parent()).each(function(i) {
-				$(this).html(i + 1);
-			});
-		};
+                    $("#sort tbody").sortable({
+                        helper: fixHelperModified,
+                        stop: updateIndex
+                    }).disableSelection();
 
-		$("#sort tbody").sortable({
-			helper : fixHelperModified,
-			stop : updateIndex
-		}).disableSelection();
-	</script>
-	<script>
-		$(document).ready(function() {
-			$(document).on('click', '.btn_remove', function() {
-				var button_id = $(this).closest('tr').attr("id");
-				$('#' + button_id + '').remove();
-				update($(this).attr("id"));
-			});
-		});
-		function update(id) {
-			var dataObj = {
-				'chaine' : id
-			};
-			$.ajax({
-				type : 'POST',
-				url : 'supprimerChoix.can',
-				data : dataObj,
-				success : function(msg) {
-					alerty.toasts("Le choix a bien été supprimé !")
-				}
-			});
-		};
-	</script>
-         <script type="text/javascript">
-            var $table = $('#sort'),
-                    $alertBtn = $('#alertBtn'),
-                    full_screen = false;
-
-            $().ready(function () {
-                $table.bootstrapTable({
-                    toolbar: ".toolbar",
-
-                    showRefresh: true,
-                    search: true,
-                    showToggle: true,
-                    showColumns: true,
-                    pagination: true,
-                    striped: true,
-                    sortable: true,
-                    pageSize: 8,
-                    pageList: [8, 10, 25, 50, 100],
-
-                    formatShowingRows: function (pageFrom, pageTo, totalRows) {
-                        //do nothing here, we don't want to show the text "showing x of y from..."
-                    },
-                    formatRecordsPerPage: function (pageNumber) {
-                        return pageNumber + " rows visible";
-                    },
-                    icons: {
-                        refresh: 'fa fa-refresh',
-                        toggle: 'fa fa-th-list',
-                        columns: 'fa fa-columns',
-                        detailOpen: 'fa fa-plus-circle',
-                        detailClose: 'fa fa-minus-circle'
+                    $(document).ready(function () {
+                        $(document).on('click', '.btn_remove', function () {
+                            var button_id = $(this).closest('tr').attr("id");
+                            $('#' + button_id + '').remove();
+                            update($(this).attr("id"));
+                        });
+                        //get it if Status key found
+                        if (localStorage.getItem("Status"))
+                        {
+                            alerty.toasts("Le choix a bien été supprimé !");
+                            localStorage.clear();
+                        }
+                    });
+                    function update(id) {
+                        var dataObj = {
+                            'chaine': id
+                        };
+                        $.ajax({
+                            type: 'POST',
+                            url: 'supprimerChoix.can',
+                            data: dataObj,
+                            success: function (msg) {
+                                localStorage.setItem("Status", "OK");
+                                window.location.reload();
+                            }
+                        });
                     }
-                });
-            });
+                    ;
+                </script>
+                <script type="text/javascript">
+                    var $table = $('#sort'),
+                            $alertBtn = $('#alertBtn'),
+                            full_screen = false;
 
-            $(function () {
-                $alertBtn.click(function () {
-                    alert("You pressed on Alert");
-                });
-            });
+                    $().ready(function () {
+                        $table.bootstrapTable({
+                            toolbar: ".toolbar",
+
+                            showRefresh: true,
+                            search: true,
+                            showToggle: true,
+                            showColumns: true,
+                            pagination: true,
+                            striped: true,
+                            sortable: true,
+                            pageSize: 8,
+                            pageList: [8, 10, 25, 50, 100],
+
+                            formatShowingRows: function (pageFrom, pageTo, totalRows) {
+                                //do nothing here, we don't want to show the text "showing x of y from..."
+                            },
+                            formatRecordsPerPage: function (pageNumber) {
+                                return pageNumber + " rows visible";
+                            },
+                            icons: {
+                                refresh: 'fa fa-refresh',
+                                toggle: 'fa fa-th-list',
+                                columns: 'fa fa-columns',
+                                detailOpen: 'fa fa-plus-circle',
+                                detailClose: 'fa fa-minus-circle'
+                            }
+                        });
+                    });
+
+                    $(function () {
+                        $alertBtn.click(function () {
+                            alert("You pressed on Alert");
+                        });
+                    });
 
 
-            function operateFormatter(value, row, index) {
-                return [
-                    '<a rel="tooltip" title="Like" class="table-action like" href="javascript:void(0)" title="Like">',
-                    '<i class="fa fa-heart"></i>',
-                    '</a>',
-                    '<a rel="tooltip" title="Edit" class="table-action edit" href="javascript:void(0)" title="Edit">',
-                    '<i class="fa fa-edit"></i>',
-                    '</a>',
-                    '<a rel="tooltip" title="Remove" class="table-action remove" href="javascript:void(0)" title="Remove">',
-                    '<i class="fa fa-remove"></i>',
-                    '</a>'
-                ].join('');
-            }
+                    function operateFormatter(value, row, index) {
+                        return [
+                            '<a rel="tooltip" title="Like" class="table-action like" href="javascript:void(0)" title="Like">',
+                            '<i class="fa fa-heart"></i>',
+                            '</a>',
+                            '<a rel="tooltip" title="Edit" class="table-action edit" href="javascript:void(0)" title="Edit">',
+                            '<i class="fa fa-edit"></i>',
+                            '</a>',
+                            '<a rel="tooltip" title="Remove" class="table-action remove" href="javascript:void(0)" title="Remove">',
+                            '<i class="fa fa-remove"></i>',
+                            '</a>'
+                        ].join('');
+                    }
 
-            window.operateEvents = {
-                'click .like': function (e, value, row, index) {
-                    alert('You click like icon, row: ' + JSON.stringify(row));
-                    console.log(value, row, index);
-                },
-                'click .edit': function (e, value, row, index) {
-                    console.log(value, row, index);
-                },
-                'click .remove': function (e, value, row, index) {
-                    alert('You click remove icon, row: ' + JSON.stringify(row));
-                    console.log(value, row, index);
-                }
-            };
+                    window.operateEvents = {
+                        'click .like': function (e, value, row, index) {
+                            alert('You click like icon, row: ' + JSON.stringify(row));
+                            console.log(value, row, index);
+                        },
+                        'click .edit': function (e, value, row, index) {
+                            console.log(value, row, index);
+                        },
+                        'click .remove': function (e, value, row, index) {
+                            alert('You click remove icon, row: ' + JSON.stringify(row));
+                            console.log(value, row, index);
+                        }
+                    };
 
-        </script>
-</body>
-</html>
+                </script>
+                </body>
+                </html>

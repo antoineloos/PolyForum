@@ -219,11 +219,6 @@
                                     <span class="text-center">
 
                                         <h2>Bonjour ${sessionScope.prenom} ${sessionScope.nom}</h2>
-                                        <!--Vous pouvez consultez les différentes offres émises par les entreprises en <a href="download.file">cliquant ici.</a><br>
-                                        Si vous avez déjà consulter les offres, vous pouvez <a href="initSaisieChoixCan.can">choisir</a> les entreprises que vous souhaitez rencontrer lors du forum.<br>
-                                        Si vous souhaitez simplement vérifier vos choix : <a href="consulter.can">cliquer ici.</a><br>
-                                        Une fois le planning généré par l'administrateur du site vous pourrez le consulter en suivant ce <a href="consulterPlanning.can">lien.</a>
-                                    </span>-->
                                     </span>
 
                                     <div class="row topoffset2">
@@ -300,13 +295,6 @@
                                 </c:if>
                                 <c:if test="${sessionScope.type == 'entreprise'}">
                                     <span class="text-center">
-                                        
-                                        <!--Bonjour ${sessionScope.nom},<br>
-                                        Vous pouvez consultez les différentes CV déposés par les candidats en <a href="consulter.file">cliquant ici.</a><br>
-                                        Si vous avez déjà consulté les CV, vous pouvez <a href="initSaisieChoixEnt.chxE">choisir</a> les étudiants que vous souhaitez rencontrer lors du forum.<br>
-                                        Si vous souhaitez simplement vérifier vos choix : <a href="consulter.chxE">cliquer ici.</a><br>
-                                        Une fois le planning généré par l'administrateur du site vous pourrez le consulter en suivant ce <a href="consulterPlanning.chxE">lien.</a>
-                                    </span>-->
                                         
                                     <span class="text-center">
 
@@ -386,18 +374,6 @@
                                     </div>
                                 </c:if>
                                 <c:if test="${sessionScope.type == 'admin'}">
-                                    <!--<span>
-                                        <br>
-                                        <br>
-                                        Bonjour,<br>
-                                        en tant qu'admninistrateur vous pouvez saisir des <a href="saisieCandidat.adm">candidats</a> et/ou des <a href="saisieEntreprise.adm">entreprises.</a><br>
-                                        Il est également possible de consulter les différents <a href="choixTypeDocument.adm">documents</a> (CV, offres) et d'en mettre en ligne si besoin.<br>
-                                        Ne pas oublier de saisir les différentes salles utilisées pour les entretiens !<br>
-                                        Une fois que tout est complet, vous pouvez <a href="genererPlanning.adm">générez</a> le planning.<br>
-                                        Vous pouvez ensuite accéder au <a href="consulterPlanning.adm">planning complet</a>, mais aussi :<br>
-                                        - par candidat<br>
-                                        - par entreprise<br>
-                                    </span>-->
                                 </c:if>
                             </div>
                         </div>

@@ -73,12 +73,12 @@
                                         <div class="form-group">
                                             <label for="uname1">Identifiant</label>
                                             <input type="text" class="form-control form-control-lg rounded-0" name="login" id="uname1" required="">
-                                            <div class="invalid-feedback">Indiquez un login</div>
+                                            <div class="invalid-feedback">Indiquez votre identifiant</div>
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd1">Mot de passe</label>
                                             <input type="password" class="form-control form-control-lg rounded-0" name="password" id="pwd1" required="" autocomplete="new-password">
-                                            <div class="invalid-feedback">Indiquer un Mot de passe</div>
+                                            <div class="invalid-feedback">Indiquer votre mot de passe</div>
                                         </div>
                                         <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Se connecter</button>
                                     </form>

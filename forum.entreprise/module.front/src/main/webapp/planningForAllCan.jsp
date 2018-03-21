@@ -184,7 +184,7 @@
         </nav>
     
     
-    <div class="well well-lg col-md-8 offset-2 topoffset4">
+    <div class="well well-lg col-md-8">
         <section id="logo-section" class="text-center hidden-print">
             <div class="container">
                 <div class="row">
@@ -207,7 +207,6 @@
                 <thead>
                     <tr>
                         <th class="bg-primary index" >Nom</th>
-                        <th class="bg-primary index" ></th>
                     </tr>
                 </thead>
                 <tbody>

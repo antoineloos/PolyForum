@@ -198,7 +198,7 @@
         </nav>
 
 
-<div class="well well-lg col-md-8 offset-2 topoffset4">
+<div class="well well-lg col-md-8">
 	<div id="test-popup" class="white-popup mfp-hide"
 		style="position: relative; background: #FFF; padding: 20px; width: auto; max-width: 500px; margin: 20px auto;">
 		<div id="add_entretien" name="add_entretien" class="white-popup-block">
