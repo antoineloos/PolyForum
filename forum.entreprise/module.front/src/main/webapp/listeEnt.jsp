@@ -205,7 +205,6 @@
 							<th class="bg-primary index" style="text-align: center;">Présent</th>
 						</c:if>
 						<th class="bg-primary index" style="text-align: center;"></th>
-                                                <th class="bg-primary index" style="text-align: center;"></th>
 					</tr>
 				</thead>
 				<tbody class="sort">
@@ -224,7 +223,6 @@
 								</td>
 							</c:if>
 							<td width="5%"><button type="button" name="remove" id="${varListeEntreprise.idEntreprise}" class="btn btn-danger btn_remove">X</button></td>
-                                                        <td width="5%"><button type="button" name="remove" id="${varListeEntreprise.idEntreprise}" class="btn btn-danger btn_generer">Generer mot de passe</button></td>
 						</tr>
 					</c:forEach>
 				</tbody>
