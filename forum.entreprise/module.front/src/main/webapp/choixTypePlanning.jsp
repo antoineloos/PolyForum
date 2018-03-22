@@ -201,6 +201,7 @@
                             <div class="col"></div>
                             <div class="col-9">
                                 <div align="center">Quel type de planning souhaitez-vous consulter ?</div>
+                                <br/>
                              </div>
                             <div class="col"></div>
                         </div>
