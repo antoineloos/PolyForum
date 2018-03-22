@@ -205,7 +205,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="logo text-center">
-                                            <span class="text-center"><h2>Consultation du planning</h2></span>
+                                            <span class="text-center"><h2>Consultation du planning ${ent.candidat.prenom} ${ent.candidat.nom}</h2></span>
 					</div>
 				</div>
 			</div>
