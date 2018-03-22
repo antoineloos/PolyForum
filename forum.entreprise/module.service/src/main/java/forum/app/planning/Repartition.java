@@ -196,9 +196,7 @@ public class Repartition {
 	}
 	
 	public void createEntretien(Creneau c){
-		Entretien e = new Entretien(new EntretienPK(c.getIdEntreprise(), c.getIdCandidat()), new Timestamp(c.getDebut()), new Timestamp(c.getFin()));
-             
-                e.setIdSalle(correspSalle.get(c.getIdEntreprise()).toString());
+		Entretien e = new Entretien(new EntretienPK(c.getIdEntreprise(), c.getIdCandidat(),correspSalle.get(c.getIdEntreprise())),  new Timestamp(c.getDebut()), new Timestamp(c.getFin()));
 		entretienDao.createEntretien(e);
 	}
 

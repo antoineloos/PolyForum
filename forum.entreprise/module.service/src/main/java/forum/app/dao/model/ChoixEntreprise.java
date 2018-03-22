@@ -11,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -41,10 +43,16 @@ public class ChoixEntreprise implements Serializable {
     @Basic(optional = false)
     @Column(name = "priorite")
     private int priorite;
+    @JoinColumn(name = "id_candidat", referencedColumnName = "id_candidat", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Candidat candidat;
+    @JoinColumn(name = "id_entreprise", referencedColumnName = "id_entreprise", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Entreprise entreprise;
 
     @Transient
-    private CandidatDao canDAO ;
-    
+    private CandidatDao canDAO;
+
     public ChoixEntreprise() {
         canDAO = new CandidatDao();
     }
@@ -92,6 +100,18 @@ public class ChoixEntreprise implements Serializable {
         this.priorite = priorite;
     }
 
+    public void setCandidat(Candidat candidat) {
+        this.candidat = candidat;
+    }
+
+    public Entreprise getEntreprise() {
+        return entreprise;
+    }
+
+    public void setEntreprise(Entreprise entreprise) {
+        this.entreprise = entreprise;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -116,5 +136,5 @@ public class ChoixEntreprise implements Serializable {
     public String toString() {
         return "forum.app.dao.model.ChoixEntreprise[ choixEntreprisePK=" + choixEntreprisePK + " ]";
     }
-    
+
 }

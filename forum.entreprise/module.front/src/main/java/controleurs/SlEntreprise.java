@@ -123,11 +123,11 @@ public class SlEntreprise extends HttpServlet {
             e.setCandidat(c);
             e.setEntreprise(ent);
             entretiens = entretiens + majAuDebut(c.getNom()) + UNDERSCORE + majAuDebut(c.getPrenom()) + UNDERSCORE
-                    + majAuDebut(ent.getNom()) + " (Salle " + e.getIdSalle() + ")" + UNDERSCORE
+                    + majAuDebut(ent.getNom()) + " (Salle " + e.getSalle().getIdSalle() + ")" + UNDERSCORE
                     + e.getHeure() + UNDERSCORE + e.getHeureFin() + UNDERSCORE;
 
         }
-        String salle = String.valueOf(entretienDao.getByIdEntreprise(idEntreprise).get(0).getIdSalle());
+        String salle = String.valueOf(entretienDao.getByIdEntreprise(idEntreprise).get(0).getSalle().getNom());
         entreprise = entreprise + idEntreprise + UNDERSCORE + majAuDebut(ent.getNom()) + UNDERSCORE + "(Salle "
                 + salle + ")" + UNDERSCORE;
 

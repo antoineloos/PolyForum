@@ -6,12 +6,13 @@
 package forum.app.dao.model;
 
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -33,7 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Entretien.findByIdCandidat", query = "SELECT e FROM Entretien e WHERE e.entretienPK.idCandidat = :idCandidat")
     , @NamedQuery(name = "Entretien.findByHeure", query = "SELECT e FROM Entretien e WHERE e.heure = :heure")
     , @NamedQuery(name = "Entretien.findByHeureFin", query = "SELECT e FROM Entretien e WHERE e.heureFin = :heureFin")
-    , @NamedQuery(name = "Entretien.findByIdSalle", query = "SELECT e FROM Entretien e WHERE e.idSalle = :idSalle")
+    , @NamedQuery(name = "Entretien.findByIdSalle", query = "SELECT e FROM Entretien e WHERE e.entretienPK.idSalle = :idSalle")
     , @NamedQuery(name = "Entretien.findByPresent", query = "SELECT e FROM Entretien e WHERE e.present = :present")
     , @NamedQuery(name = "Entretien.findByRetard", query = "SELECT e FROM Entretien e WHERE e.retard = :retard")})
 public class Entretien implements Serializable {
@@ -49,61 +50,26 @@ public class Entretien implements Serializable {
     @Column(name = "heure_fin")
     @Temporal(TemporalType.TIME)
     private Date heureFin;
-    @Column(name = "id_salle")
-    private String idSalle;
     @Column(name = "present")
     private Boolean present;
     @Column(name = "retard")
     private Boolean retard;
-    
-    @Transient
+    @JoinColumn(name = "id_candidat", referencedColumnName = "id_candidat", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
     private Candidat candidat;
-    
-     @Transient
+    @JoinColumn(name = "id_entreprise", referencedColumnName = "id_entreprise", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
     private Entreprise entreprise;
-     
-        @Transient
+    @JoinColumn(name = "id_salle", referencedColumnName = "id_salle", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Salle salle;
+
+    @Transient
     private String heureD;
-          @Transient
+    @Transient
     private String heureF;
 
-    public String getHeureD() {
-        return heureD;
-    }
-
-    public void setHeureD(String heureD) {
-        this.heureD = heureD;
-    }
-
-    public String getHeureF() {
-        return heureF;
-    }
-
-    public void setHeureF(String heureF) {
-        this.heureF = heureF;
-    }
-     
-     
-
-    public Candidat getCandidat() {
-        return candidat;
-    }
-
-    public void setCandidat(Candidat candidat) {
-        this.candidat = candidat;
-    }
-
-    public Entreprise getEntreprise() {
-        return entreprise;
-    }
-
-    public void setEntreprise(Entreprise entreprise) {
-        this.entreprise = entreprise;
-    }
-
-    public Entretien() {
-    }
-
+    
     public Entretien(EntretienPK entretienPK) {
         this.entretienPK = entretienPK;
     }
@@ -116,10 +82,13 @@ public class Entretien implements Serializable {
         this.heureF = heureFin.getHours()+":"+heureFin.getMinutes();
     }
 
-    public Entretien(int idEntreprise, int idCandidat) {
-        this.entretienPK = new EntretienPK(idEntreprise, idCandidat);
+    public Entretien(int idEntreprise, int idCandidat, int idSalle) {
+        this.entretienPK = new EntretienPK(idEntreprise, idCandidat, idSalle);
     }
 
+    public Entretien(){
+    }
+    
     public EntretienPK getEntretienPK() {
         return entretienPK;
     }
@@ -144,14 +113,6 @@ public class Entretien implements Serializable {
         this.heureFin = heureFin;
     }
 
-    public String getIdSalle() {
-        return idSalle;
-    }
-
-    public void setIdSalle(String idSalle) {
-        this.idSalle = idSalle;
-    }
-
     public Boolean getPresent() {
         return present;
     }
@@ -166,6 +127,30 @@ public class Entretien implements Serializable {
 
     public void setRetard(Boolean retard) {
         this.retard = retard;
+    }
+
+    public Candidat getCandidat() {
+        return candidat;
+    }
+
+    public void setCandidat(Candidat candidat) {
+        this.candidat = candidat;
+    }
+
+    public Entreprise getEntreprise() {
+        return entreprise;
+    }
+
+    public void setEntreprise(Entreprise entreprise) {
+        this.entreprise = entreprise;
+    }
+
+    public Salle getSalle() {
+        return salle;
+    }
+
+    public void setSalle(Salle salle) {
+        this.salle = salle;
     }
 
     @Override
@@ -192,5 +177,5 @@ public class Entretien implements Serializable {
     public String toString() {
         return "forum.app.dao.model.Entretien[ entretienPK=" + entretienPK + " ]";
     }
-    
+
 }

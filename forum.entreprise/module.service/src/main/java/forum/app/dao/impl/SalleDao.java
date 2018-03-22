@@ -53,10 +53,11 @@ private EntityManager em;
 		em.getTransaction().commit();
 	}
 	
-	public Salle createSalle(int idSalle, boolean disponible, int capacite) {
+	public Salle createSalle(int idSalle, String nom, boolean disponible, int capacite) {
 		prepareEntityManagerForTransaction();
 		em.getTransaction().begin();
 		Salle salle = new Salle(idSalle);
+                salle.setNom(nom);
                 salle.setDisponible(disponible);
                 salle.setCapacite(capacite);
 	    em.persist(salle);

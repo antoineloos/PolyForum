@@ -236,7 +236,7 @@
                                 <tr>
                                     <td>${ent.entreprise.nom}</td>
                                     <td>${ent.candidat.prenom} ${ent.candidat.nom}</td>
-                                    <td>${ent.idSalle}</td>
+                                    <td>${ent.salle.nom}</td>
                                     <td> <fmt:formatDate type = "time" timeStyle = "short" value = "${ent.heure}"/></td>
                                     <td>  <fmt:formatDate type = "time" timeStyle = "short" value = "${ent.heureFin}"/></td>
 

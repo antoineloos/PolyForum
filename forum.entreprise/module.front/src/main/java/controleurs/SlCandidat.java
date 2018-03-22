@@ -120,7 +120,7 @@ public class SlCandidat extends HttpServlet {
             Entreprise ent = entrepriseDao.getById(e.getEntretienPK().getIdEntreprise());
             e.setEntreprise(ent);
             e.setCandidat(can);
-            entretiens = entretiens + majAuDebut(ent.getNom()) + " (Salle " + e.getIdSalle() + ")" + UNDERSCORE
+            entretiens = entretiens + majAuDebut(ent.getNom()) + " (Salle " + e.getSalle().getNom() + ")" + UNDERSCORE
                     + e.getHeure() + UNDERSCORE + e.getHeureFin() + UNDERSCORE;
 
         }

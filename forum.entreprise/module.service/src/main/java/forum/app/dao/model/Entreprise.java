@@ -6,7 +6,9 @@
 package forum.app.dao.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,8 +16,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -51,6 +55,12 @@ public class Entreprise implements Serializable {
     private String login;
     @Column(name = "password")
     private String password;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "entreprise")
+    private Collection<ChoixEntreprise> choixEntrepriseCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "entreprise")
+    private Collection<ChoixCandidat> choixCandidatCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "entreprise")
+    private Collection<Entretien> entretienCollection;
 
     public Entreprise() {
     }
@@ -110,6 +120,33 @@ public class Entreprise implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @XmlTransient
+    public Collection<ChoixEntreprise> getChoixEntrepriseCollection() {
+        return choixEntrepriseCollection;
+    }
+
+    public void setChoixEntrepriseCollection(Collection<ChoixEntreprise> choixEntrepriseCollection) {
+        this.choixEntrepriseCollection = choixEntrepriseCollection;
+    }
+
+    @XmlTransient
+    public Collection<ChoixCandidat> getChoixCandidatCollection() {
+        return choixCandidatCollection;
+    }
+
+    public void setChoixCandidatCollection(Collection<ChoixCandidat> choixCandidatCollection) {
+        this.choixCandidatCollection = choixCandidatCollection;
+    }
+
+    @XmlTransient
+    public Collection<Entretien> getEntretienCollection() {
+        return entretienCollection;
+    }
+
+    public void setEntretienCollection(Collection<Entretien> entretienCollection) {
+        this.entretienCollection = entretienCollection;
     }
 
     @Override

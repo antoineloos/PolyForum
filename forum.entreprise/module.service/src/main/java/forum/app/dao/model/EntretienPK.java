@@ -23,13 +23,17 @@ public class EntretienPK implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_candidat")
     private int idCandidat;
+    @Basic(optional = false)
+    @Column(name = "id_salle")
+    private int idSalle;
 
     public EntretienPK() {
     }
 
-    public EntretienPK(int idEntreprise, int idCandidat) {
+    public EntretienPK(int idEntreprise, int idCandidat, int idSalle) {
         this.idEntreprise = idEntreprise;
         this.idCandidat = idCandidat;
+        this.idSalle = idSalle;
     }
 
     public int getIdEntreprise() {
@@ -48,11 +52,20 @@ public class EntretienPK implements Serializable {
         this.idCandidat = idCandidat;
     }
 
+    public int getIdSalle() {
+        return idSalle;
+    }
+
+    public void setIdSalle(int idSalle) {
+        this.idSalle = idSalle;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (int) idEntreprise;
         hash += (int) idCandidat;
+        hash += (int) idSalle;
         return hash;
     }
 
@@ -69,12 +82,15 @@ public class EntretienPK implements Serializable {
         if (this.idCandidat != other.idCandidat) {
             return false;
         }
+        if (this.idSalle != other.idSalle) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "forum.app.dao.model.EntretienPK[ idEntreprise=" + idEntreprise + ", idCandidat=" + idCandidat + " ]";
+        return "forum.app.dao.model.EntretienPK[ idEntreprise=" + idEntreprise + ", idCandidat=" + idCandidat + ", idSalle=" + idSalle + " ]";
     }
     
 }

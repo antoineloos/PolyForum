@@ -211,7 +211,7 @@
                     <tbody class="sort">
                         <c:forEach var="salle" items="${salles}" varStatus="loop">
                             <tr id="${salle.idSalle}">
-                                <td>${salle.idSalle}</td>
+                                <td>${salle.nom}</td>
                                 <td>${salle.capaciteTotale}</td>
                                 <td>${salle.capacite}</td>
                                 <td width="10%" style="text-align: center;">

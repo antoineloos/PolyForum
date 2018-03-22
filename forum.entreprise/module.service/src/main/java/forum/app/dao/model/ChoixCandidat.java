@@ -11,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -37,12 +39,22 @@ public class ChoixCandidat implements Serializable {
     @Basic(optional = false)
     @Column(name = "priorite")
     private int priorite;
-    
+    @JoinColumn(name = "id_candidat", referencedColumnName = "id_candidat", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Candidat candidat;
+    @JoinColumn(name = "id_entreprise", referencedColumnName = "id_entreprise", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Entreprise entreprise;
+
     @Transient
-    private EntrepriseDao entDAO ;
-    
+    private EntrepriseDao entDAO;
+
     public ChoixCandidat() {
         entDAO = new EntrepriseDao();
+    }
+
+    public Entreprise getEntreprise() {
+        return entDAO.getById(this.choixCandidatPK.getIdEntreprise());
     }
 
     public ChoixCandidat(ChoixCandidatPK choixCandidatPK) {
@@ -54,11 +66,6 @@ public class ChoixCandidat implements Serializable {
         this.priorite = priorite;
     }
 
-    public Entreprise getEntreprise()
-    {
-        return entDAO.getById(this.choixCandidatPK.getIdEntreprise());
-    }
-    
     public ChoixCandidat(int idCandidat, int idEntreprise) {
         this.choixCandidatPK = new ChoixCandidatPK(idCandidat, idEntreprise);
     }
@@ -77,6 +84,20 @@ public class ChoixCandidat implements Serializable {
 
     public void setPriorite(int priorite) {
         this.priorite = priorite;
+    }
+
+    public Candidat getCandidat() {
+        return candidat;
+    }
+
+    public void setCandidat(Candidat candidat) {
+        this.candidat = candidat;
+    }
+
+   
+
+    public void setEntreprise(Entreprise entreprise) {
+        this.entreprise = entreprise;
     }
 
     @Override
@@ -103,5 +124,5 @@ public class ChoixCandidat implements Serializable {
     public String toString() {
         return "forum.app.dao.model.ChoixCandidat[ choixCandidatPK=" + choixCandidatPK + " ]";
     }
-    
+
 }
