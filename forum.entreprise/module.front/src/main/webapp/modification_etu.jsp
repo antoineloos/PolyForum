@@ -197,7 +197,7 @@
                         <div class="card-body">
                             <form class="form col-md-12 center-block" role="form" action="modifierCompte_etu.cpt" method="post">
                                 <div class="form-group">
-                                    <label for="identity">IDENTITE</label>
+                                    <label for="identity">Identité</label>
                                     <input class="form-control" type="text" readonly value="${sessionScope.nom}"/>
                                     <br />
                                     <input class="form-control" type="text" readonly value="${sessionScope.prenom}"/>
@@ -206,13 +206,12 @@
                                 </div>
                                 <br />
                                 
-                                    <label for="mdp_old">MOT DE PASSE</label>
+                                    <label for="mdp_old">Mot de passe</label>
                                     <input class="form-control" type="password" placeholder="Ancien mot de passe" name="mdp_old"/>
                                     <br />
                                     <div class="form-group">
                                         <input class="form-control" type="password" placeholder="Nouveau mot de passe" name="mdp_new"/>
                                     </div>
-                                    <br />
                                     <div class="form-group">
                                         <input class="form-control" type="password" placeholder="Confirmer le nouveau mot de passe" name="mdp_new2">
                                     </div>

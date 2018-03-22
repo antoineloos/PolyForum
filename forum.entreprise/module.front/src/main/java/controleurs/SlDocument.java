@@ -221,6 +221,7 @@ public class SlDocument extends HttpServlet {
                         listeFichiers.add(fichier);
                     }
                 } else if (type.equalsIgnoreCase("admin")) {
+                    session.setAttribute("typeDocs", typeDocs);
                     if (fichier.getType().equalsIgnoreCase("candidat") && typeDocs.equalsIgnoreCase("CV")) {
                         Candidat c = candidatDao.getById(Integer.parseInt(fichier.getIdCompte()));
                         if (c != null) {
@@ -231,12 +232,12 @@ public class SlDocument extends HttpServlet {
                         Entreprise e = entrepriseDao.getById(Integer.parseInt(fichier.getIdCompte()));
                         if (e != null) {
                             fichier.setNomProprietaire(e.getNom());
-                            listeFichiers.add(fichier);
+                            listeFichiers.add(fichier);                           
                         }
                     } else if (fichier.getType().equalsIgnoreCase("admin")) {
                         fichier.setNomProprietaire("Administrateur");
                         listeFichiers.add(fichier);
-                    }
+                    }                  
                 }
             }
         }

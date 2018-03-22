@@ -286,7 +286,7 @@ public class SlEntreprise extends HttpServlet {
         int idCandidat = Integer.parseInt(idEntrepriseCandidat[1]);
         ChoixEntreprise choix = choixEntrepriseDao.getByIdEntrepriseIdCandidat(idEntreprise, idCandidat);
         choixEntrepriseDao.removeChoixEntreprise(choix);
-        notif = "Le candidat a bien été supprimée de vos choix.";
+        notif = "Le candidat a bien été supprimé de vos choix.";
         return consulterChoixEntreprise(request);
     }
 

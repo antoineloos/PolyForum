@@ -203,7 +203,7 @@
                                 <td><input type="text" id="ent1" name="ent1" placeholder="Nom de l'entreprise" class="form-control name_list" /></td>
                                 <td><input type="text" id="repr1" name="repr1" placeholder="Nom du representant" class="form-control name_list" /></td>
                                 <td><input type="text" id="mail1" name="mail1" placeholder="Adresse mail du representant" class="form-control name_list" /></td>
-                                <td><button type="button" name="add" id="add" class="btn btn-success" autofocus>Ajouter</button></td>
+                                <td><button type="button" name="add" id="add" class="btn btn-success">Ajouter</button></td>
                             </tr>
                         </table>
                         <input type="submit" id="submit" class="btn btn-info" form="add_name" value="Valider" />

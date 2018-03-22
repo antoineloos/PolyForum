@@ -185,21 +185,20 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="logo text-center">
-                                        <span><h2>Consulter mes choix</h2></span>
-                                        <span><font color="grey" size="2"> * Glisser et déposer vos choix pour ordonner selon vos préférences. </font></span>
+                                        <span class="text-center"><h2>Consulter mes choix</h2></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
-                    <div class="container topoffset4">
-                        <div class="form-group ">
-                            <form role="form" action="modifierChoixCan.can" method="post">
 
-                                <div class="panel panel-default fresh-table">
-                                    <table id="sort"  class="table ">
-                                        <thead>
-                                            <tr>
+                    <div class="container">
+                        <br /> <font color="grey" size="2"> * Glisser et déposer vos choix pour ordonner selon vos préférences.</font>
+                        <form role="form" action="modifierChoixCan.can" method="post">
+                            <div class="panel panel-default">
+                                <table id="sort" class="table table-bordered table-striped grid">
+                                    <thead>
+                                        <tr>
                                                 <th class="bg-primary index">Nom</th>
                                                 <th class="bg-primary index">Priorité</th>
                                                 <th class="bg-primary index"></th>

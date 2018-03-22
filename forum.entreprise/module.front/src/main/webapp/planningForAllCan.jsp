@@ -190,7 +190,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="logo text-center">
-                            <span class="text-center"><h2>Planning individuel</h2></span>
+                            <span class="text-center"><h2>Planning individuel d'un candidat</h2></span>
                         </div>
                     </div>
                 </div>
