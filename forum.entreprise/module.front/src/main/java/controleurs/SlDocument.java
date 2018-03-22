@@ -30,6 +30,7 @@ import forum.app.dao.impl.EntrepriseDao;
 import forum.app.dao.util.Constantes;
 import forum.app.dao.util.Fichier;
 import forum.app.dao.util.Utilitaire;
+import static jdk.nashorn.internal.objects.NativeString.substring;
 
 /**
  * Servlet implementation class SlDocument
@@ -70,7 +71,7 @@ public class SlDocument extends HttpServlet {
          */
         dirName = rb.getString("path");
         separator = "\\";
-        
+
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -125,7 +126,7 @@ public class SlDocument extends HttpServlet {
         return demande;
     }
 
-    public String uploadDocument(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public String uploadDocument(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, Exception {
         final HttpSession session = request.getSession();
         response.setContentType("text/plain");
         try {
@@ -136,28 +137,35 @@ public class SlDocument extends HttpServlet {
             }
             MultipartRequest m = new MultipartRequest(request, dirName, 100000000);
             String fileName = m.getOriginalFileName("document");
-            if (null != fileName) {
-                File fileUpload = new File(dirName + separator + fileName);
-                String type = (String) session.getAttribute("type");               
-                if (type.equalsIgnoreCase("candidat")) {
-                    int idCompte = (int) session.getAttribute("idCompte");
-                    if (fileUpload.renameTo(new File(dirName + separator + "c_" + idCompte + "_" + fileName)) == false) {                       
-                        System.err.println("Error Rename ! : "+dirName + separator + "c_" + idCompte + "_" + fileName);
-                    }
-                } else if (type.equalsIgnoreCase("entreprise")) {
-                    int idCompte = (int) session.getAttribute("idCompte");
-                    if (fileUpload.renameTo(new File(dirName + separator + "e_" + idCompte + "_" + fileName)) == false) {
+            Integer taille = fileName.length();
+            String verif = fileName.substring(taille - 4, taille);
+            if (fileName.substring(taille - 4, taille).equals(".pdf")) {
+                if (null != fileName) {
+                    File fileUpload = new File(dirName + separator + fileName);
+                    String type = (String) session.getAttribute("type");
+                    if (type.equalsIgnoreCase("candidat")) {
+                        int idCompte = (int) session.getAttribute("idCompte");
+                        if (fileUpload.renameTo(new File(dirName + separator + "c_" + idCompte + "_" + fileName)) == false) {
+                            System.err.println("Error Rename ! : " + dirName + separator + "c_" + idCompte + "_" + fileName);
+                        }
+                    } else if (type.equalsIgnoreCase("entreprise")) {
+                        int idCompte = (int) session.getAttribute("idCompte");
+                        if (fileUpload.renameTo(new File(dirName + separator + "e_" + idCompte + "_" + fileName)) == false) {
+                            System.out.println("Error Rename !");
+                        }
+                    } else if (type.equalsIgnoreCase("admin")) {
+                        int idCompte = 0;
+                        fileUpload.renameTo(new File(dirName + separator + "a_" + idCompte + "_" + fileName));
                         System.out.println("Error Rename !");
                     }
-                } else if (type.equalsIgnoreCase("admin")){
-                    int idCompte = 0;
-                    fileUpload.renameTo(new File(dirName + separator + "a_" + idCompte + "_" + fileName));
-                    System.out.println("Error Rename !");
                 }
+            } else {
+                throw new Exception("Le fichier que vous tentez d'ajouter n'est pas un PDF.");
             }
         } catch (IOException lEx) {
             System.err.println("Erreur durant l'upload du fichier");
         }
+
         return recupererListeDocuments(request, response);
     }
 
@@ -165,9 +173,9 @@ public class SlDocument extends HttpServlet {
         HttpSession session = request.getSession();
         String type = (String) session.getAttribute("type");
         int idCompte = -1;
-        if (type.equalsIgnoreCase("candidat") || type.equalsIgnoreCase("entreprise")){
+        if (type.equalsIgnoreCase("candidat") || type.equalsIgnoreCase("entreprise")) {
             idCompte = (int) session.getAttribute("idCompte");
-        } else if (type.equalsIgnoreCase("admin")){
+        } else if (type.equalsIgnoreCase("admin")) {
             idCompte = 0;
         }
         File repertoire = new File(dirName);
@@ -232,12 +240,12 @@ public class SlDocument extends HttpServlet {
                         Entreprise e = entrepriseDao.getById(Integer.parseInt(fichier.getIdCompte()));
                         if (e != null) {
                             fichier.setNomProprietaire(e.getNom());
-                            listeFichiers.add(fichier);                           
+                            listeFichiers.add(fichier);
                         }
                     } else if (fichier.getType().equalsIgnoreCase("admin")) {
                         fichier.setNomProprietaire("Administrateur");
                         listeFichiers.add(fichier);
-                    }                  
+                    }
                 }
             }
         }
@@ -253,7 +261,7 @@ public class SlDocument extends HttpServlet {
         return recupererListeDocuments(request, response);
     }
 
-    public String downloadDocument(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public String downloadDocument(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, Exception {
         String filename = request.getParameter("bouton");
         response.setContentType("application/download");
         response.setHeader("Content-Disposition", "attachment;filename=\"" + filename + "\"");
@@ -261,8 +269,11 @@ public class SlDocument extends HttpServlet {
         ServletOutputStream out = response.getOutputStream();
         File file = null;
         BufferedInputStream from = null;
+
         try {
+
             file = new File(dirName + separator + filename);
+
             response.setContentLength((int) file.length());
             int bufferSize = 64 * 1024;
 
