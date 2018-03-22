@@ -1248,7 +1248,7 @@ public class SlAdmin extends HttpServlet {
         content = content + "Mot de passe : " + mdp + "<br><br>";
 
         if (!link.equals("") && link != null) {
-            content = content + "Vous pouvez vous connecter à votre compte sur <a href=\"" + link + "\">notre site</a><br><br>";
+            content = content + "Vous pouvez vous connecter à votre compte sur <a href=\"" + "http://forum.polytechlyon.fr" + "\">notre site</a><br><br>";
         }
 
         content = content + "Cordialement,<br>";

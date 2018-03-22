@@ -140,7 +140,7 @@ public class SlCompte extends HttpServlet {
             vueReponse = "/index.jsp";
             login = request.getParameter("login");
             password = request.getParameter("password");
-            if ("admin".equals(login) && "polyforum2015".equals(password)) {
+            if ("admin".equals(login) && "polyforum2018".equals(password)) {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("idCompte", "admin");
                 session.setAttribute("type", "admin");
