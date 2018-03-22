@@ -27,6 +27,8 @@ import forum.app.dao.impl.ChoixEntrepriseDao;
 import forum.app.dao.impl.DaoFactory;
 import forum.app.dao.impl.EntrepriseDao;
 import forum.app.dao.impl.EntretienDao;
+import forum.app.dao.impl.SalleDao;
+import forum.app.dao.model.Salle;
 import forum.app.dao.util.Constantes;
 import forum.app.dao.util.Utilitaire;
 
@@ -38,7 +40,7 @@ public class SlCandidat extends HttpServlet {
     private String erreur = "";
     private String notif = "";
     private String UNDERSCORE = "_";
-
+ private SalleDao salleDao;
     private EntrepriseDao entrepriseDao;
     private ChoixCandidatDao choixCandidatDao;
     private CandidatDao candidatDao;
@@ -93,6 +95,7 @@ public class SlCandidat extends HttpServlet {
         candidatDao = (CandidatDao) DaoFactory.getDaoInstance(Constantes.CANDIDAT);
         choixCandidatDao = (ChoixCandidatDao) DaoFactory.getDaoInstance(Constantes.CHOIX_CANDIDAT);
         entretienDao = (EntretienDao) DaoFactory.getDaoInstance(Constantes.ENTRETIEN);
+        salleDao = (SalleDao) DaoFactory.getDaoInstance(Constantes.SALLE);
     }
 
     private String getDemande(HttpServletRequest request) {
@@ -120,7 +123,8 @@ public class SlCandidat extends HttpServlet {
             Entreprise ent = entrepriseDao.getById(e.getEntretienPK().getIdEntreprise());
             e.setEntreprise(ent);
             e.setCandidat(can);
-            entretiens = entretiens + majAuDebut(ent.getNom()) + " (Salle " + e.getSalle().getNom() + ")" + UNDERSCORE
+             Salle s = salleDao.getById(e.getEntretienPK().getIdSalle());
+            entretiens = entretiens + majAuDebut(ent.getNom()) + " (Salle " + s.getNom() + ")" + UNDERSCORE
                     + e.getHeure() + UNDERSCORE + e.getHeureFin() + UNDERSCORE;
 
         }

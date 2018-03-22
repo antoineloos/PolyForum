@@ -24,6 +24,8 @@ import forum.app.dao.impl.ChoixEntrepriseDao;
 import forum.app.dao.impl.DaoFactory;
 import forum.app.dao.impl.EntrepriseDao;
 import forum.app.dao.impl.EntretienDao;
+import forum.app.dao.impl.SalleDao;
+import forum.app.dao.model.Salle;
 import forum.app.dao.util.Constantes;
 import forum.app.dao.util.Utilitaire;
 import java.util.regex.*;
@@ -40,6 +42,7 @@ public class SlEntreprise extends HttpServlet {
     private EntrepriseDao entrepriseDao;
     private ChoixEntrepriseDao choixEntrepriseDao;
     private CandidatDao candidatDao;
+    private SalleDao salleDao;
     private EntretienDao entretienDao;
     private static Pattern pattern;
     private static Matcher matcher;
@@ -94,6 +97,7 @@ public class SlEntreprise extends HttpServlet {
         candidatDao = (CandidatDao) DaoFactory.getDaoInstance(Constantes.CANDIDAT);
         choixEntrepriseDao = (ChoixEntrepriseDao) DaoFactory.getDaoInstance(Constantes.CHOIX_ENTREPRISE);
         entretienDao = (EntretienDao) DaoFactory.getDaoInstance(Constantes.ENTRETIEN);
+         salleDao = (SalleDao) DaoFactory.getDaoInstance(Constantes.SALLE);
     }
 
     private String getDemande(HttpServletRequest request) {
@@ -122,14 +126,15 @@ public class SlEntreprise extends HttpServlet {
             Candidat c = candidatDao.getById(e.getEntretienPK().getIdCandidat());
             e.setCandidat(c);
             e.setEntreprise(ent);
+               Salle s = salleDao.getById(e.getEntretienPK().getIdSalle());
             entretiens = entretiens + majAuDebut(c.getNom()) + UNDERSCORE + majAuDebut(c.getPrenom()) + UNDERSCORE
-                    + majAuDebut(ent.getNom()) + " (Salle " + e.getSalle().getIdSalle() + ")" + UNDERSCORE
+                    + majAuDebut(ent.getNom()) + " (Salle " + s.getIdSalle() + ")" + UNDERSCORE
                     + e.getHeure() + UNDERSCORE + e.getHeureFin() + UNDERSCORE;
 
         }
-        String salle = String.valueOf(entretienDao.getByIdEntreprise(idEntreprise).get(0).getSalle().getNom());
+     
         entreprise = entreprise + idEntreprise + UNDERSCORE + majAuDebut(ent.getNom()) + UNDERSCORE + "(Salle "
-                + salle + ")" + UNDERSCORE;
+                + ")" + UNDERSCORE;
 
         session.setAttribute("entretiensEnt", liste);
         session.setAttribute("entreprise", entreprise);

@@ -80,13 +80,19 @@ public class Entretien implements Serializable {
         this.heureFin = heureFin;
         this.heureD = heure.getHours()+":"+heure.getMinutes();
         this.heureF = heureFin.getHours()+":"+heureFin.getMinutes();
+        this.present = true;
+        this.retard = false ;
     }
 
     public Entretien(int idEntreprise, int idCandidat, int idSalle) {
         this.entretienPK = new EntretienPK(idEntreprise, idCandidat, idSalle);
+         this.present = true;
+        this.retard = false ;
     }
 
     public Entretien(){
+         this.present = true;
+        this.retard = false ;
     }
     
     public EntretienPK getEntretienPK() {

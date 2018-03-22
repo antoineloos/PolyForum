@@ -375,7 +375,8 @@ public class SlAdmin extends HttpServlet {
                 throw (new Exception("Erreur lors de la modification de l'entretien"));
             }
             if (e.getEntretienPK().getIdCandidat() == idCandidat && e.getEntretienPK().getIdEntreprise() == idEntreprise) {
-                if (e.getSalle().getNom() == salle) {
+                Salle s = salleDao.getById(e.getEntretienPK().getIdSalle());
+                if (s.getNom() == salle) {
                     modifierDureeEntretien(e, heureD, heureF);
                 }
             }
@@ -431,7 +432,8 @@ public class SlAdmin extends HttpServlet {
                 throw (new Exception("Erreur lors de la modification de l'entretien"));
             }
             if (e.getEntretienPK().getIdCandidat() == idCandidat && e.getEntretienPK().getIdEntreprise() == idEntreprise) {
-                if (e.getSalle().getNom() == salle) {
+                Salle s = salleDao.getById(e.getEntretienPK().getIdSalle());
+                if (s.getNom() == salle) {
                     modifierHeureEntretien(e, params[5], getDuree(e));
                 }
             }
@@ -552,7 +554,8 @@ public class SlAdmin extends HttpServlet {
                 throw (new Exception("Erreur lors de la suppression de l'entretien"));
             }
             if (e.getEntretienPK().getIdCandidat() == idCandidat && e.getEntretienPK().getIdEntreprise() == idEntreprise) {
-                if (e.getSalle().getNom().equals(salle)) {
+                     Salle s = salleDao.getById(e.getEntretienPK().getIdSalle());
+                if (s.equals(salle)) {
                     entretienDao.removeEntretien(e);
                 }
             }
@@ -586,8 +589,9 @@ public class SlAdmin extends HttpServlet {
             Entreprise ent = entrepriseDao.getById(e.getEntretienPK().getIdEntreprise());
             e.setCandidat(c);
             e.setEntreprise(ent);
-            text = text + majAuDebut(majAuDebut(ent.getNom()) + ESPACE + "(Salle " + e.getSalle().getNom() + ")") + ESPACE
-                    + e.getSalle().getNom() + ESPACE + e.getHeure() + ESPACE + e.getHeureFin()
+                 Salle s = salleDao.getById(e.getEntretienPK().getIdSalle());
+            text = text + majAuDebut(majAuDebut(ent.getNom()) + ESPACE + "(Salle " + s.getNom() + ")") + ESPACE
+                    + s.getNom() + ESPACE + e.getHeure() + ESPACE + e.getHeureFin()
                     + ESPACE;
         }
 
@@ -616,8 +620,9 @@ public class SlAdmin extends HttpServlet {
 
             e.setCandidat(c);
             e.setEntreprise(ent);
+            Salle s = salleDao.getById(e.getEntretienPK().getIdSalle());
             text = text + majAuDebut(c.getPrenom()) + ESPACE + majAuDebut(c.getNom()) + ESPACE
-                    + majAuDebut(ent.getNom() + " (Salle " + e.getSalle().getNom() + ")") + ESPACE + e.getSalle().getNom() + ESPACE
+                    + majAuDebut(ent.getNom() + " (Salle " + s.getNom() + ")") + ESPACE + s.getNom() + ESPACE
                     + e.getHeure() + ESPACE + e.getHeureFin() + ESPACE;
         }
         String entreprises = "";
@@ -646,8 +651,9 @@ public class SlAdmin extends HttpServlet {
             Entreprise ent = entrepriseDao.getById(e.getEntretienPK().getIdEntreprise());
             e.setCandidat(c);
             e.setEntreprise(ent);
+             Salle s = salleDao.getById(e.getEntretienPK().getIdSalle());
             text = text + majAuDebut(c.getPrenom()) + ESPACE + majAuDebut(c.getNom()) + ESPACE
-                    + majAuDebut(ent.getNom() + " (Salle " + e.getSalle().getNom() + ")") + ESPACE + e.getSalle().getNom() + ESPACE
+                    + majAuDebut(ent.getNom() + " (Salle " + s.getNom() + ")") + ESPACE + s.getNom() + ESPACE
                     + e.getHeure() + ESPACE + e.getHeureFin() + ESPACE;
         }
         String entreprises = "";
@@ -675,8 +681,9 @@ public class SlAdmin extends HttpServlet {
 
             Entreprise ent = entrepriseDao.getById(e.getEntretienPK().getIdEntreprise());
             e.setEntreprise(ent);
-            text = text + majAuDebut(majAuDebut(ent.getNom()) + ESPACE + "(Salle " + e.getSalle().getNom() + ")") + ESPACE
-                    + e.getSalle().getNom() + ESPACE + e.getHeure() + ESPACE + e.getHeureFin()
+             Salle s = salleDao.getById(e.getEntretienPK().getIdSalle());
+            text = text + majAuDebut(majAuDebut(ent.getNom()) + ESPACE + "(Salle " + s.getNom() + ")") + ESPACE
+                    + s.getNom() + ESPACE + e.getHeure() + ESPACE + e.getHeureFin()
                     + ESPACE;
         }
 
@@ -703,8 +710,10 @@ public class SlAdmin extends HttpServlet {
         for (Entretien e : liste) {
             Candidat c = candidatDao.getById(e.getEntretienPK().getIdCandidat());
             Entreprise ent = entrepriseDao.getById(e.getEntretienPK().getIdEntreprise());
+            Salle salle = salleDao.getById(e.getEntretienPK().getIdSalle());
             e.setCandidat(c);
             e.setEntreprise(ent);
+            e.setSalle(salle);
             /*
              text = text + majAuDebut(c.getPrenom()) + ESPACE + majAuDebut(c.getNom()) + ESPACE
              + majAuDebut(ent.getNom() + " (Salle " + e.getIdSalle() + ")") + ESPACE + e.getIdSalle() + ESPACE
@@ -740,8 +749,8 @@ public class SlAdmin extends HttpServlet {
                     return 0;
                 }
             }
-            int response = entretiens.get(0).getSalle().getIdSalle();
-            return entretiens.get(0).getSalle().getIdSalle();
+            int response = entretiens.get(0).getEntretienPK().getIdSalle();
+            return response;
         } catch (Exception e) {
             throw new Exception(
                     "Le planning n'a pas encore été généré. Veuillez générer un planning avant de le consulter.");
@@ -826,7 +835,8 @@ public class SlAdmin extends HttpServlet {
             for (Entretien e : liste) {
                 Entreprise ent = entrepriseDao.getById(e.getEntretienPK().getIdEntreprise());
                 e.setEntreprise(ent);
-                entretiens = entretiens + majAuDebut(ent.getNom()) + " (Salle " + e.getSalle().getNom() + ")" + UNDERSCORE
+                 Salle s = salleDao.getById(e.getEntretienPK().getIdSalle());
+                entretiens = entretiens + majAuDebut(ent.getNom()) + " (Salle " + s.getNom() + ")" + UNDERSCORE
                         + majAuDebut(can.getNom()) + UNDERSCORE + majAuDebut(can.getPrenom()) + UNDERSCORE
                         + e.getHeure() + UNDERSCORE + e.getHeureFin() + UNDERSCORE;
 
@@ -854,7 +864,7 @@ public class SlAdmin extends HttpServlet {
             for (Entretien e : liste) {
                 Candidat c = candidatDao.getById(e.getEntretienPK().getIdCandidat());
                 entretiens = entretiens + majAuDebut(c.getNom()) + UNDERSCORE + majAuDebut(c.getPrenom()) + UNDERSCORE
-                        + majAuDebut(ent.getNom()) + " (Salle " + e.getSalle().getNom() + ")" + UNDERSCORE
+                        + majAuDebut(ent.getNom()) + " (Salle " + e.getEntretienPK().getIdSalle() + ")" + UNDERSCORE
                         + e.getHeure() + UNDERSCORE + e.getHeureFin() + UNDERSCORE;
 
             }
