@@ -193,8 +193,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="logo text-center">
-                                            <span><h2>Ajout des candidats</h2></span>
-                                            <span><font color="grey" size="2">* Ajoutez vos différents choix puis validez pour enregistrer.</font></span>
+                                            <span class="text-center"><h2>Ajout des candidats</h2></span>
                                         </div>
                                     </div>
                                 </div>
@@ -202,11 +201,12 @@
                         </section>
                         <div class="container">
                             <br />
+                            <span><font color="grey" size="2">* Ajoutez vos différents choix puis validez pour enregistrer.</font></span>
                             <div class="fresh-table full-color-blue">
                                 <c:if test="${empty listeCandidats}">
                                     <br />
                                     <div class="alert alert-warning">
-                                        <strong>Aucun candidat n'est disponible!</strong>
+                                        <strong>Aucun candidat n'est disponible !</strong>
                                     </div>
                                 </c:if>
                                 <c:if test="${!empty listeCandidats}">
@@ -223,10 +223,6 @@
                                             </thead>
                                             <tbody>
                                                 <tr id="row1">
-                                                    <!-- 						<td><input type="text" id="nom1" name="nom1" -->
-                                                    <!-- 							placeholder="Nom du candidat" class="form-control name_list" /></td> -->
-                                                    <!-- 						<td><input type="text" id="prenom1" name="prenom1" -->
-                                                    <!-- 							placeholder="Prénom du candidat" class="form-control name_list" /></td> -->
                                                     <td><select name=nom1 class="form-control"
                                                                 id="listeCandidats">
                                                             <option value="Sélectionnez un candidat">Sélectionnez un candidat</option>

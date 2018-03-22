@@ -191,11 +191,11 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="logo">
-                                <span><h2>Choix des entreprises</h2></span>
+                                <span class="text-center"><h2>Choix des entreprises</h2></span>
                                     <c:if test="${empty listeEntreprises}">
                                         <br />
                                         <div class="alert alert-warning">
-                                            <strong>Aucune entreprise n'est disponible!</strong>
+                                            <strong>Aucune entreprise n'est disponible !</strong>
                                         </div>
                                     </c:if>
                             </div>
@@ -204,6 +204,7 @@
                 </div>
             </section>
             <div class="container topoffset4">
+                <span><font color="grey" size="2">* Ajoutez vos différents choix puis validez pour enregistrer.</font></span>
                 <div class="form-group ">
                     <form name="add_name" id="add_name" role="form"
                           action="choixCan.can" method="POST">
@@ -225,11 +226,12 @@
                                                 </c:forEach>
                                             </select></td>
                                         <td><button type="button" name="add" id="add"
-                                                    class="btn btn-success">Ajouter</button> </td>
+                                                    class="btn btn-success">Ajouter</button></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
+                        <br/>
                         <input type="submit" id="submit" class="btn btn-info"
                                form="add_name" value="Valider" />
                     </form>
