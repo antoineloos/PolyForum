@@ -7,6 +7,7 @@
         <link rel="icon" type="image/ico" href="images/favicon.ico" />
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>Poly Forum</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Bootstrap Core CSS -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -218,7 +219,7 @@
 	<div class="mainbody-section text-center">
             <div class="container">
 		<br />
-		<div class="panel panel-default">
+		<div class="panel panel-default table-responsive">
                     <table id="sort" >
                         <thead>
                             <tr>

@@ -4,6 +4,7 @@
 <html lang="fr">
 
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/ico" href="images/favicon.ico" />
         <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
         <meta charset="utf-8">
@@ -199,7 +200,7 @@
                                 </div>
                             </section>
                             <div class="container topoffset4">
-                                <div class="form-group ">
+                                <div class="form-group table-responsive">
                                     <table id="sort" class="table table-bordered table-striped grid">
                                         <thead>
                                             <tr>
@@ -243,7 +244,7 @@
                                 </div>
                             </section>
                             <div class="container topoffset4">
-                                <div class="form-group ">
+                                <div class="form-group table-responsive">
                                     <table id="sort" class="table table-bordered table-striped grid">
                                         <thead>
                                             <tr>

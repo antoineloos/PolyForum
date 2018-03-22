@@ -7,7 +7,7 @@
         <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
 
@@ -212,6 +212,7 @@
                                 <c:if test="${!empty listeCandidats}">
                                     <form name="add_name" id="add_name" role="form"
                                           action="choixEnt.chxE" method="POST">
+                                        <div class="table-responsive">
                                         <table class="table table-bordered grid" id="dynamic_field">
                                             <thead>
                                                 <tr>
@@ -246,6 +247,7 @@
                                                 </tr>
                                             </tbody>
                                         </table>
+                                        </div>
                                         <input type="submit" id="submit" class="btn btn-info"
                                                form="add_name" value="Valider" />
                                     </form>

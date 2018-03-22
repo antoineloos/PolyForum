@@ -8,7 +8,7 @@
         <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
 
@@ -198,6 +198,7 @@
             <div class="container topoffset4">
                 <div class="form-group">
                     <form name="add_name" id="add_name" role="form" action="saisieEnt.adm" method="POST">
+                        <div class="table-responsive">
                         <table class="table" id="dynamic_field">
                             <tr id="row1">
                                 <td><input type="text" id="ent1" name="ent1" placeholder="Nom de l'entreprise" class="form-control name_list" /></td>
@@ -205,7 +206,7 @@
                                 <td><input type="text" id="mail1" name="mail1" placeholder="Adresse mail du representant" class="form-control name_list" /></td>
                                 <td><button type="button" name="add" id="add" class="btn btn-success">Ajouter</button></td>
                             </tr>
-                        </table>
+                        </table></div>
                         <input type="submit" id="submit" class="btn btn-info" form="add_name" value="Valider" />
                     </form>
                 </div>

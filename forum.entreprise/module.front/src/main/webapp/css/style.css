@@ -311,7 +311,8 @@ th {
     margin-left: auto;
     border-radius: 0px;
 }
-@media (min-width: 768px){
+
+@media only screen and (min-width: 768px){
     .well {
         border-radius: 4px;
         margin-top: 20px;

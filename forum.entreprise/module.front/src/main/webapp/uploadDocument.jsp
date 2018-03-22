@@ -8,7 +8,7 @@
         <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
 
@@ -223,7 +223,7 @@
             </section>
             <div class="container">
                 <br />
-                <div class="fresh-table">
+                <div class="fresh-table table-responsive">
                     <table id="fresh-table" class="table">
                         <thead>
                             <tr>

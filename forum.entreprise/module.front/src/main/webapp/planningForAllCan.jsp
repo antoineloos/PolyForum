@@ -4,6 +4,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <link rel="icon" type="image/ico" href="images/favicon.ico" />
         <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -203,6 +205,7 @@
 
         <form name="add_name" id="add_name" role="form"
               action="changeCan.adm" method="POST">
+            <div class="table-responsive">
             <table class="table table-bordered grid" id="dynamic_field">
                 <thead>
                     <tr>
@@ -221,6 +224,7 @@
                     </tr>
                 </tbody>
             </table>
+            </div>
             <input type="submit" id="submit" class="btn btn-info"
                    form="add_name" value="Valider" />
         </form>

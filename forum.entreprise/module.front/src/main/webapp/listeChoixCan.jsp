@@ -8,7 +8,7 @@
         <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>Poly Forum</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap Core CSS -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -195,7 +195,7 @@
                     <div class="container">
                         <br /> <font color="grey" size="2"> * Glisser et déposer vos choix pour ordonner selon vos préférences.</font>
                         <form role="form" action="modifierChoixCan.can" method="post">
-                            <div class="panel panel-default">
+                            <div class="panel panel-default table-responsive">
                                 <table id="sort" class="table table-bordered table-striped grid">
                                     <thead>
                                         <tr>

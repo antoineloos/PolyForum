@@ -6,6 +6,7 @@
 <link rel="icon" type="image/ico" href="images/favicon.ico" />
 <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
 <!-- Bootstrap Core CSS -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Font Awesome CSS -->

@@ -8,7 +8,7 @@
         <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
 
@@ -196,6 +196,7 @@
             <div class="container">
                 <div class="form-group">
                     <form name="add_name" id="add_name" role="form" action="saisieCan.adm" method="POST">
+                        <div class="table-responsive">
                         <table class="table" id="dynamic_field">
                             <tr id="row1">
                                 <td><input type="text" id="nom1" name="nom1" placeholder="Nom du candidat" class="form-control name_list" /></td>
@@ -203,7 +204,7 @@
                                 <td><input type="text" id="mail1" name="mail1" placeholder="Adresse mail" class="form-control name_list" /></td>
                                 <td><button type="button" name="add" id="add" class="btn btn-success">Ajouter</button></td>
                             </tr>
-                        </table>
+                        </table></div>
                         <input type="submit" id="submit" class="btn btn-info" form="add_name" value="Valider" />
                     </form>
                 </div>
